@@ -39,6 +39,7 @@
 		F3A8A6A42051414E00C4DF11 = {
 			isa = PBXGroup;
 			children = (
+				F3A8A6C22051424D00C4DF11 /* README.md */,
 				F3A8A6AF2051414E00C4DF11 /* Fixit */,
 				F3A8A6AE2051414E00C4DF11 /* Products */,
 			);
@@ -55,7 +56,6 @@
 		F3A8A6AF2051414E00C4DF11 /* Fixit */ = {
 			isa = PBXGroup;
 			children = (
-				F3A8A6C22051424D00C4DF11 /* README.md */,
 				F3A8A6B02051414E00C4DF11 /* AppDelegate.swift */,
 				F3A8A6B22051414E00C4DF11 /* ViewController.swift */,
 				F3A8A6B42051414E00C4DF11 /* Main.storyboard */,
