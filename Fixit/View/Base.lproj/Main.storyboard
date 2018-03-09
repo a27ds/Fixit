@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Camera View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="CameraViewController" customModule="Fixit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eLI-C0-mZQ">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem title="Login" id="E8O-13-1DF"/>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="tbV-Ve-b0i"/>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="zWU-s8-8gi"/>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="luF-8t-33b"/>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="2Wx-fa-gvR"/>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="biz-0q-53R"/>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="5aM-0a-IhG"/>
+                                    <barButtonItem title="Info" id="WT1-Zr-6dg"/>
+                                </items>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </toolbar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdu-ms-7eA">
+                                <rect key="frame" x="147" y="587" width="80" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="VuX-rv-1g9"/>
+                                    <constraint firstAttribute="height" constant="80" id="mhf-tq-onl"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="cameraButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8GR-2i-euJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bdu-ms-7eA" secondAttribute="bottom" id="SG6-OF-nCa"/>
+                            <constraint firstItem="bdu-ms-7eA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TJp-xl-5qM"/>
+                            <constraint firstItem="bdu-ms-7eA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="147" id="bSR-L2-oSE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bdu-ms-7eA" secondAttribute="trailing" constant="148" id="dxh-9W-l6R"/>
+                            <constraint firstItem="eLI-C0-mZQ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="f0h-YT-ezb"/>
+                            <constraint firstItem="eLI-C0-mZQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lSL-tu-XYN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eLI-C0-mZQ" secondAttribute="bottom" id="z8c-oe-eX8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="button" destination="bdu-ms-7eA" id="Kdi-p6-0X4"/>
+                        <segue destination="OqB-Rx-H7v" kind="presentation" identifier="showPhoto_Segue" id="Exc-Ki-2Uz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--Preview View Controller-->
+        <scene sceneID="7oA-j8-7B5">
+            <objects>
+                <viewController id="OqB-Rx-H7v" userLabel="Preview View Controller" customClass="PreviewViewController" customModule="Fixit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="y9O-pR-69E">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ceD-HP-EJ0">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q37-JH-U2n">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem title="Retake" id="ys1-dF-dIC"/>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="baM-e2-yQs"/>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="rqO-Sc-84M"/>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="ze6-01-nwq"/>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="BfJ-WC-Hju"/>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="6LC-SH-G3u"/>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="FBd-od-dld"/>
+                                    <barButtonItem title="Use" id="ptN-V1-YRx"/>
+                                </items>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ceD-HP-EJ0" firstAttribute="trailing" secondItem="d8y-72-RV3" secondAttribute="trailing" id="1bA-28-Rvl"/>
+                            <constraint firstItem="Q37-JH-U2n" firstAttribute="trailing" secondItem="d8y-72-RV3" secondAttribute="trailing" id="GbM-OH-cbr"/>
+                            <constraint firstAttribute="bottom" secondItem="ceD-HP-EJ0" secondAttribute="bottom" id="MyM-6w-ohv"/>
+                            <constraint firstItem="ceD-HP-EJ0" firstAttribute="top" secondItem="y9O-pR-69E" secondAttribute="top" id="l5O-zN-lJd"/>
+                            <constraint firstItem="Q37-JH-U2n" firstAttribute="leading" secondItem="d8y-72-RV3" secondAttribute="leading" id="miv-yO-psj"/>
+                            <constraint firstItem="Q37-JH-U2n" firstAttribute="bottom" secondItem="d8y-72-RV3" secondAttribute="bottom" id="st8-52-hfC"/>
+                            <constraint firstItem="ceD-HP-EJ0" firstAttribute="leading" secondItem="d8y-72-RV3" secondAttribute="leading" id="vYx-2J-151"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="d8y-72-RV3"/>
+                    </view>
+                    <connections>
+                        <outlet property="showPhoto" destination="ceD-HP-EJ0" id="1W9-TP-FHC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZP4-Ew-4dc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1462" y="38"/>
+        </scene>
+    </scenes>
+</document>

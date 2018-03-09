@@ -20,5 +20,5 @@ This app is under development for IOS/Iphone and will include this technologys:
 * Firebase
 * Camera
 
-/A27#  <#Title#>
+/A27
 
