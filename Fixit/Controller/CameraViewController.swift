@@ -8,9 +8,9 @@
 
 import UIKit
 import AVFoundation
+import CoreLocation
 
-class CameraViewController: UIViewController {
-    
+class CameraViewController: UIViewController, CLLocationManagerDelegate {
     
     // MARK: - Variabel Decalartions
     
@@ -25,6 +25,8 @@ class CameraViewController: UIViewController {
     
     var image: UIImage?
     
+    var showLocationDisablePopUpBool: Bool?
+    
     ///////////////////////////////////////////
     
     
@@ -38,7 +40,6 @@ class CameraViewController: UIViewController {
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         button.layer.cornerRadius = 40
         
         setupCaptureSession()
@@ -47,13 +48,64 @@ class CameraViewController: UIViewController {
         setupPreviewLayer()
         startRunningCaptureSession()
         
+        
+    }
+    
+    ///////////////////////////////////////////
+    
+    
+    // MARK: - IBActions
+    
+    @IBAction func loginButtonPressed(_ sender: UIBarButtonItem) {
+    }
+    
+    @IBAction func infoButtonPressed(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "showInfo_Segue", sender: nil)
+    }
+    
+    @IBAction func cameraButtonPressed(_ sender: UIButton) {
+        getLocation()
+        let settings = AVCapturePhotoSettings()
+        photoOutput?.capturePhoto(with: settings, delegate: self)
+    }
+    
+    ///////////////////////////////////////////
+    
+    
+    // MARK: - GPS
+    
+    let locationManager = CLLocationManager()
+    
+    func getLocation() {
+        locationManager.requestAlwaysAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+            switch CLLocationManager.authorizationStatus() {
+                case .notDetermined, .restricted, .denied:
+                    showLocationDisablePopUpBool = true
+                case .authorizedAlways, .authorizedWhenInUse:
+                    showLocationDisablePopUpBool = false
+            }
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations[locations.count - 1]
+        if location.horizontalAccuracy > 0 {
+            locationManager.stopUpdatingLocation()
+            locationManager.delegate = nil
+            // TODO: - Get gps info to a var
+            print(location.coordinate)
+        }
     }
     
     ///////////////////////////////////////////
     
     
     // MARK: - Camera
-
+    
     func setupCaptureSession() {
         captureSession.sessionPreset = AVCaptureSession.Preset.photo
     }
@@ -96,15 +148,13 @@ class CameraViewController: UIViewController {
         captureSession.startRunning()
     }
     
-    @IBAction func cameraButtonPressed(_ sender: UIButton) {
-        let settings = AVCapturePhotoSettings()
-        photoOutput?.capturePhoto(with: settings, delegate: self)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showPhoto_Segue" {
             let previewVC = segue.destination as! PreviewViewController
             previewVC.image = self.image
+            previewVC.showLocationDisablePopUpBool = self.showLocationDisablePopUpBool
+        } else if segue.identifier == "showInfo_Segue" {
+            
         }
     }
     

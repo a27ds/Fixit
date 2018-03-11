@@ -15,7 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        //  Checks if the user been using the app before.. if not infoViewController will be displayed.
+        let defaults = UserDefaults.standard
+        if defaults.object(forKey: "isFirstTimeUse") == nil {
+            print("körs")
+            defaults.set(1, forKey: "isFirstTimeUse")
+            defaults.synchronize()
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "info") as! InfoViewController
+            self.window?.rootViewController = viewController
+            self.window?.makeKeyAndVisible()
+        }
         return true
     }
 
