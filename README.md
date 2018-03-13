@@ -20,5 +20,8 @@ This app is under development for IOS/Iphone and will include this technologys:
 * Firebase
 * Camera
 
+[Link to mockup design] (https://xd.adobe.com/view/42edd05e-1781-422f-b67a-12bfc61e5675/)
+[Link to Trello] (https://trello.com/b/tx7vXmyI/fixit)
+
 /A27
 
