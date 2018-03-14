@@ -70,13 +70,13 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func commentFieldCancelButtonPressed(_ sender: UIButton) {
-        view.endEditing(true)
+//        view.endEditing(true)
         showOrHideCommentField()
         toolbar.isHidden = false
     }
     
     @IBAction func commentFieldDoneButtonPressed(_ sender: UIButton) {
-        view.endEditing(true)
+//        view.endEditing(true)
         // TODO: - Upload stuff to firebase
         showOrHideCommentField()
         setLayoutFaultAlert()
@@ -98,6 +98,7 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
             faultReportedAlertConstraint.constant = 408
             UIView.animate(withDuration: 0.5, animations: {self.view.layoutIfNeeded()})
         } else {
+            view.endEditing(true)
             faultReportedAlertConstraint.constant = -408
             UIView.animate(withDuration: 0.3, animations: {self.view.layoutIfNeeded()})
         }
@@ -159,6 +160,7 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
             commentFieldConstraint.constant = 408
             UIView.animate(withDuration: 0.5, animations: {self.view.layoutIfNeeded()})
         } else {
+            view.endEditing(true)
             commentFieldConstraint.constant = -408
             UIView.animate(withDuration: 0.3, animations: {self.view.layoutIfNeeded()})
         }
@@ -190,27 +192,3 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
     ///////////////////////////////////////////
 }
 
-extension UIView {
-    
-    enum ViewSide {
-        case Left, Right, Top, Bottom
-    }
-    
-    func addBorder(side: ViewSide, color: CGColor, thickness: CGFloat) {
-        
-        let border = CALayer()
-        border.backgroundColor = color
-        
-        switch side {
-            case .Left:
-                border.frame = CGRect(x: 0, y: 0, width: thickness, height: frame.height)
-            case .Right:
-                border.frame = CGRect(x: self.frame.size.width - thickness, y: 0, width: thickness, height: frame.height)
-            case .Top:
-                border.frame = CGRect(x: 0, y: 0, width: frame.width, height: thickness)
-            case .Bottom:
-                border.frame = CGRect(x: 0, y: self.frame.size.height - thickness, width: frame.width, height: thickness)
-        }
-        layer.addSublayer(border)
-    }
-}

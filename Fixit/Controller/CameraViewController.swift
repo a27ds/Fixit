@@ -18,14 +18,11 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
     var backCamera: AVCaptureDevice?
     var frontCamera: AVCaptureDevice?
     var currentCamera: AVCaptureDevice?
-    
     var photoOutput: AVCapturePhotoOutput?
-    
     var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
-    
     var image: UIImage?
-    
     var showLocationDisablePopUpBool: Bool?
+    var loginAlertIsHidden = true
     
     ///////////////////////////////////////////
     
@@ -33,22 +30,27 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
     // MARK: - IBOutlets
     
     @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var loginAlert: UIView!
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var loginAlertConstraint: NSLayoutConstraint!
+    @IBOutlet weak var toolbar: UIToolbar!
     
     ///////////////////////////////////////////
     
-    
+   
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        button.layer.cornerRadius = 40
-        
+        setLayoutCameraButton()
+        setLayoutLoginAlert()
         setupCaptureSession()
         setupDevice()
         setupInputOutput()
         setupPreviewLayer()
         startRunningCaptureSession()
-        
-        
     }
     
     ///////////////////////////////////////////
@@ -57,6 +59,7 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
     // MARK: - IBActions
     
     @IBAction func loginButtonPressed(_ sender: UIBarButtonItem) {
+        showOrHideLoginAlert()
     }
     
     @IBAction func infoButtonPressed(_ sender: UIBarButtonItem) {
@@ -67,6 +70,63 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
         getLocation()
         let settings = AVCapturePhotoSettings()
         photoOutput?.capturePhoto(with: settings, delegate: self)
+    }
+    
+    @IBAction func loginAlertButtonPressed(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func cancelAlertButtonPressed(_ sender: UIButton) {
+        showOrHideLoginAlert()
+    }
+    
+    ///////////////////////////////////////////
+    
+    
+    // MARK: - Login alertbox
+    
+    func setLayoutLoginAlert() {
+        loginAlertConstraint.constant = -408
+        
+        loginAlert.alpha = 0.85
+        loginAlert.layer.cornerRadius = 15
+        
+        usernameTextField.backgroundColor = UIColor.black
+        usernameTextField.textColor = UIColor.white
+        usernameTextField.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+        usernameTextField.layer.borderColor = UIColor.lightGray.cgColor
+        usernameTextField.layer.borderWidth = 0.5
+        usernameTextField.layer.cornerRadius = 7
+        
+        passwordTextField.backgroundColor = UIColor.black
+        passwordTextField.textColor = UIColor.white
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+        passwordTextField.layer.borderColor = UIColor.lightGray.cgColor
+        passwordTextField.layer.borderWidth = 0.5
+        passwordTextField.layer.cornerRadius = 7
+        
+        cancelButton.addBorder(side: .Top, color: UIColor.lightGray.cgColor, thickness: 0.5)
+        loginButton.addBorder(side: .Top, color: UIColor.lightGray.cgColor, thickness: 0.5)
+        loginButton.addBorder(side: .Left, color: UIColor.lightGray.cgColor, thickness: 0.5)
+    }
+    
+    func showOrHideLoginAlert() {
+        if loginAlertIsHidden {
+            usernameTextField.text = nil
+            passwordTextField.text = nil
+            loginAlert.isHidden = false
+            loginAlertConstraint.constant = 408
+            UIView.animate(withDuration: 0.5, animations: {self.view.layoutIfNeeded()})
+            toolbar.isHidden = true
+            button.isHidden = true
+        } else {
+            view.endEditing(true)
+            loginAlertConstraint.constant = -408
+            UIView.animate(withDuration: 0.3, animations: {self.view.layoutIfNeeded()})
+            toolbar.isHidden = false
+            button.isHidden = false
+        }
+        loginAlertIsHidden = !loginAlertIsHidden
     }
     
     ///////////////////////////////////////////
@@ -105,6 +165,13 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
     
     
     // MARK: - Camera
+    
+    func setLayoutCameraButton() {
+        button.layer.cornerRadius = 40
+        button.layer.shadowColor = UIColor.gray.cgColor
+        button.layer.shadowRadius = 4.0
+        button.layer.shadowOpacity = 0.5
+    }
     
     func setupCaptureSession() {
         captureSession.sessionPreset = AVCaptureSession.Preset.photo
@@ -209,3 +276,4 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
         }
     }
 }
+
