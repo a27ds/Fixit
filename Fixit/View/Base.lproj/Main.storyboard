@@ -55,8 +55,8 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VcA-Ru-6bQ" userLabel="Text">
                                 <rect key="frame" x="67" y="70" width="240" height="494"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">An error report is made when something does not meet its intended function, is broken or requires emergency maintenance due to damage. For example, you may report a broken light, littering, unauthorized parking, slipperiness or damage. Error reports are sent to our contractors for action.  This app lets you take a photo of an fault in your city, and report it to the city ​​administration.
-To make an safe, error free environment. </string>
+                                <mutableString key="text">An error report is made when something does not meet its intended function, is broken or requires emergency maintenance due to damage. For example, you may report a broken light, littering, unauthorized parking, slipperiness or damage. Error reports are sent to our contractors for action.  This app lets you take a photo of an fault in your city, and report it to the city ​​administration.
+To make an safe, error free environment. </mutableString>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -206,11 +206,76 @@ To make an safe, error free environment. </string>
                                     <constraint firstAttribute="height" constant="175" id="weu-wX-9kY"/>
                                 </constraints>
                             </view>
+                            <view alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ie-b7-5cW">
+                                <rect key="frame" x="67" y="62" width="240" height="406"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxA-rj-XAR">
+                                        <rect key="frame" x="8" y="8" width="224" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="abH-hz-EHN"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="19" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MmC-1e-VuK">
+                                        <rect key="frame" x="8" y="37" width="224" height="273"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="273" id="T6T-33-P9i"/>
+                                        </constraints>
+                                        <mutableString key="text">An error report is made when something does not meet its intended function, is broken or requires emergency maintenance due to damage. For example, you may report a broken light, littering, unauthorized parking, slipperiness or damage. Error reports are sent to our contractors for action.  This app lets you take a photo of an fault in your city, and report it to the city ​​administration.
+To make an safe, error free  environment.  To login you have to  be registered </mutableString>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Made by: Andreas Eriksson MA17 E-mail: andy27ds@mac.com Andreas Eriksson © 2018" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Bj-SV-ysL">
+                                        <rect key="frame" x="8" y="318" width="224" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="rwM-Lw-Mcc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6u-x2-ZkC">
+                                        <rect key="frame" x="0.0" y="362" width="240" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Q4u-YP-MTe"/>
+                                        </constraints>
+                                        <state key="normal" title="Ok"/>
+                                        <connections>
+                                            <action selector="okInfoButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1mt-0j-OVk"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="e6u-x2-ZkC" secondAttribute="bottom" id="9Ij-8l-4A4"/>
+                                    <constraint firstItem="MmC-1e-VuK" firstAttribute="top" secondItem="fxA-rj-XAR" secondAttribute="bottom" constant="8" id="9pT-7e-EbL"/>
+                                    <constraint firstItem="MmC-1e-VuK" firstAttribute="leading" secondItem="8Ie-b7-5cW" secondAttribute="leading" constant="8" id="BIx-m4-D4Q"/>
+                                    <constraint firstAttribute="trailing" secondItem="fxA-rj-XAR" secondAttribute="trailing" constant="8" id="C2j-nN-e6P"/>
+                                    <constraint firstItem="e6u-x2-ZkC" firstAttribute="leading" secondItem="8Ie-b7-5cW" secondAttribute="leading" id="C4S-aR-Ldy"/>
+                                    <constraint firstItem="fxA-rj-XAR" firstAttribute="leading" secondItem="8Ie-b7-5cW" secondAttribute="leading" constant="8" id="GKH-Jj-ooh"/>
+                                    <constraint firstAttribute="trailing" secondItem="MmC-1e-VuK" secondAttribute="trailing" constant="8" id="JXd-ua-00H"/>
+                                    <constraint firstAttribute="trailing" secondItem="e6u-x2-ZkC" secondAttribute="trailing" id="XYn-xQ-U7q"/>
+                                    <constraint firstItem="8Bj-SV-ysL" firstAttribute="top" secondItem="MmC-1e-VuK" secondAttribute="bottom" constant="8" id="YHA-cw-ck8"/>
+                                    <constraint firstItem="fxA-rj-XAR" firstAttribute="top" secondItem="8Ie-b7-5cW" secondAttribute="top" constant="8" id="g2P-qn-baH"/>
+                                    <constraint firstItem="8Bj-SV-ysL" firstAttribute="leading" secondItem="8Ie-b7-5cW" secondAttribute="leading" constant="8" id="r8L-JY-EoP"/>
+                                    <constraint firstAttribute="trailing" secondItem="8Bj-SV-ysL" secondAttribute="trailing" constant="8" id="rrJ-66-Wxs"/>
+                                    <constraint firstAttribute="width" constant="240" id="sOq-ow-vqV"/>
+                                    <constraint firstItem="e6u-x2-ZkC" firstAttribute="top" secondItem="8Bj-SV-ysL" secondAttribute="bottom" constant="8" id="vyq-do-9s6"/>
+                                    <constraint firstAttribute="height" constant="406" id="whb-Jy-62T"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <constraints>
                             <constraint firstItem="DQ1-o5-f4C" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="98u-ar-X3l"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8Ie-b7-5cW" secondAttribute="bottom" constant="199" id="9tq-dl-kI7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bdu-ms-7eA" secondAttribute="bottom" id="SG6-OF-nCa"/>
                             <constraint firstItem="bdu-ms-7eA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TJp-xl-5qM"/>
+                            <constraint firstItem="8Ie-b7-5cW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WKI-Lo-4SI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DQ1-o5-f4C" secondAttribute="bottom" constant="321" id="X3i-A6-XEa"/>
                             <constraint firstItem="bdu-ms-7eA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="147" id="bSR-L2-oSE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bdu-ms-7eA" secondAttribute="trailing" constant="148" id="dxh-9W-l6R"/>
@@ -223,9 +288,12 @@ To make an safe, error free environment. </string>
                     <connections>
                         <outlet property="button" destination="bdu-ms-7eA" id="Kdi-p6-0X4"/>
                         <outlet property="cancelButton" destination="U2Q-vR-xpS" id="vFO-ZE-LlF"/>
+                        <outlet property="infoAlert" destination="8Ie-b7-5cW" id="xJ8-Ya-FGI"/>
+                        <outlet property="infoAlertConstraint" destination="9tq-dl-kI7" id="3uY-ZM-FGd"/>
                         <outlet property="loginAlert" destination="DQ1-o5-f4C" id="GGN-nR-x7f"/>
                         <outlet property="loginAlertConstraint" destination="X3i-A6-XEa" id="kM1-iS-JFa"/>
                         <outlet property="loginButton" destination="0eY-yr-JVM" id="vwZ-ac-qvA"/>
+                        <outlet property="okButtonInfoAlert" destination="e6u-x2-ZkC" id="KZa-dV-VEK"/>
                         <outlet property="passwordTextField" destination="Ohf-KU-Sbf" id="LuW-ED-24X"/>
                         <outlet property="toolbar" destination="eLI-C0-mZQ" id="DB3-X1-pXa"/>
                         <outlet property="usernameTextField" destination="5wj-cP-Plp" id="QBu-iv-o4d"/>

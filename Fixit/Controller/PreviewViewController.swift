@@ -95,7 +95,7 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
     func showOrHideFaultAlert() {
         if faultAlertIsHidden {
             faultReportedAlert.isHidden = false
-            faultReportedAlertConstraint.constant = 408
+            faultReportedAlertConstraint.constant = 297
             UIView.animate(withDuration: 0.5, animations: {self.view.layoutIfNeeded()})
         } else {
             view.endEditing(true)
@@ -157,7 +157,7 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
     func showOrHideCommentField() {
         if commentFieldIsHidden {
             commentField.isHidden = false
-            commentFieldConstraint.constant = 408
+            commentFieldConstraint.constant = 277
             UIView.animate(withDuration: 0.5, animations: {self.view.layoutIfNeeded()})
         } else {
             view.endEditing(true)

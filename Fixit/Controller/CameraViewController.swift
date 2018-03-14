@@ -23,6 +23,7 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
     var image: UIImage?
     var showLocationDisablePopUpBool: Bool?
     var loginAlertIsHidden = true
+    var infoAlertIsHidden = true
     
     ///////////////////////////////////////////
     
@@ -37,6 +38,9 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var loginAlertConstraint: NSLayoutConstraint!
     @IBOutlet weak var toolbar: UIToolbar!
+    @IBOutlet weak var infoAlert: UIView!
+    @IBOutlet weak var okButtonInfoAlert: UIButton!
+    @IBOutlet weak var infoAlertConstraint: NSLayoutConstraint!
     
     ///////////////////////////////////////////
     
@@ -45,6 +49,7 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayoutCameraButton()
+        setLayoutInfoAlert()
         setLayoutLoginAlert()
         setupCaptureSession()
         setupDevice()
@@ -63,7 +68,8 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func infoButtonPressed(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "showInfo_Segue", sender: nil)
+//        performSegue(withIdentifier: "showInfo_Segue", sender: nil)
+        showOrHideInfoAlert()
     }
     
     @IBAction func cameraButtonPressed(_ sender: UIButton) {
@@ -73,11 +79,44 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func loginAlertButtonPressed(_ sender: UIButton) {
-        
+        // TODO: - Login to firebase
     }
     
     @IBAction func cancelAlertButtonPressed(_ sender: UIButton) {
         showOrHideLoginAlert()
+    }
+    
+    @IBAction func okInfoButtonPressed(_ sender: UIButton) {
+        showOrHideInfoAlert()
+    }
+    
+    
+    ///////////////////////////////////////////
+    
+    // MARK: - Info Alert
+
+    func setLayoutInfoAlert() {
+        infoAlertConstraint.constant = -436
+        infoAlert.layer.cornerRadius = 15
+        infoAlert.alpha = 0.8
+        okButtonInfoAlert.addBorder(side: .Top, color: UIColor.lightGray.cgColor, thickness: 0.5)
+    }
+    
+    func showOrHideInfoAlert() {
+        if infoAlertIsHidden {
+            infoAlert.isHidden = false
+            infoAlertConstraint.constant = 199
+            UIView.animate(withDuration: 0.5, animations: {self.view.layoutIfNeeded()})
+            toolbar.isHidden = true
+            button.isHidden = true
+        } else {
+            view.endEditing(true)
+            infoAlertConstraint.constant = -436
+            UIView.animate(withDuration: 0.3, animations: {self.view.layoutIfNeeded()})
+            toolbar.isHidden = false
+            button.isHidden = false
+        }
+        infoAlertIsHidden = !infoAlertIsHidden
     }
     
     ///////////////////////////////////////////
@@ -87,24 +126,20 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
     
     func setLayoutLoginAlert() {
         loginAlertConstraint.constant = -408
-        
         loginAlert.alpha = 0.85
         loginAlert.layer.cornerRadius = 15
-        
         usernameTextField.backgroundColor = UIColor.black
         usernameTextField.textColor = UIColor.white
         usernameTextField.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
         usernameTextField.layer.borderColor = UIColor.lightGray.cgColor
         usernameTextField.layer.borderWidth = 0.5
         usernameTextField.layer.cornerRadius = 7
-        
         passwordTextField.backgroundColor = UIColor.black
         passwordTextField.textColor = UIColor.white
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
         passwordTextField.layer.borderColor = UIColor.lightGray.cgColor
         passwordTextField.layer.borderWidth = 0.5
         passwordTextField.layer.cornerRadius = 7
-        
         cancelButton.addBorder(side: .Top, color: UIColor.lightGray.cgColor, thickness: 0.5)
         loginButton.addBorder(side: .Top, color: UIColor.lightGray.cgColor, thickness: 0.5)
         loginButton.addBorder(side: .Left, color: UIColor.lightGray.cgColor, thickness: 0.5)
@@ -115,7 +150,7 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
             usernameTextField.text = nil
             passwordTextField.text = nil
             loginAlert.isHidden = false
-            loginAlertConstraint.constant = 408
+            loginAlertConstraint.constant = 321
             UIView.animate(withDuration: 0.5, animations: {self.view.layoutIfNeeded()})
             toolbar.isHidden = true
             button.isHidden = true
