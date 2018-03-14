@@ -157,6 +157,118 @@ To make an safe, error free environment. </string>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ceD-HP-EJ0">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lug-bW-yOX" userLabel="commentField">
+                                <rect key="frame" x="67" y="215" width="240" height="175"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="O5I-Fx-KOO">
+                                        <rect key="frame" x="8" y="8" width="224" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="oY2-u5-DXF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="250/250" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTb-1Q-9Qe">
+                                        <rect key="frame" x="103" y="113" width="34" height="10"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="qLC-ab-aTN"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="7"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xPQ-sY-IHu">
+                                        <rect key="frame" x="0.0" y="131" width="120" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Fxu-Ve-a37"/>
+                                            <constraint firstAttribute="width" constant="120" id="PIk-7L-Ozs"/>
+                                        </constraints>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" red="1" green="0.098874639979999998" blue="0.16722366280000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="commentFieldCancelButtonPressed:" destination="OqB-Rx-H7v" eventType="touchUpInside" id="xCK-jr-eQr"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K7f-sN-Uq6">
+                                        <rect key="frame" x="120" y="131" width="120" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="5U6-Zg-8pb"/>
+                                            <constraint firstAttribute="width" constant="120" id="A4Q-Px-1Tx"/>
+                                        </constraints>
+                                        <state key="normal" title="Done"/>
+                                        <connections>
+                                            <action selector="commentFieldDoneButtonPressed:" destination="OqB-Rx-H7v" eventType="touchUpInside" id="vye-Cp-Aqe"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="WTb-1Q-9Qe" firstAttribute="top" secondItem="O5I-Fx-KOO" secondAttribute="bottom" constant="5" id="CRq-HB-pCV"/>
+                                    <constraint firstAttribute="bottom" secondItem="K7f-sN-Uq6" secondAttribute="bottom" id="Q7g-mc-bKx"/>
+                                    <constraint firstItem="xPQ-sY-IHu" firstAttribute="leading" secondItem="lug-bW-yOX" secondAttribute="leading" id="Sij-fw-JP7"/>
+                                    <constraint firstItem="O5I-Fx-KOO" firstAttribute="leading" secondItem="lug-bW-yOX" secondAttribute="leading" constant="8" id="ZBl-f3-aoZ"/>
+                                    <constraint firstItem="WTb-1Q-9Qe" firstAttribute="leading" secondItem="lug-bW-yOX" secondAttribute="leading" constant="103" id="Zhr-6I-TEH"/>
+                                    <constraint firstAttribute="height" constant="175" id="ecY-kl-ek9"/>
+                                    <constraint firstAttribute="width" constant="240" id="fEY-3O-mGM"/>
+                                    <constraint firstAttribute="trailing" secondItem="WTb-1Q-9Qe" secondAttribute="trailing" constant="103" id="fRv-HM-FfV"/>
+                                    <constraint firstItem="O5I-Fx-KOO" firstAttribute="top" secondItem="lug-bW-yOX" secondAttribute="top" constant="8" id="j4H-33-TlQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="O5I-Fx-KOO" secondAttribute="trailing" constant="8" id="l39-19-3Ys"/>
+                                    <constraint firstAttribute="trailing" secondItem="K7f-sN-Uq6" secondAttribute="trailing" id="qEn-LR-Vdw"/>
+                                    <constraint firstAttribute="bottom" secondItem="xPQ-sY-IHu" secondAttribute="bottom" id="tKh-5P-b3b"/>
+                                </constraints>
+                            </view>
+                            <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AJI-Ap-dQu" userLabel="Fault Reported Alert">
+                                <rect key="frame" x="67" y="215" width="240" height="155"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fault Reported" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gox-dJ-PUH">
+                                        <rect key="frame" x="8" y="16" width="224" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="nwf-Kw-sKV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M5R-1A-aZV">
+                                        <rect key="frame" x="8" y="37" width="224" height="67"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="67" id="TBh-2E-Wdp"/>
+                                        </constraints>
+                                        <string key="text">Thank you for finding this fault.  The location, picture and comment  has been uploaded to our servers and soon this fault will be fixed.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pxx-O2-RzL">
+                                        <rect key="frame" x="0.0" y="111" width="240" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="240" id="AiE-H7-wR4"/>
+                                            <constraint firstAttribute="height" constant="44" id="KbY-Ve-Vxo"/>
+                                        </constraints>
+                                        <state key="normal" title="Ok"/>
+                                        <connections>
+                                            <action selector="okButtonFaultAlertPressed:" destination="OqB-Rx-H7v" eventType="touchUpInside" id="X8S-8A-3vU"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Gox-dJ-PUH" secondAttribute="trailing" constant="8" id="2u3-fE-Y8v"/>
+                                    <constraint firstAttribute="width" constant="240" id="Kly-cF-sLR"/>
+                                    <constraint firstItem="Pxx-O2-RzL" firstAttribute="leading" secondItem="AJI-Ap-dQu" secondAttribute="leading" id="V2D-DR-UXr"/>
+                                    <constraint firstItem="M5R-1A-aZV" firstAttribute="leading" secondItem="AJI-Ap-dQu" secondAttribute="leading" constant="8" id="dbS-yJ-dQr"/>
+                                    <constraint firstAttribute="trailing" secondItem="M5R-1A-aZV" secondAttribute="trailing" constant="8" id="dpA-LD-XVN"/>
+                                    <constraint firstAttribute="bottom" secondItem="Pxx-O2-RzL" secondAttribute="bottom" id="ifD-id-E2c"/>
+                                    <constraint firstItem="M5R-1A-aZV" firstAttribute="top" secondItem="Gox-dJ-PUH" secondAttribute="bottom" id="oCp-As-2yK"/>
+                                    <constraint firstItem="Gox-dJ-PUH" firstAttribute="top" secondItem="AJI-Ap-dQu" secondAttribute="top" constant="16" id="son-8Z-Jl4"/>
+                                    <constraint firstAttribute="height" constant="155" id="tFj-xP-dv0"/>
+                                    <constraint firstAttribute="trailing" secondItem="Pxx-O2-RzL" secondAttribute="trailing" id="vdZ-be-gkN"/>
+                                    <constraint firstItem="Gox-dJ-PUH" firstAttribute="leading" secondItem="AJI-Ap-dQu" secondAttribute="leading" constant="8" id="w5u-g1-9Ks"/>
+                                </constraints>
+                            </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q37-JH-U2n">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
@@ -175,55 +287,36 @@ To make an safe, error free environment. </string>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </toolbar>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lug-bW-yOX" userLabel="commentField">
-                                <rect key="frame" x="67" y="215" width="240" height="236"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K7f-sN-Uq6">
-                                        <rect key="frame" x="195" y="194" width="37" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Done"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xPQ-sY-IHu">
-                                        <rect key="frame" x="8" y="194" width="48" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Cancel">
-                                            <color key="titleColor" red="1" green="0.098874639979999998" blue="0.16722366280000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        </state>
-                                    </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Write a comment about the fault." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="O5I-Fx-KOO">
-                                        <rect key="frame" x="8" y="8" width="224" height="160"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="250/250" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTb-1Q-9Qe">
-                                        <rect key="frame" x="105" y="176" width="30" height="10"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ceD-HP-EJ0" firstAttribute="trailing" secondItem="d8y-72-RV3" secondAttribute="trailing" id="1bA-28-Rvl"/>
                             <constraint firstItem="Q37-JH-U2n" firstAttribute="trailing" secondItem="d8y-72-RV3" secondAttribute="trailing" id="GbM-OH-cbr"/>
+                            <constraint firstItem="AJI-Ap-dQu" firstAttribute="centerX" secondItem="y9O-pR-69E" secondAttribute="centerX" id="Mhe-Na-g1C"/>
                             <constraint firstAttribute="bottom" secondItem="ceD-HP-EJ0" secondAttribute="bottom" id="MyM-6w-ohv"/>
+                            <constraint firstItem="lug-bW-yOX" firstAttribute="centerX" secondItem="y9O-pR-69E" secondAttribute="centerX" id="RXV-e9-3q8"/>
+                            <constraint firstItem="Q37-JH-U2n" firstAttribute="top" secondItem="AJI-Ap-dQu" secondAttribute="bottom" constant="253" id="YRN-mC-Bt3"/>
                             <constraint firstItem="ceD-HP-EJ0" firstAttribute="top" secondItem="y9O-pR-69E" secondAttribute="top" id="l5O-zN-lJd"/>
                             <constraint firstItem="Q37-JH-U2n" firstAttribute="leading" secondItem="d8y-72-RV3" secondAttribute="leading" id="miv-yO-psj"/>
+                            <constraint firstItem="Q37-JH-U2n" firstAttribute="top" secondItem="lug-bW-yOX" secondAttribute="bottom" constant="233" id="pWc-Sk-KtF"/>
                             <constraint firstItem="Q37-JH-U2n" firstAttribute="bottom" secondItem="d8y-72-RV3" secondAttribute="bottom" id="st8-52-hfC"/>
                             <constraint firstItem="ceD-HP-EJ0" firstAttribute="leading" secondItem="d8y-72-RV3" secondAttribute="leading" id="vYx-2J-151"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="d8y-72-RV3"/>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="xPQ-sY-IHu" id="we4-GY-pd7"/>
+                        <outlet property="charsLeft" destination="WTb-1Q-9Qe" id="qko-i4-XNb"/>
+                        <outlet property="commentField" destination="lug-bW-yOX" id="n46-qY-Rd1"/>
+                        <outlet property="commentFieldConstraint" destination="pWc-Sk-KtF" id="Nuc-gG-dqe"/>
+                        <outlet property="doneButton" destination="K7f-sN-Uq6" id="EJm-M2-1Zj"/>
+                        <outlet property="faultReportedAlert" destination="AJI-Ap-dQu" id="fuo-k5-cLi"/>
+                        <outlet property="faultReportedAlertConstraint" destination="YRN-mC-Bt3" id="p8z-Me-htl"/>
+                        <outlet property="okButtonFaultAlert" destination="Pxx-O2-RzL" id="Fc9-Al-gNX"/>
                         <outlet property="showPhoto" destination="ceD-HP-EJ0" id="1W9-TP-FHC"/>
+                        <outlet property="textView" destination="O5I-Fx-KOO" id="cIz-2W-2zO"/>
+                        <outlet property="toolbar" destination="Q37-JH-U2n" id="Zmg-sp-YKn"/>
+                        <outlet property="toolbarConstraint" destination="miv-yO-psj" id="KTZ-3G-NZH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZP4-Ew-4dc" userLabel="First Responder" sceneMemberID="firstResponder"/>
