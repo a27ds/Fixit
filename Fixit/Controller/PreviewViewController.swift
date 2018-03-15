@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import CoreLocation
 
 class PreviewViewController: UIViewController, UITextViewDelegate {
     
     // MARK: - Variable Declarations
     
     var image: UIImage!
+    var gpsInfo: CLLocation!
+    var date: Date!
     var showLocationDisablePopUpBool: Bool!
     var commentFieldIsHidden = true
     var faultAlertIsHidden = true
@@ -48,6 +51,8 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
         textView.delegate = self
         commentFieldConstraint.constant = -408
         faultReportedAlertConstraint.constant = -408
+        print(gpsInfo.coordinate)
+        print(date)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -70,14 +75,12 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func commentFieldCancelButtonPressed(_ sender: UIButton) {
-//        view.endEditing(true)
         showOrHideCommentField()
         toolbar.isHidden = false
     }
     
     @IBAction func commentFieldDoneButtonPressed(_ sender: UIButton) {
-//        view.endEditing(true)
-        // TODO: - Upload stuff to firebase
+        let newFault = Fault(date: date, lat: gpsInfo.coordinate.latitude, long: gpsInfo.coordinate.longitude, image: image, comment: textView.text)
         showOrHideCommentField()
         setLayoutFaultAlert()
         showOrHideFaultAlert()

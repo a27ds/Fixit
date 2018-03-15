@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import CoreLocation
 
-class CameraViewController: UIViewController, CLLocationManagerDelegate {
+class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCapturePhotoCaptureDelegate {
     
     // MARK: - Variabel Decalartions
     
@@ -21,6 +21,8 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
     var photoOutput: AVCapturePhotoOutput?
     var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
     var image: UIImage?
+    var gpsInfo: CLLocation?
+    var date: Date?
     var showLocationDisablePopUpBool: Bool?
     var loginAlertIsHidden = true
     var infoAlertIsHidden = true
@@ -58,6 +60,10 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
         startRunningCaptureSession()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        userDefaultCheck()
+    }
+    
     ///////////////////////////////////////////
     
     
@@ -68,12 +74,12 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func infoButtonPressed(_ sender: UIBarButtonItem) {
-//        performSegue(withIdentifier: "showInfo_Segue", sender: nil)
         showOrHideInfoAlert()
     }
     
     @IBAction func cameraButtonPressed(_ sender: UIButton) {
         getLocation()
+        date = Date()
         let settings = AVCapturePhotoSettings()
         photoOutput?.capturePhoto(with: settings, delegate: self)
     }
@@ -94,6 +100,16 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
     ///////////////////////////////////////////
     
     // MARK: - Info Alert
+    
+    func userDefaultCheck() {
+        let defaults = UserDefaults.standard
+        if defaults.object(forKey: "isFirstTimeUse") == nil {
+            print("körs")
+            defaults.set(1, forKey: "isFirstTimeUse")
+            defaults.synchronize()
+            showOrHideInfoAlert()
+        }
+    }
 
     func setLayoutInfoAlert() {
         infoAlertConstraint.constant = -436
@@ -172,7 +188,7 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     
     func getLocation() {
-        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -191,8 +207,7 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
         if location.horizontalAccuracy > 0 {
             locationManager.stopUpdatingLocation()
             locationManager.delegate = nil
-            // TODO: - Get gps info to a var
-            print(location.coordinate)
+            gpsInfo = location
         }
     }
     
@@ -206,6 +221,7 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
         button.layer.shadowColor = UIColor.gray.cgColor
         button.layer.shadowRadius = 4.0
         button.layer.shadowOpacity = 0.5
+        button.addCircle()
     }
     
     func setupCaptureSession() {
@@ -250,65 +266,27 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
         captureSession.startRunning()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showPhoto_Segue" {
-            let previewVC = segue.destination as! PreviewViewController
-            previewVC.image = self.image
-            previewVC.showLocationDisablePopUpBool = self.showLocationDisablePopUpBool
-        } else if segue.identifier == "showInfo_Segue" {
-            
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        if let imageData = photo.fileDataRepresentation() {
+            image = UIImage(data: imageData)
+            performSegue(withIdentifier: "showPhoto_Segue", sender: nil)
         }
     }
     
     ///////////////////////////////////////////
     
+    // MARK: - Segue
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-extension CameraViewController: AVCapturePhotoCaptureDelegate {
-    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-        if let imageData = photo.fileDataRepresentation() {
-            print(imageData)
-            image = UIImage(data: imageData)
-            performSegue(withIdentifier: "showPhoto_Segue", sender: nil)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showPhoto_Segue" {
+            let previewVC = segue.destination as! PreviewViewController
+            previewVC.image = self.image
+            previewVC.gpsInfo = self.gpsInfo
+            previewVC.date = self.date
+            previewVC.showLocationDisablePopUpBool = self.showLocationDisablePopUpBool
         }
     }
+    
+    ///////////////////////////////////////////
 }
 

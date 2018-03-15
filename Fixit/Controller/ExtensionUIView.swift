@@ -32,5 +32,18 @@ extension UIView {
         }
         layer.addSublayer(border)
     }
+    
+    func addCircle() {
+        let circlePath = UIBezierPath(arcCenter: CGPoint(x: 40,y: 40), radius: CGFloat(33), startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = circlePath.cgPath
+        
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.strokeColor = UIColor.black.cgColor
+        shapeLayer.lineWidth = 2.3
+        
+        layer.addSublayer(shapeLayer)
+    }
 }
 
