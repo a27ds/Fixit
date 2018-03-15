@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8366602538FFA5B2914CC105 /* Pods_Fixit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8A350E860D60F738E8AB7D3 /* Pods_Fixit.framework */; };
 		F344C61D205AA9F200F480C0 /* Fault.swift in Sources */ = {isa = PBXBuildFile; fileRef = F344C61C205AA9F200F480C0 /* Fault.swift */; };
 		F3A8A6B12051414E00C4DF11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A8A6B02051414E00C4DF11 /* AppDelegate.swift */; };
 		F3A8A6B32051414E00C4DF11 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A8A6B22051414E00C4DF11 /* CameraViewController.swift */; };
@@ -21,6 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B99CA6E80320C454DD437AF3 /* Pods-Fixit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fixit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fixit/Pods-Fixit.debug.xcconfig"; sourceTree = "<group>"; };
+		C8A350E860D60F738E8AB7D3 /* Pods_Fixit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fixit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA77E86A1FC3AB0852A36B77 /* Pods-Fixit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fixit.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fixit/Pods-Fixit.release.xcconfig"; sourceTree = "<group>"; };
 		F344C61C205AA9F200F480C0 /* Fault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fault.swift; sourceTree = "<group>"; };
 		F3A8A6AD2051414E00C4DF11 /* Fixit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fixit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A8A6B02051414E00C4DF11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,12 +46,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8366602538FFA5B2914CC105 /* Pods_Fixit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		265A6FE616A14E4E5ABC4875 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B99CA6E80320C454DD437AF3 /* Pods-Fixit.debug.xcconfig */,
+				CA77E86A1FC3AB0852A36B77 /* Pods-Fixit.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8D9B0695E0798C6FC4E15817 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C8A350E860D60F738E8AB7D3 /* Pods_Fixit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F3A8A6A42051414E00C4DF11 = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +78,8 @@
 				F3A8A6AF2051414E00C4DF11 /* Fixit */,
 				F3A8A6B72051414E00C4DF11 /* Assets.xcassets */,
 				F3A8A6AE2051414E00C4DF11 /* Products */,
+				265A6FE616A14E4E5ABC4875 /* Pods */,
+				8D9B0695E0798C6FC4E15817 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,9 +147,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F3A8A6BF2051414E00C4DF11 /* Build configuration list for PBXNativeTarget "Fixit" */;
 			buildPhases = (
+				C04F13F639A651300DCA840D /* [CP] Check Pods Manifest.lock */,
 				F3A8A6A92051414E00C4DF11 /* Sources */,
 				F3A8A6AA2051414E00C4DF11 /* Frameworks */,
 				F3A8A6AB2051414E00C4DF11 /* Resources */,
+				CA7F6B9649FA2A270D049232 /* [CP] Embed Pods Frameworks */,
+				50CA91F58956C85D1738066A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -184,6 +211,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		50CA91F58956C85D1738066A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fixit/Pods-Fixit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C04F13F639A651300DCA840D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Fixit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA7F6B9649FA2A270D049232 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Fixit/Pods-Fixit-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fixit/Pods-Fixit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F3A8A6A92051414E00C4DF11 /* Sources */ = {
@@ -330,6 +413,7 @@
 		};
 		F3A8A6C02051414E00C4DF11 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B99CA6E80320C454DD437AF3 /* Pods-Fixit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -345,6 +429,7 @@
 		};
 		F3A8A6C12051414E00C4DF11 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA77E86A1FC3AB0852A36B77 /* Pods-Fixit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -1,0 +1,6 @@
+framework module Pods_Fixit {
+  umbrella header "Pods-Fixit-umbrella.h"
+
+  export *
+  module * { export * }
+}
