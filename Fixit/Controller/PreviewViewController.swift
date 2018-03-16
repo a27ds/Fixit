@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import Firebase
 
 class PreviewViewController: UIViewController, UITextViewDelegate {
     
@@ -81,9 +82,47 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func commentFieldDoneButtonPressed(_ sender: UIButton) {
         let newFault = Fault(date: date, lat: gpsInfo.coordinate.latitude, long: gpsInfo.coordinate.longitude, image: image, comment: textView.text)
+        firebaseUpload(fault: newFault)
         showOrHideCommentField()
         setLayoutFaultAlert()
         showOrHideFaultAlert()
+    }
+    
+    func firebaseUpload(fault: Fault) {
+        let timeStamp = "\(Int(Date.timeIntervalSinceReferenceDate*1000))"
+        
+        // Upload Picture to Firebase Storage
+        let storage = Storage.storage()
+        var data = Data()
+        data = UIImageJPEGRepresentation(image, 1.0)!
+        let storageRef = storage.reference()
+        let imageRef = storageRef.child("\(timeStamp)")
+        _ = imageRef.putData(data, metadata: nil, completion: { (metadata,error ) in
+            guard let metadata = metadata else{
+                print(error!)
+                return
+            }
+            let downloadURL = metadata.downloadURL()
+            print(downloadURL!)
+        })
+        
+        // Upload Fault to firebase Database
+        let ref = Database.database().reference()
+        let post = [
+            "date": fault.date,
+            "long": fault.long,
+            "lat": fault.lat,
+            "comment": textView.text,
+            "image": timeStamp
+            ] as [String : Any]
+        ref.child("faults").child(timeStamp).setValue(post) {
+            (error, reference) in
+            if error != nil {
+                print(error!)
+            } else {
+                print("Message saved successfully!")
+            }
+        }
     }
     
     @IBAction func okButtonFaultAlertPressed(_ sender: UIButton) {
@@ -129,7 +168,7 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
         textView.layer.cornerRadius = 7
         textView.text = commentText
         textView.textColor = UIColor.lightGray
-        charsLeft.text = "0/120"
+        charsLeft.text = "0/200"
         cancelButton.addBorder(side: .Top, color: UIColor.lightGray.cgColor, thickness: 0.5)
         doneButton.addBorder(side: .Left, color: UIColor.lightGray.cgColor, thickness: 0.5)
         doneButton.addBorder(side: .Top, color: UIColor.lightGray.cgColor, thickness: 0.5)
@@ -146,7 +185,6 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
         let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
         let numberOfChars = newText.count
         charsLeft.text = "\(numberOfChars)/200"
-        print(numberOfChars)
         return numberOfChars < 200;
     }
     

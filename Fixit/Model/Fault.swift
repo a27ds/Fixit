@@ -11,17 +11,26 @@ import UIKit
 import CoreLocation
 
 class Fault {
-    var date: Date
+    var date: String!
     var lat: Double
     var long: Double
     var image: UIImage
     var comment: String
     
     init(date: Date, lat: Double, long: Double, image: UIImage, comment: String) {
-        self.date = date
         self.lat = lat
         self.long = long
         self.image = image
         self.comment = comment
+        self.date = self.convertDateToString(date)
     }
+    
+    func convertDateToString(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .medium
+        let dateString = formatter.string(from: date)
+        return dateString
+    }
+    
 }

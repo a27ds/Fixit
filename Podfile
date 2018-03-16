@@ -7,5 +7,8 @@ target 'Fixit' do
 
   # Pods for Fixit
 pod 'Firebase/Core'
+pod 'Firebase/Auth'
+pod 'Firebase/Database'
+pod 'Firebase/Storage'
 
 end
