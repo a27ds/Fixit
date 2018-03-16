@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8366602538FFA5B2914CC105 /* Pods_Fixit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8A350E860D60F738E8AB7D3 /* Pods_Fixit.framework */; };
+		F33617C6205BDEDA002D3373 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33617C5205BDEDA002D3373 /* ListViewController.swift */; };
 		F344C61D205AA9F200F480C0 /* Fault.swift in Sources */ = {isa = PBXBuildFile; fileRef = F344C61C205AA9F200F480C0 /* Fault.swift */; };
 		F3A8A6B12051414E00C4DF11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A8A6B02051414E00C4DF11 /* AppDelegate.swift */; };
 		F3A8A6B32051414E00C4DF11 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A8A6B22051414E00C4DF11 /* CameraViewController.swift */; };
@@ -26,6 +27,7 @@
 		B99CA6E80320C454DD437AF3 /* Pods-Fixit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fixit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fixit/Pods-Fixit.debug.xcconfig"; sourceTree = "<group>"; };
 		C8A350E860D60F738E8AB7D3 /* Pods_Fixit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fixit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA77E86A1FC3AB0852A36B77 /* Pods-Fixit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fixit.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fixit/Pods-Fixit.release.xcconfig"; sourceTree = "<group>"; };
+		F33617C5205BDEDA002D3373 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		F344C61C205AA9F200F480C0 /* Fault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fault.swift; sourceTree = "<group>"; };
 		F3A8A6AD2051414E00C4DF11 /* Fixit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fixit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A8A6B02051414E00C4DF11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				F3A8A6C920527EE300C4DF11 /* PreviewViewController.swift */,
 				F3E335EA20594C7600074BB0 /* ExtensionUIView.swift */,
 				F3DF98B7205BD9FD00F914F5 /* MapViewController.swift */,
+				F33617C5205BDEDA002D3373 /* ListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				F3A8A6CC205297E300C4DF11 /* InfoViewController.swift in Sources */,
 				F344C61D205AA9F200F480C0 /* Fault.swift in Sources */,
 				F3A8A6CA20527EE300C4DF11 /* PreviewViewController.swift in Sources */,
+				F33617C6205BDEDA002D3373 /* ListViewController.swift in Sources */,
 				F3DF98B8205BD9FD00F914F5 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

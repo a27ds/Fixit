@@ -98,7 +98,7 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
                 animation.toValue = NSValue(cgPoint: CGPoint(x: self.loginAlert.center.x + 10, y: self.loginAlert.center.y))
                 self.loginAlert.layer.add(animation, forKey: "position")
             } else {
-                self.performSegue(withIdentifier: "showMap_Segue", sender: self)
+                self.performSegue(withIdentifier: "showLogin_Segue", sender: self)
             }
         }
     }
