@@ -89,6 +89,7 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
     }
     
     func firebaseUpload(fault: Fault) {
+        // creating a uniqe timestamp
         let timeStamp = "\(Int(Date.timeIntervalSinceReferenceDate*1000))"
         
         // Upload Picture to Firebase Storage

@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import CoreLocation
+import Firebase
 
 class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCapturePhotoCaptureDelegate {
     
@@ -85,7 +86,21 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
     }
     
     @IBAction func loginAlertButtonPressed(_ sender: UIButton) {
-        // TODO: - Login to firebase
+        // Login to firebase
+        Auth.auth().signIn(withEmail: usernameTextField.text!, password: passwordTextField.text!) { (user, error) in
+            
+            if error != nil {
+                let animation = CABasicAnimation(keyPath: "position")
+                animation.duration = 0.07
+                animation.repeatCount = 4
+                animation.autoreverses = true
+                animation.fromValue = NSValue(cgPoint: CGPoint(x: self.loginAlert.center.x - 10, y: self.loginAlert.center.y))
+                animation.toValue = NSValue(cgPoint: CGPoint(x: self.loginAlert.center.x + 10, y: self.loginAlert.center.y))
+                self.loginAlert.layer.add(animation, forKey: "position")
+            } else {
+                self.performSegue(withIdentifier: "showMap_Segue", sender: self)
+            }
+        }
     }
     
     @IBAction func cancelAlertButtonPressed(_ sender: UIButton) {
@@ -285,6 +300,9 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
             previewVC.date = self.date
             previewVC.showLocationDisablePopUpBool = self.showLocationDisablePopUpBool
         }
+//        else if segue.identifier == "showMap_Segue" {
+//            
+//        }
     }
     
     ///////////////////////////////////////////

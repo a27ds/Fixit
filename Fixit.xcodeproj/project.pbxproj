@@ -18,6 +18,7 @@
 		F3A8A6CA20527EE300C4DF11 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A8A6C920527EE300C4DF11 /* PreviewViewController.swift */; };
 		F3A8A6CC205297E300C4DF11 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A8A6CB205297E300C4DF11 /* InfoViewController.swift */; };
 		F3AA9978205AB68300E0587F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3AA9977205AB68300E0587F /* GoogleService-Info.plist */; };
+		F3DF98B8205BD9FD00F914F5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF98B7205BD9FD00F914F5 /* MapViewController.swift */; };
 		F3E335EB20594C7600074BB0 /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E335EA20594C7600074BB0 /* ExtensionUIView.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		F3A8A6C920527EE300C4DF11 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		F3A8A6CB205297E300C4DF11 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfoViewController.swift; path = Fixit/Controller/InfoViewController.swift; sourceTree = SOURCE_ROOT; };
 		F3AA9977205AB68300E0587F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F3DF98B7205BD9FD00F914F5 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		F3E335EA20594C7600074BB0 /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +129,7 @@
 				F3A8A6B22051414E00C4DF11 /* CameraViewController.swift */,
 				F3A8A6C920527EE300C4DF11 /* PreviewViewController.swift */,
 				F3E335EA20594C7600074BB0 /* ExtensionUIView.swift */,
+				F3DF98B7205BD9FD00F914F5 /* MapViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				F3A8A6CC205297E300C4DF11 /* InfoViewController.swift in Sources */,
 				F344C61D205AA9F200F480C0 /* Fault.swift in Sources */,
 				F3A8A6CA20527EE300C4DF11 /* PreviewViewController.swift in Sources */,
+				F3DF98B8205BD9FD00F914F5 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -220,11 +220,27 @@ To make an safe, error free  environment.  To login you have to  be regi
                         <outlet property="toolbar" destination="eLI-C0-mZQ" id="DB3-X1-pXa"/>
                         <outlet property="usernameTextField" destination="5wj-cP-Plp" id="QBu-iv-o4d"/>
                         <segue destination="OqB-Rx-H7v" kind="presentation" identifier="showPhoto_Segue" id="Exc-Ki-2Uz"/>
+                        <segue destination="sMB-16-h72" kind="presentation" identifier="showMap_Segue" id="4p9-h3-tMP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="669.60000000000002" y="31.934032983508249"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="fcf-Bh-9nL">
+            <objects>
+                <viewController id="sMB-16-h72" customClass="MapViewController" customModule="Fixit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6hg-YW-iii">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="eai-FZ-Vey"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rdg-3l-KYI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="670" y="833"/>
         </scene>
         <!--Preview View Controller-->
         <scene sceneID="7oA-j8-7B5">
