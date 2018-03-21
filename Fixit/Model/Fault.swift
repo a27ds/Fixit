@@ -34,3 +34,12 @@ class Fault {
     }
     
 }
+
+class FirebaseFault {
+    var date: String = ""
+    var lat: Double = 0.0
+    var long: Double = 0.0
+    var image: String = ""
+    var comment: String = ""
+    var key: String = ""
+}

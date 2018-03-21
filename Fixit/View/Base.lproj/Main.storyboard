@@ -18,35 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eLI-C0-mZQ">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <items>
-                                    <barButtonItem title="Login" id="E8O-13-1DF">
-                                        <connections>
-                                            <action selector="loginButtonPressed:" destination="BYZ-38-t0r" id="d0c-xg-dQb"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="amC-Qg-RUm"/>
-                                    <barButtonItem title="Info" id="WT1-Zr-6dg">
-                                        <connections>
-                                            <action selector="infoButtonPressed:" destination="BYZ-38-t0r" id="WIp-TB-7bg"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </toolbar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdu-ms-7eA">
-                                <rect key="frame" x="147" y="587" width="80" height="80"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="VuX-rv-1g9"/>
-                                    <constraint firstAttribute="height" constant="80" id="mhf-tq-onl"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="cameraButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8GR-2i-euJ"/>
-                                </connections>
-                            </button>
                             <view alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DQ1-o5-f4C" userLabel="loginAlert">
                                 <rect key="frame" x="67" y="171" width="240" height="175"/>
                                 <subviews>
@@ -191,6 +162,35 @@ To make an safe, error free  environment.  To login you have to  be regi
                                     <constraint firstAttribute="height" constant="406" id="whb-Jy-62T"/>
                                 </constraints>
                             </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eLI-C0-mZQ">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem title="Login" id="E8O-13-1DF">
+                                        <connections>
+                                            <action selector="loginButtonPressed:" destination="BYZ-38-t0r" id="d0c-xg-dQb"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="amC-Qg-RUm"/>
+                                    <barButtonItem title="Info" id="WT1-Zr-6dg">
+                                        <connections>
+                                            <action selector="infoButtonPressed:" destination="BYZ-38-t0r" id="WIp-TB-7bg"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </toolbar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdu-ms-7eA">
+                                <rect key="frame" x="147" y="587" width="80" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="VuX-rv-1g9"/>
+                                    <constraint firstAttribute="height" constant="80" id="mhf-tq-onl"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="cameraButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8GR-2i-euJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="DQ1-o5-f4C" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="98u-ar-X3l"/>
@@ -238,10 +238,69 @@ To make an safe, error free  environment.  To login you have to  be regi
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Vp1-a3-Vut">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                             </mapView>
+                            <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zzw-Wt-nRV" userLabel="FaultsView">
+                                <rect key="frame" x="40" y="60" width="295" height="507"/>
+                                <subviews>
+                                    <navigationBar alpha="0.90000000000000002" contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o0K-kr-1dX">
+                                        <rect key="frame" x="0.0" y="0.0" width="295" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="G8G-ah-dCI"/>
+                                        </constraints>
+                                        <items>
+                                            <navigationItem title="Faults" id="GhY-DT-GJB"/>
+                                        </items>
+                                    </navigationBar>
+                                    <tableView clipsSubviews="YES" alpha="0.84999999999999998" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="htq-6O-4VP">
+                                        <rect key="frame" x="0.0" y="44" width="295" height="463"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="FaultCell" id="I3z-l0-vav" customClass="CustomFaultCell" customModule="Fixit" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="295" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.84999999999999998" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="I3z-l0-vav" id="ks2-K3-6mn">
+                                                    <rect key="frame" x="0.0" y="0.0" width="295" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46f-GU-59t">
+                                                            <rect key="frame" x="147.5" y="21.5" width="0.0" height="0.0"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="46f-GU-59t" firstAttribute="centerX" secondItem="ks2-K3-6mn" secondAttribute="centerX" id="1mh-Zj-bbg"/>
+                                                        <constraint firstItem="46f-GU-59t" firstAttribute="centerY" secondItem="ks2-K3-6mn" secondAttribute="centerY" id="cIK-u4-Cs5"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="htq-6O-4VP" secondAttribute="trailing" id="0gy-rE-Jno"/>
+                                    <constraint firstItem="htq-6O-4VP" firstAttribute="top" secondItem="o0K-kr-1dX" secondAttribute="bottom" id="0yJ-G3-jL2"/>
+                                    <constraint firstItem="htq-6O-4VP" firstAttribute="leading" secondItem="zzw-Wt-nRV" secondAttribute="leading" id="5Xg-BH-NXD"/>
+                                    <constraint firstAttribute="width" constant="295" id="CWZ-6n-1s1"/>
+                                    <constraint firstAttribute="height" constant="507" id="YbC-nk-QjC"/>
+                                    <constraint firstAttribute="bottom" secondItem="htq-6O-4VP" secondAttribute="bottom" id="ddb-Km-AyE"/>
+                                    <constraint firstItem="o0K-kr-1dX" firstAttribute="top" secondItem="zzw-Wt-nRV" secondAttribute="top" id="iIp-0Y-Fvp"/>
+                                    <constraint firstAttribute="trailing" secondItem="o0K-kr-1dX" secondAttribute="trailing" id="igK-YC-XZi"/>
+                                    <constraint firstItem="o0K-kr-1dX" firstAttribute="leading" secondItem="zzw-Wt-nRV" secondAttribute="leading" id="jrb-W5-5HT"/>
+                                </constraints>
+                            </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R2O-Vd-pc6">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem title="Logout" id="RWJ-H1-71i"/>
+                                    <barButtonItem title="Logout" id="RWJ-H1-71i">
+                                        <connections>
+                                            <action selector="logutButtonPressed:" destination="sMB-16-h72" id="nnt-CZ-RXP"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="wxT-ig-pUz"/>
                                     <barButtonItem title="List" id="Qc5-ft-P5c">
                                         <connections>
@@ -253,12 +312,14 @@ To make an safe, error free  environment.  To login you have to  be regi
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Vp1-a3-Vut" firstAttribute="leading" secondItem="eai-FZ-Vey" secondAttribute="leading" id="4im-FT-mP6"/>
+                            <constraint firstItem="zzw-Wt-nRV" firstAttribute="centerX" secondItem="6hg-YW-iii" secondAttribute="centerX" id="824-qU-ppC"/>
                             <constraint firstItem="R2O-Vd-pc6" firstAttribute="leading" secondItem="eai-FZ-Vey" secondAttribute="leading" id="EDy-y2-03s"/>
                             <constraint firstItem="R2O-Vd-pc6" firstAttribute="top" secondItem="Vp1-a3-Vut" secondAttribute="bottom" id="ESY-ww-ydJ"/>
                             <constraint firstItem="Vp1-a3-Vut" firstAttribute="top" secondItem="6hg-YW-iii" secondAttribute="top" id="I1n-Ng-HRm"/>
+                            <constraint firstItem="eai-FZ-Vey" firstAttribute="bottom" secondItem="zzw-Wt-nRV" secondAttribute="bottom" constant="100" id="Mmk-TT-WXV"/>
                             <constraint firstItem="Vp1-a3-Vut" firstAttribute="trailing" secondItem="eai-FZ-Vey" secondAttribute="trailing" id="P3k-Oi-d8z"/>
                             <constraint firstItem="R2O-Vd-pc6" firstAttribute="trailing" secondItem="eai-FZ-Vey" secondAttribute="trailing" id="pjg-c8-SHX"/>
                             <constraint firstItem="R2O-Vd-pc6" firstAttribute="bottom" secondItem="eai-FZ-Vey" secondAttribute="bottom" id="xo4-3A-vjm"/>
@@ -266,56 +327,17 @@ To make an safe, error free  environment.  To login you have to  be regi
                         <viewLayoutGuide key="safeArea" id="eai-FZ-Vey"/>
                     </view>
                     <connections>
+                        <outlet property="faultListTableView" destination="htq-6O-4VP" id="tRw-9Q-XT1"/>
+                        <outlet property="faultsView" destination="zzw-Wt-nRV" id="WRr-lw-JcQ"/>
+                        <outlet property="faultsViewConstraint" destination="Mmk-TT-WXV" id="mOv-F1-KXG"/>
+                        <outlet property="faultsViewNavBar" destination="o0K-kr-1dX" id="whA-Bg-63A"/>
+                        <outlet property="listOrMapButton" destination="Qc5-ft-P5c" id="a9k-ZC-aRN"/>
                         <outlet property="mapView" destination="Vp1-a3-Vut" id="4TF-fI-1v4"/>
-                        <segue destination="yoD-ET-vbO" kind="show" identifier="showList_Segue" id="igd-nv-FQk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rdg-3l-KYI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="669.60000000000002" y="832.53373313343332"/>
-        </scene>
-        <!--List View Controller-->
-        <scene sceneID="w4x-uC-gee">
-            <objects>
-                <viewController id="yoD-ET-vbO" customClass="ListViewController" customModule="Fixit" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="0fp-1Q-PbX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="awy-BG-Rgl">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <items>
-                                    <barButtonItem title="Logout" id="gep-0e-0we">
-                                        <connections>
-                                            <action selector="loginButtonPressed:" destination="BYZ-38-t0r" id="5Il-Zc-B92"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="QZq-Om-vLR"/>
-                                    <barButtonItem title="Map" id="StH-f7-jCo">
-                                        <connections>
-                                            <action selector="mapButtonPressed:" destination="yoD-ET-vbO" id="Vgc-aR-gBk"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </toolbar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="awy-BG-Rgl" firstAttribute="leading" secondItem="EiA-DX-3rS" secondAttribute="leading" id="hkl-Uy-ElI"/>
-                            <constraint firstItem="awy-BG-Rgl" firstAttribute="bottom" secondItem="EiA-DX-3rS" secondAttribute="bottom" id="q2U-LF-Kzz"/>
-                            <constraint firstItem="awy-BG-Rgl" firstAttribute="trailing" secondItem="EiA-DX-3rS" secondAttribute="trailing" id="tDM-ZH-oeR"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="EiA-DX-3rS"/>
-                    </view>
-                    <connections>
-                        <segue destination="sMB-16-h72" kind="show" identifier="showMap_Segue" id="lIP-Vh-GUv"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Jge-8R-2vM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1457" y="833"/>
+            <point key="canvasLocation" x="669.60000000000002" y="854.1229385307347"/>
         </scene>
         <!--Preview View Controller-->
         <scene sceneID="7oA-j8-7B5">
@@ -495,7 +517,4 @@ To make an safe, error free  environment.  To login you have to  be regi
             <point key="canvasLocation" x="1456.8" y="31.934032983508249"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="lIP-Vh-GUv"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8366602538FFA5B2914CC105 /* Pods_Fixit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8A350E860D60F738E8AB7D3 /* Pods_Fixit.framework */; };
-		F33617C6205BDEDA002D3373 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33617C5205BDEDA002D3373 /* ListViewController.swift */; };
 		F344C61D205AA9F200F480C0 /* Fault.swift in Sources */ = {isa = PBXBuildFile; fileRef = F344C61C205AA9F200F480C0 /* Fault.swift */; };
+		F35281A32062763600FD051E /* CustomFaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35281A12062763600FD051E /* CustomFaultCell.swift */; };
+		F35281A42062763600FD051E /* FaultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F35281A22062763600FD051E /* FaultCell.xib */; };
 		F3A8A6B12051414E00C4DF11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A8A6B02051414E00C4DF11 /* AppDelegate.swift */; };
 		F3A8A6B32051414E00C4DF11 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A8A6B22051414E00C4DF11 /* CameraViewController.swift */; };
 		F3A8A6B62051414E00C4DF11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3A8A6B42051414E00C4DF11 /* Main.storyboard */; };
@@ -17,7 +18,6 @@
 		F3A8A6BB2051414E00C4DF11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3A8A6B92051414E00C4DF11 /* LaunchScreen.storyboard */; };
 		F3A8A6C820527DD300C4DF11 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3A8A6C720527DD300C4DF11 /* Default-568h@2x.png */; };
 		F3A8A6CA20527EE300C4DF11 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A8A6C920527EE300C4DF11 /* PreviewViewController.swift */; };
-		F3A8A6CC205297E300C4DF11 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A8A6CB205297E300C4DF11 /* InfoViewController.swift */; };
 		F3AA9978205AB68300E0587F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3AA9977205AB68300E0587F /* GoogleService-Info.plist */; };
 		F3DF98B8205BD9FD00F914F5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF98B7205BD9FD00F914F5 /* MapViewController.swift */; };
 		F3E335EB20594C7600074BB0 /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E335EA20594C7600074BB0 /* ExtensionUIView.swift */; };
@@ -27,8 +27,9 @@
 		B99CA6E80320C454DD437AF3 /* Pods-Fixit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fixit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fixit/Pods-Fixit.debug.xcconfig"; sourceTree = "<group>"; };
 		C8A350E860D60F738E8AB7D3 /* Pods_Fixit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fixit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA77E86A1FC3AB0852A36B77 /* Pods-Fixit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fixit.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fixit/Pods-Fixit.release.xcconfig"; sourceTree = "<group>"; };
-		F33617C5205BDEDA002D3373 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		F344C61C205AA9F200F480C0 /* Fault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fault.swift; sourceTree = "<group>"; };
+		F35281A12062763600FD051E /* CustomFaultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFaultCell.swift; sourceTree = "<group>"; };
+		F35281A22062763600FD051E /* FaultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FaultCell.xib; sourceTree = "<group>"; };
 		F3A8A6AD2051414E00C4DF11 /* Fixit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fixit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A8A6B02051414E00C4DF11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3A8A6B22051414E00C4DF11 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -39,7 +40,6 @@
 		F3A8A6C22051424D00C4DF11 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F3A8A6C720527DD300C4DF11 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F3A8A6C920527EE300C4DF11 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
-		F3A8A6CB205297E300C4DF11 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfoViewController.swift; path = Fixit/Controller/InfoViewController.swift; sourceTree = SOURCE_ROOT; };
 		F3AA9977205AB68300E0587F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F3DF98B7205BD9FD00F914F5 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		F3E335EA20594C7600074BB0 /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
@@ -72,6 +72,15 @@
 				C8A350E860D60F738E8AB7D3 /* Pods_Fixit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F35281A0206275E900FD051E /* Custom Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F35281A12062763600FD051E /* CustomFaultCell.swift */,
+				F35281A22062763600FD051E /* FaultCell.xib */,
+			);
+			path = "Custom Cell";
 			sourceTree = "<group>";
 		};
 		F3A8A6A42051414E00C4DF11 = {
@@ -119,6 +128,7 @@
 			children = (
 				F3A8A6B42051414E00C4DF11 /* Main.storyboard */,
 				F3A8A6B92051414E00C4DF11 /* LaunchScreen.storyboard */,
+				F35281A0206275E900FD051E /* Custom Cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -127,12 +137,10 @@
 			isa = PBXGroup;
 			children = (
 				F3A8A6B02051414E00C4DF11 /* AppDelegate.swift */,
-				F3A8A6CB205297E300C4DF11 /* InfoViewController.swift */,
 				F3A8A6B22051414E00C4DF11 /* CameraViewController.swift */,
 				F3A8A6C920527EE300C4DF11 /* PreviewViewController.swift */,
-				F3E335EA20594C7600074BB0 /* ExtensionUIView.swift */,
 				F3DF98B7205BD9FD00F914F5 /* MapViewController.swift */,
-				F33617C5205BDEDA002D3373 /* ListViewController.swift */,
+				F3E335EA20594C7600074BB0 /* ExtensionUIView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -213,6 +221,7 @@
 				F3AA9978205AB68300E0587F /* GoogleService-Info.plist in Resources */,
 				F3A8A6B82051414E00C4DF11 /* Assets.xcassets in Resources */,
 				F3A8A6B62051414E00C4DF11 /* Main.storyboard in Resources */,
+				F35281A42062763600FD051E /* FaultCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +270,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Fixit/Pods-Fixit-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -268,6 +278,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -283,13 +294,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F35281A32062763600FD051E /* CustomFaultCell.swift in Sources */,
 				F3A8A6B32051414E00C4DF11 /* CameraViewController.swift in Sources */,
 				F3A8A6B12051414E00C4DF11 /* AppDelegate.swift in Sources */,
 				F3E335EB20594C7600074BB0 /* ExtensionUIView.swift in Sources */,
-				F3A8A6CC205297E300C4DF11 /* InfoViewController.swift in Sources */,
 				F344C61D205AA9F200F480C0 /* Fault.swift in Sources */,
 				F3A8A6CA20527EE300C4DF11 /* PreviewViewController.swift in Sources */,
-				F33617C6205BDEDA002D3373 /* ListViewController.swift in Sources */,
 				F3DF98B8205BD9FD00F914F5 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,6 +441,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G7JKA6624L;
 				INFOPLIST_FILE = "$(SRCROOT)/Fixit/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = se.27differentsounds.Fixit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -447,6 +458,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G7JKA6624L;
 				INFOPLIST_FILE = "$(SRCROOT)/Fixit/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = se.27differentsounds.Fixit;
 				PRODUCT_NAME = "$(TARGET_NAME)";

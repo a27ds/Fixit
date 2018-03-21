@@ -10,6 +10,7 @@ import UIKit
 import AVFoundation
 import CoreLocation
 import Firebase
+import SVProgressHUD
 
 class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCapturePhotoCaptureDelegate {
     
@@ -86,7 +87,11 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
     }
     
     @IBAction func loginAlertButtonPressed(_ sender: UIButton) {
+        SVProgressHUD.setDefaultStyle(.dark)
+        SVProgressHUD.show()
         // Login to firebase
+        loginButton.isEnabled = false
+        cancelButton.isEnabled = false
         Auth.auth().signIn(withEmail: usernameTextField.text!, password: passwordTextField.text!) { (user, error) in
             
             if error != nil {
@@ -97,10 +102,16 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
                 animation.fromValue = NSValue(cgPoint: CGPoint(x: self.loginAlert.center.x - 10, y: self.loginAlert.center.y))
                 animation.toValue = NSValue(cgPoint: CGPoint(x: self.loginAlert.center.x + 10, y: self.loginAlert.center.y))
                 self.loginAlert.layer.add(animation, forKey: "position")
+                SVProgressHUD.dismiss()
             } else {
                 self.performSegue(withIdentifier: "showLogin_Segue", sender: self)
+                self.showOrHideLoginAlert()
+                SVProgressHUD.dismiss()
+                
             }
         }
+        loginButton.isEnabled = true
+        cancelButton.isEnabled = true
     }
     
     @IBAction func cancelAlertButtonPressed(_ sender: UIButton) {
@@ -178,8 +189,8 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
     
     func showOrHideLoginAlert() {
         if loginAlertIsHidden {
-            usernameTextField.text = nil
-            passwordTextField.text = nil
+            usernameTextField.text = "1@2.com"  // Change to nil in live
+            passwordTextField.text = "123456"   // Change to nil in live
             loginAlert.isHidden = false
             loginAlertConstraint.constant = 321
             UIView.animate(withDuration: 0.5, animations: {self.view.layoutIfNeeded()})

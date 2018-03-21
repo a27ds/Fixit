@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import Firebase
+import SVProgressHUD
 
 class PreviewViewController: UIViewController, UITextViewDelegate {
     
@@ -18,6 +19,7 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
     var gpsInfo: CLLocation!
     var date: Date!
     var showLocationDisablePopUpBool: Bool!
+    var firebaseImageURL: URL?
     var commentFieldIsHidden = true
     var faultAlertIsHidden = true
     let commentText = "Write a comment about the fault."
@@ -84,46 +86,43 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
         let newFault = Fault(date: date, lat: gpsInfo.coordinate.latitude, long: gpsInfo.coordinate.longitude, image: image, comment: textView.text)
         firebaseUpload(fault: newFault)
         showOrHideCommentField()
-        setLayoutFaultAlert()
-        showOrHideFaultAlert()
+        SVProgressHUD.setDefaultStyle(.dark)
+        SVProgressHUD.show()
     }
     
     func firebaseUpload(fault: Fault) {
-        // creating a uniqe timestamp
-        let timeStamp = "\(Int(Date.timeIntervalSinceReferenceDate*1000))"
+        let ref = Database.database().reference().child("Fault").childByAutoId()
         
-        // Upload Picture to Firebase Storage
+        // Upload Fault and Picture to Firebase Storage
         let storage = Storage.storage()
         var data = Data()
         data = UIImageJPEGRepresentation(image, 1.0)!
         let storageRef = storage.reference()
-        let imageRef = storageRef.child("\(timeStamp)")
+        let imageRef = storageRef.child("\(ref.key).jpg")
         _ = imageRef.putData(data, metadata: nil, completion: { (metadata,error ) in
             guard let metadata = metadata else{
                 print(error!)
                 return
             }
-            let downloadURL = metadata.downloadURL()
-            print(downloadURL!)
+            self.firebaseImageURL = metadata.downloadURL()!
+            let faultDictionary = ["date": fault.date,
+                                   "key" : ref.key,
+                                   "long": fault.long,
+                                   "lat": fault.lat,
+                                   "comment": self.textView.text,
+                                   "image": self.firebaseImageURL!.absoluteString] as [String : Any]
+            ref.setValue(faultDictionary) {
+                (error, reference) in
+                if error != nil {
+                    print(error!)
+                } else {
+                    SVProgressHUD.dismiss()
+                    self.setLayoutFaultAlert()
+                    self.showOrHideFaultAlert()
+                }
+            }
         })
         
-        // Upload Fault to firebase Database
-        let ref = Database.database().reference()
-        let post = [
-            "date": fault.date,
-            "long": fault.long,
-            "lat": fault.lat,
-            "comment": textView.text,
-            "image": timeStamp
-            ] as [String : Any]
-        ref.child("faults").child(timeStamp).setValue(post) {
-            (error, reference) in
-            if error != nil {
-                print(error!)
-            } else {
-                print("Message saved successfully!")
-            }
-        }
     }
     
     @IBAction func okButtonFaultAlertPressed(_ sender: UIButton) {
