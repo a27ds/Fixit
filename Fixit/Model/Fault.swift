@@ -9,20 +9,33 @@
 import Foundation
 import UIKit
 import CoreLocation
+import Firebase
 
 class Fault {
     var date: String!
     var lat: Double
     var long: Double
-    var image: UIImage
+    var imageURL: String
     var comment: String
+    var key: String
     
-    init(date: Date, lat: Double, long: Double, image: UIImage, comment: String) {
+    init(date: Date, lat: Double, long: Double, imageURL: String, comment: String, key: String) {
         self.lat = lat
         self.long = long
-        self.image = image
+        self.imageURL = imageURL
         self.comment = comment
+        self.key = key
         self.date = self.convertDateToString(date)
+    }
+    
+    init(snapshot: DataSnapshot) {
+        let snapshotValue = snapshot.value as! [String: Any]
+        date = snapshotValue["date"] as! String
+        lat = snapshotValue["lat"] as! Double
+        long = snapshotValue["long"] as! Double
+        imageURL = snapshotValue["imageURL"] as! String
+        comment = snapshotValue["comment"] as! String
+        key = snapshotValue["key"] as! String
     }
     
     func convertDateToString(_ date: Date) -> String {
@@ -33,13 +46,12 @@ class Fault {
         return dateString
     }
     
-}
-
-class FirebaseFault {
-    var date: String = ""
-    var lat: Double = 0.0
-    var long: Double = 0.0
-    var image: String = ""
-    var comment: String = ""
-    var key: String = ""
+    func toAnyObject() -> Any {
+        return ["date": date,
+                "lat": lat,
+                "long": long,
+                "imageURL": imageURL,
+                "comment": comment,
+                "key": key]
+    }
 }

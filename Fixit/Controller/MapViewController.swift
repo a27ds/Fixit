@@ -17,7 +17,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     
     // MARK: - Variabel Decalartions
     var faultViewIsHidden = true
-    var faultsArray: [FirebaseFault] = [FirebaseFault]()
+    var faultsArray: [Fault] = []
     
     ///////////////////////////////////////////
     
@@ -30,6 +30,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     @IBOutlet weak var faultsView: UIView!
     @IBOutlet weak var faultsViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var faultsViewNavBar: UINavigationBar!
+    @IBOutlet weak var backButtonfaultsViewNavBar: UIBarButtonItem!
     
     ///////////////////////////////////////////
     
@@ -42,9 +43,6 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         setLayoutFaultsView()
         setLayoutListTableView()
         getValueFromFirebase()
-        
-        
-        
     }
 
     ///////////////////////////////////////////
@@ -100,7 +98,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
             //Remove pic and post from firebase
             let ref = Database.database().reference().child("Fault")
             let key = "\(faultsArray[indexPath.row].key)"
-            let imageUrl = faultsArray[indexPath.row].image
+            let imageUrl = faultsArray[indexPath.row].imageURL
             let storageRef = Storage.storage().reference(forURL: imageUrl)
             storageRef.delete { error in
                 if let error = error {
@@ -160,21 +158,8 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         faultsArray.removeAll()
         let ref = Database.database().reference().child("Fault")
         ref.observe(.childAdded) { (snapshot) in
-            let snapshotValue = snapshot.value as! Dictionary<String,Any>
-            let comment = snapshotValue["comment"]! as! String
-            let date = snapshotValue["date"]! as! String
-            let image = snapshotValue["image"]! as! String
-            let lat = snapshotValue["lat"]! as! Double
-            let long = snapshotValue["long"]! as! Double
-            let key = snapshotValue["key"]! as! String
-            let fault = FirebaseFault()
-            fault.comment = comment
-            fault.date = date
-            fault.image = image
-            fault.lat = lat
-            fault.long = long
-            fault.key = key
-            self.faultsArray.append(fault)
+            let listFault = Fault(snapshot: snapshot)
+            self.faultsArray.append(listFault)
             self.faultListTableView.reloadData()
             SVProgressHUD.dismiss()
         }

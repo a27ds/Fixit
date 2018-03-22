@@ -19,7 +19,6 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
     var gpsInfo: CLLocation!
     var date: Date!
     var showLocationDisablePopUpBool: Bool!
-    var firebaseImageURL: URL?
     var commentFieldIsHidden = true
     var faultAlertIsHidden = true
     let commentText = "Write a comment about the fault."
@@ -83,14 +82,23 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func commentFieldDoneButtonPressed(_ sender: UIButton) {
-        let newFault = Fault(date: date, lat: gpsInfo.coordinate.latitude, long: gpsInfo.coordinate.longitude, image: image, comment: textView.text)
-        firebaseUpload(fault: newFault)
+        firebaseUpload()
         showOrHideCommentField()
         SVProgressHUD.setDefaultStyle(.dark)
         SVProgressHUD.show()
     }
     
-    func firebaseUpload(fault: Fault) {
+    
+    
+    @IBAction func okButtonFaultAlertPressed(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    ///////////////////////////////////////////
+    
+    // MARK: - Firebase
+
+    func firebaseUpload() {
         let ref = Database.database().reference().child("Fault").childByAutoId()
         
         // Upload Fault and Picture to Firebase Storage
@@ -99,19 +107,14 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
         data = UIImageJPEGRepresentation(image, 1.0)!
         let storageRef = storage.reference()
         let imageRef = storageRef.child("\(ref.key).jpg")
-        _ = imageRef.putData(data, metadata: nil, completion: { (metadata,error ) in
+        imageRef.putData(data, metadata: nil, completion: { (metadata,error ) in
             guard let metadata = metadata else{
                 print(error!)
                 return
             }
-            self.firebaseImageURL = metadata.downloadURL()!
-            let faultDictionary = ["date": fault.date,
-                                   "key" : ref.key,
-                                   "long": fault.long,
-                                   "lat": fault.lat,
-                                   "comment": self.textView.text,
-                                   "image": self.firebaseImageURL!.absoluteString] as [String : Any]
-            ref.setValue(faultDictionary) {
+            let firebaseImageURL = metadata.downloadURL()!.absoluteString
+            let newFault = Fault(date: self.date, lat: self.gpsInfo.coordinate.latitude, long: self.gpsInfo.coordinate.longitude, imageURL: firebaseImageURL, comment: self.textView.text, key: ref.key)
+            ref.setValue(newFault.toAnyObject()) {
                 (error, reference) in
                 if error != nil {
                     print(error!)
@@ -122,11 +125,6 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
                 }
             }
         })
-        
-    }
-    
-    @IBAction func okButtonFaultAlertPressed(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
     }
     
     ///////////////////////////////////////////

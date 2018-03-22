@@ -247,7 +247,9 @@ To make an safe, error free  environment.  To login you have to  be regi
                                             <constraint firstAttribute="height" constant="44" id="G8G-ah-dCI"/>
                                         </constraints>
                                         <items>
-                                            <navigationItem title="Faults" id="GhY-DT-GJB"/>
+                                            <navigationItem title="Faults" id="GhY-DT-GJB">
+                                                <barButtonItem key="leftBarButtonItem" title="Item" id="CiV-4z-h4l"/>
+                                            </navigationItem>
                                         </items>
                                     </navigationBar>
                                     <tableView clipsSubviews="YES" alpha="0.84999999999999998" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="htq-6O-4VP">
