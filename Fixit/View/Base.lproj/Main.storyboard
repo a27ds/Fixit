@@ -262,7 +262,7 @@ To make an safe, error free  environment.  To login you have to  be regi
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46f-GU-59t">
-                                                            <rect key="frame" x="147.5" y="21.5" width="0.0" height="0.0"/>
+                                                            <rect key="frame" x="148" y="22" width="0.0" height="0.0"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -293,15 +293,11 @@ To make an safe, error free  environment.  To login you have to  be regi
                                     <constraint firstItem="o0K-kr-1dX" firstAttribute="leading" secondItem="zzw-Wt-nRV" secondAttribute="leading" id="jrb-W5-5HT"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.89999997615814209" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fY7-M8-M1u" userLabel="FaultsInfoView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fY7-M8-M1u" userLabel="FaultsInfoView">
                                 <rect key="frame" x="40" y="10" width="295" height="507"/>
                                 <subviews>
                                     <navigationBar alpha="0.89999997615814209" contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7e-VU-Tv3">
                                         <rect key="frame" x="0.0" y="0.0" width="295" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="3YS-Xp-M7s"/>
-                                            <constraint firstAttribute="height" constant="44" id="KZ5-uS-pf7"/>
-                                        </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <items>
@@ -319,52 +315,45 @@ To make an safe, error free  environment.  To login you have to  be regi
                                             </navigationItem>
                                         </items>
                                     </navigationBar>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gAS-p2-nKa">
-                                        <rect key="frame" x="27" y="327" width="240" height="128"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gAS-p2-nKa">
+                                        <rect key="frame" x="27" y="327" width="240" height="96"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="96" id="GcA-Fa-Lqg"/>
+                                        </constraints>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZmR-sY-AvG" userLabel="Get driving instuctions">
-                                        <rect key="frame" x="0.0" y="463" width="295" height="44"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="Ijp-T0-rf8"/>
-                                        </constraints>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Get driving instuctions"/>
-                                        <connections>
-                                            <action selector="getDrivingInstructionsButtonFaultInfoView:" destination="sMB-16-h72" eventType="touchUpInside" id="YJn-qq-mY6"/>
-                                        </connections>
-                                    </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fbv-Fc-dxB" userLabel="FaultImage">
                                         <rect key="frame" x="47" y="55" width="201" height="264"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="264" id="hnI-oR-2Kp"/>
+                                            <constraint firstAttribute="height" constant="264" id="Hui-6y-2Rm"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Kl-rV-NqE">
+                                        <rect key="frame" x="254" y="467" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Y9p-i5-6rk"/>
+                                            <constraint firstAttribute="width" constant="30" id="ao2-kb-PMg"/>
+                                        </constraints>
+                                        <state key="normal" image="map"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="ZmR-sY-AvG" firstAttribute="top" secondItem="gAS-p2-nKa" secondAttribute="bottom" constant="8" id="2fg-5P-wfH"/>
-                                    <constraint firstAttribute="trailing" secondItem="v7e-VU-Tv3" secondAttribute="trailing" id="3Ak-vz-Ali"/>
-                                    <constraint firstAttribute="width" constant="295" id="5kw-xz-7ZY"/>
-                                    <constraint firstItem="gAS-p2-nKa" firstAttribute="centerX" secondItem="fY7-M8-M1u" secondAttribute="centerX" id="8vQ-TD-g7e"/>
-                                    <constraint firstItem="gAS-p2-nKa" firstAttribute="top" secondItem="fbv-Fc-dxB" secondAttribute="bottom" constant="8" id="E08-g4-Qgm"/>
-                                    <constraint firstAttribute="trailing" secondItem="ZmR-sY-AvG" secondAttribute="trailing" id="FTy-En-lyy"/>
-                                    <constraint firstAttribute="height" constant="507" id="OYQ-Oq-dlW"/>
-                                    <constraint firstItem="fbv-Fc-dxB" firstAttribute="centerX" secondItem="fY7-M8-M1u" secondAttribute="centerX" id="SgT-7R-Mv1"/>
-                                    <constraint firstItem="v7e-VU-Tv3" firstAttribute="leading" secondItem="fY7-M8-M1u" secondAttribute="leading" id="URA-h3-ugU"/>
-                                    <constraint firstAttribute="bottom" secondItem="ZmR-sY-AvG" secondAttribute="bottom" id="WuF-8G-gtg"/>
-                                    <constraint firstItem="fbv-Fc-dxB" firstAttribute="leading" secondItem="fY7-M8-M1u" secondAttribute="leading" constant="47" id="ZcD-lZ-Kjq"/>
-                                    <constraint firstAttribute="trailing" secondItem="fbv-Fc-dxB" secondAttribute="trailing" constant="47" id="e4R-k1-V4b"/>
-                                    <constraint firstAttribute="trailing" secondItem="gAS-p2-nKa" secondAttribute="trailing" constant="28" id="g9i-WB-av5"/>
-                                    <constraint firstItem="ZmR-sY-AvG" firstAttribute="leading" secondItem="fY7-M8-M1u" secondAttribute="leading" id="qXD-7X-5oD"/>
-                                    <constraint firstItem="v7e-VU-Tv3" firstAttribute="top" secondItem="fY7-M8-M1u" secondAttribute="top" id="vXf-Qa-sj8"/>
-                                    <constraint firstItem="fbv-Fc-dxB" firstAttribute="top" secondItem="v7e-VU-Tv3" secondAttribute="bottom" constant="11" id="wIY-hJ-ifA"/>
-                                    <constraint firstItem="gAS-p2-nKa" firstAttribute="leading" secondItem="fY7-M8-M1u" secondAttribute="leading" constant="27" id="zwd-rE-Hzd"/>
+                                    <constraint firstItem="v7e-VU-Tv3" firstAttribute="leading" secondItem="fY7-M8-M1u" secondAttribute="leading" id="8Qp-Ze-TC4"/>
+                                    <constraint firstAttribute="trailing" secondItem="v7e-VU-Tv3" secondAttribute="trailing" id="LDi-fM-S21"/>
+                                    <constraint firstItem="gAS-p2-nKa" firstAttribute="leading" secondItem="fY7-M8-M1u" secondAttribute="leading" constant="27" id="UPn-Nr-jrg"/>
+                                    <constraint firstItem="fbv-Fc-dxB" firstAttribute="top" secondItem="v7e-VU-Tv3" secondAttribute="bottom" constant="11" id="Za0-NB-Pml"/>
+                                    <constraint firstItem="3Kl-rV-NqE" firstAttribute="top" secondItem="gAS-p2-nKa" secondAttribute="bottom" constant="44" id="Ztf-GP-O5S"/>
+                                    <constraint firstItem="fbv-Fc-dxB" firstAttribute="centerX" secondItem="v7e-VU-Tv3" secondAttribute="centerX" id="a8A-cw-E00"/>
+                                    <constraint firstAttribute="trailing" secondItem="3Kl-rV-NqE" secondAttribute="trailing" constant="11" id="c7J-6k-7hG"/>
+                                    <constraint firstItem="fbv-Fc-dxB" firstAttribute="leading" secondItem="fY7-M8-M1u" secondAttribute="leading" constant="47" id="ctr-Yy-oZF"/>
+                                    <constraint firstItem="fbv-Fc-dxB" firstAttribute="centerX" secondItem="gAS-p2-nKa" secondAttribute="centerX" id="jt7-lu-hif"/>
+                                    <constraint firstItem="v7e-VU-Tv3" firstAttribute="top" secondItem="fY7-M8-M1u" secondAttribute="top" id="mrW-gp-JZc"/>
+                                    <constraint firstItem="gAS-p2-nKa" firstAttribute="top" secondItem="fbv-Fc-dxB" secondAttribute="bottom" constant="8" symbolic="YES" id="qj4-i6-Z9Q"/>
                                 </constraints>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R2O-Vd-pc6">
@@ -389,15 +378,17 @@ To make an safe, error free  environment.  To login you have to  be regi
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Vp1-a3-Vut" firstAttribute="leading" secondItem="eai-FZ-Vey" secondAttribute="leading" id="4im-FT-mP6"/>
+                            <constraint firstItem="fY7-M8-M1u" firstAttribute="leading" secondItem="zzw-Wt-nRV" secondAttribute="leading" id="6nv-Km-Brj"/>
+                            <constraint firstItem="fY7-M8-M1u" firstAttribute="top" secondItem="zzw-Wt-nRV" secondAttribute="top" id="6sY-2p-Zfr"/>
                             <constraint firstItem="zzw-Wt-nRV" firstAttribute="centerX" secondItem="6hg-YW-iii" secondAttribute="centerX" id="824-qU-ppC"/>
-                            <constraint firstItem="fY7-M8-M1u" firstAttribute="centerX" secondItem="6hg-YW-iii" secondAttribute="centerX" id="DYM-R5-oIZ"/>
                             <constraint firstItem="R2O-Vd-pc6" firstAttribute="leading" secondItem="eai-FZ-Vey" secondAttribute="leading" id="EDy-y2-03s"/>
                             <constraint firstItem="R2O-Vd-pc6" firstAttribute="top" secondItem="Vp1-a3-Vut" secondAttribute="bottom" id="ESY-ww-ydJ"/>
                             <constraint firstItem="Vp1-a3-Vut" firstAttribute="top" secondItem="6hg-YW-iii" secondAttribute="top" id="I1n-Ng-HRm"/>
+                            <constraint firstItem="fY7-M8-M1u" firstAttribute="bottom" secondItem="zzw-Wt-nRV" secondAttribute="bottom" id="LwS-8F-Qwl"/>
                             <constraint firstItem="eai-FZ-Vey" firstAttribute="bottom" secondItem="zzw-Wt-nRV" secondAttribute="bottom" constant="150" id="Mmk-TT-WXV"/>
+                            <constraint firstItem="fY7-M8-M1u" firstAttribute="trailing" secondItem="zzw-Wt-nRV" secondAttribute="trailing" id="ORl-pv-4Yy"/>
                             <constraint firstItem="Vp1-a3-Vut" firstAttribute="trailing" secondItem="eai-FZ-Vey" secondAttribute="trailing" id="P3k-Oi-d8z"/>
                             <constraint firstItem="R2O-Vd-pc6" firstAttribute="trailing" secondItem="eai-FZ-Vey" secondAttribute="trailing" id="pjg-c8-SHX"/>
-                            <constraint firstItem="eai-FZ-Vey" firstAttribute="bottom" secondItem="fY7-M8-M1u" secondAttribute="bottom" constant="150" id="qPN-Hf-036"/>
                             <constraint firstItem="R2O-Vd-pc6" firstAttribute="bottom" secondItem="eai-FZ-Vey" secondAttribute="bottom" id="xo4-3A-vjm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eai-FZ-Vey"/>
@@ -598,4 +589,7 @@ To make an safe, error free  environment.  To login you have to  be regi
             <point key="canvasLocation" x="1456.8" y="31.934032983508249"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="map" width="50" height="50"/>
+    </resources>
 </document>

@@ -103,7 +103,7 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
         // Upload Fault and Picture to Firebase Storage
         let storage = Storage.storage()
         var data = Data()
-        data = UIImageJPEGRepresentation(image, 1.0)!
+        data = UIImageJPEGRepresentation(image, 0.4)!
         let storageRef = storage.reference()
         let imageRef = storageRef.child("\(ref.key).jpg")
         imageRef.putData(data, metadata: nil, completion: { (metadata,error ) in

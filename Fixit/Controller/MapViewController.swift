@@ -53,7 +53,8 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayoutFaultsView()
-        setLayoutListTableView()
+        setLayoutFaultsInfoView()
+        setListTableView()
         getValueFromFirebase()
 
     }
@@ -181,19 +182,28 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     
     // MARK: - Setup Layout
     
-    func setLayoutListTableView() {
+    func setListTableView() {
         faultListTableView.dataSource = self
         faultListTableView.delegate = self
         faultListTableView.register(UINib(nibName: "FaultCell", bundle: nil), forCellReuseIdentifier: "customFaultCell")
         faultListTableView.backgroundColor = UIColor.black
         faultListTableView.alpha = 0.90
         faultListTableView.tableFooterView = UIView()
+        
     }
     
     func setLayoutFaultsView() {
         faultsViewConstraint.constant = -627
         faultsViewNavBar.addBorder(side: .Bottom, color: UIColor.lightGray.cgColor, thickness: 0.4)
         faultInfoView.isHidden = true
+        faultListTableView.round(corners: [.bottomLeft, .bottomRight], radius: 15)
+        faultsViewNavBar.round(corners: [.topLeft, .topRight], radius: 15)
+        faultsView.layer.cornerRadius = 15
+    }
+    
+    func setLayoutFaultsInfoView() {
+        faultInfoView.layer.cornerRadius = 15
+        navBarFaultInfoView.round(corners: [.topLeft, .topRight], radius: 15)
     }
     
     ///////////////////////////////////////////
