@@ -12,7 +12,7 @@ import CoreLocation
 import Firebase
 
 class Fault {
-    var date: String!
+    var date: Date
     var lat: Double
     var long: Double
     var imageURL: String
@@ -25,20 +25,20 @@ class Fault {
         self.imageURL = imageURL
         self.comment = comment
         self.key = key
-        self.date = self.convertDateToString(date)
+        self.date = date
     }
     
     init(snapshot: DataSnapshot) {
         let snapshotValue = snapshot.value as! [String: Any]
-        date = snapshotValue["date"] as! String
         lat = snapshotValue["lat"] as! Double
         long = snapshotValue["long"] as! Double
         imageURL = snapshotValue["imageURL"] as! String
         comment = snapshotValue["comment"] as! String
         key = snapshotValue["key"] as! String
+        date = Fault.convertStringToDate(snapshotValue["date"] as! String)
     }
     
-    func convertDateToString(_ date: Date) -> String {
+    static func convertDateToString(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .medium
@@ -46,8 +46,22 @@ class Fault {
         return dateString
     }
     
+    static func getRidOfTimeInDateAsString(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.string(from: date)
+    }
+    
+    static func convertStringToDate(_ date: String) -> Date {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .medium
+        let dateString = formatter.date(from: date)
+        return dateString!
+    }
+    
     func toAnyObject() -> Any {
-        return ["date": date,
+        return ["date": Fault.convertDateToString(date),
                 "lat": lat,
                 "long": long,
                 "imageURL": imageURL,

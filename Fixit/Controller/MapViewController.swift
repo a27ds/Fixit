@@ -17,6 +17,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     
     // MARK: - Variabel Decalartions
     var faultViewIsHidden = true
+    var faultInfoViewIsHidden = true
     var faultsArray: [Fault] = []
     
     ///////////////////////////////////////////
@@ -32,6 +33,14 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     @IBOutlet weak var faultsViewNavBar: UINavigationBar!
     @IBOutlet weak var backButtonfaultsViewNavBar: UIBarButtonItem!
     
+    // FaultsInfoViewOutlets
+
+    @IBOutlet weak var faultInfoView: UIView!
+    @IBOutlet weak var navBarFaultInfoView: UINavigationBar!
+    @IBOutlet weak var titleNavBarFaultInfoView: UINavigationItem!
+    @IBOutlet weak var commentTextFaultInfoView: UITextView!
+    @IBOutlet weak var faultImageFaultInfoView: UIImageView!
+    
     ///////////////////////////////////////////
     
     
@@ -43,6 +52,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         setLayoutFaultsView()
         setLayoutListTableView()
         getValueFromFirebase()
+
     }
 
     ///////////////////////////////////////////
@@ -64,6 +74,18 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         }
     }
 
+    @IBAction func backButtonNavBarFaultInfoView(_ sender: UIBarButtonItem) {
+        showOrHideInfoView()
+    }
+    
+    @IBAction func deleteButtonNavBarFaultInfoView(_ sender: UIBarButtonItem) {
+        
+    }
+    
+    @IBAction func getDrivingInstructionsButtonFaultInfoView(_ sender: UIButton) {
+        
+    }
+    
     ///////////////////////////////////////////
     
     
@@ -79,12 +101,18 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = faultListTableView.dequeueReusableCell(withIdentifier: "customFaultCell", for: indexPath) as! CustomFaultCell
-        let text = faultsArray[indexPath.row].date
-        cell.date.text = text
+        cell.date.text = Fault.convertDateToString(faultsArray[indexPath.row].date)
         cell.date.textColor = UIColor.white
         cell.date.highlightedTextColor = UIColor.black
         cell.backgroundColor = UIColor.black
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        faultImageFaultInfoView.image = faultsArray[indexPath.row].imageURL
+        titleNavBarFaultInfoView.title = Fault.getRidOfTimeInDateAsString(faultsArray[indexPath.row].date)
+        commentTextFaultInfoView.text = faultsArray[indexPath.row].comment
+        showOrHideInfoView()
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -96,6 +124,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         if editingStyle == .delete
         {
             //Remove pic and post from firebase
+            SVProgressHUD.show()
             let ref = Database.database().reference().child("Fault")
             let key = "\(faultsArray[indexPath.row].key)"
             let imageUrl = faultsArray[indexPath.row].imageURL
@@ -107,6 +136,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
                     ref.child(key).removeValue()
                     self.getValueFromFirebase()
                     self.faultListTableView.reloadData()
+                    SVProgressHUD.dismiss()
                 }
             }
         }
@@ -129,6 +159,17 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         faultViewIsHidden = !faultViewIsHidden
     }
     
+    func showOrHideInfoView() {
+        if faultInfoViewIsHidden {
+            faultsView.isHidden = true
+            faultInfoView.isHidden = false
+        } else {
+            faultInfoView.isHidden = true
+            faultsView.isHidden = false
+        }
+        faultInfoViewIsHidden = !faultInfoViewIsHidden
+    }
+    
     ///////////////////////////////////////////
     
     
@@ -146,6 +187,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     func setLayoutFaultsView() {
         faultsViewConstraint.constant = -627
         faultsViewNavBar.addBorder(side: .Bottom, color: UIColor.lightGray.cgColor, thickness: 0.4)
+        faultInfoView.isHidden = true
     }
     
     ///////////////////////////////////////////
@@ -166,4 +208,6 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     ///////////////////////////////////////////
+    
+    
 }

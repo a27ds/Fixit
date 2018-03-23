@@ -239,7 +239,7 @@ To make an safe, error free  environment.  To login you have to  be regi
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                             </mapView>
                             <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zzw-Wt-nRV" userLabel="FaultsView">
-                                <rect key="frame" x="40" y="60" width="295" height="507"/>
+                                <rect key="frame" x="40" y="10" width="295" height="507"/>
                                 <subviews>
                                     <navigationBar alpha="0.90000000000000002" contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o0K-kr-1dX">
                                         <rect key="frame" x="0.0" y="0.0" width="295" height="44"/>
@@ -247,9 +247,7 @@ To make an safe, error free  environment.  To login you have to  be regi
                                             <constraint firstAttribute="height" constant="44" id="G8G-ah-dCI"/>
                                         </constraints>
                                         <items>
-                                            <navigationItem title="Faults" id="GhY-DT-GJB">
-                                                <barButtonItem key="leftBarButtonItem" title="Item" id="CiV-4z-h4l"/>
-                                            </navigationItem>
+                                            <navigationItem title="Faults" id="GhY-DT-GJB"/>
                                         </items>
                                     </navigationBar>
                                     <tableView clipsSubviews="YES" alpha="0.84999999999999998" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="htq-6O-4VP">
@@ -295,6 +293,78 @@ To make an safe, error free  environment.  To login you have to  be regi
                                     <constraint firstItem="o0K-kr-1dX" firstAttribute="leading" secondItem="zzw-Wt-nRV" secondAttribute="leading" id="jrb-W5-5HT"/>
                                 </constraints>
                             </view>
+                            <view alpha="0.89999997615814209" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fY7-M8-M1u" userLabel="FaultsInfoView">
+                                <rect key="frame" x="40" y="10" width="295" height="507"/>
+                                <subviews>
+                                    <navigationBar alpha="0.89999997615814209" contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7e-VU-Tv3">
+                                        <rect key="frame" x="0.0" y="0.0" width="295" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="3YS-Xp-M7s"/>
+                                            <constraint firstAttribute="height" constant="44" id="KZ5-uS-pf7"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <items>
+                                            <navigationItem title="Date" id="TOh-JH-5He">
+                                                <barButtonItem key="leftBarButtonItem" title="Back" id="Bw0-Qp-uCA">
+                                                    <connections>
+                                                        <action selector="backButtonNavBarFaultInfoView:" destination="sMB-16-h72" id="aQz-Ay-KQR"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                                <barButtonItem key="rightBarButtonItem" systemItem="trash" id="pN3-Wa-Rs0">
+                                                    <connections>
+                                                        <action selector="deleteButtonNavBarFaultInfoView:" destination="sMB-16-h72" id="5Mr-7S-mc6"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                            </navigationItem>
+                                        </items>
+                                    </navigationBar>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gAS-p2-nKa">
+                                        <rect key="frame" x="27" y="327" width="240" height="128"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZmR-sY-AvG" userLabel="Get driving instuctions">
+                                        <rect key="frame" x="0.0" y="463" width="295" height="44"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Ijp-T0-rf8"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Get driving instuctions"/>
+                                        <connections>
+                                            <action selector="getDrivingInstructionsButtonFaultInfoView:" destination="sMB-16-h72" eventType="touchUpInside" id="YJn-qq-mY6"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fbv-Fc-dxB" userLabel="FaultImage">
+                                        <rect key="frame" x="47" y="55" width="201" height="264"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="264" id="hnI-oR-2Kp"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="ZmR-sY-AvG" firstAttribute="top" secondItem="gAS-p2-nKa" secondAttribute="bottom" constant="8" id="2fg-5P-wfH"/>
+                                    <constraint firstAttribute="trailing" secondItem="v7e-VU-Tv3" secondAttribute="trailing" id="3Ak-vz-Ali"/>
+                                    <constraint firstAttribute="width" constant="295" id="5kw-xz-7ZY"/>
+                                    <constraint firstItem="gAS-p2-nKa" firstAttribute="centerX" secondItem="fY7-M8-M1u" secondAttribute="centerX" id="8vQ-TD-g7e"/>
+                                    <constraint firstItem="gAS-p2-nKa" firstAttribute="top" secondItem="fbv-Fc-dxB" secondAttribute="bottom" constant="8" id="E08-g4-Qgm"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZmR-sY-AvG" secondAttribute="trailing" id="FTy-En-lyy"/>
+                                    <constraint firstAttribute="height" constant="507" id="OYQ-Oq-dlW"/>
+                                    <constraint firstItem="fbv-Fc-dxB" firstAttribute="centerX" secondItem="fY7-M8-M1u" secondAttribute="centerX" id="SgT-7R-Mv1"/>
+                                    <constraint firstItem="v7e-VU-Tv3" firstAttribute="leading" secondItem="fY7-M8-M1u" secondAttribute="leading" id="URA-h3-ugU"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZmR-sY-AvG" secondAttribute="bottom" id="WuF-8G-gtg"/>
+                                    <constraint firstItem="fbv-Fc-dxB" firstAttribute="leading" secondItem="fY7-M8-M1u" secondAttribute="leading" constant="47" id="ZcD-lZ-Kjq"/>
+                                    <constraint firstAttribute="trailing" secondItem="fbv-Fc-dxB" secondAttribute="trailing" constant="47" id="e4R-k1-V4b"/>
+                                    <constraint firstAttribute="trailing" secondItem="gAS-p2-nKa" secondAttribute="trailing" constant="28" id="g9i-WB-av5"/>
+                                    <constraint firstItem="ZmR-sY-AvG" firstAttribute="leading" secondItem="fY7-M8-M1u" secondAttribute="leading" id="qXD-7X-5oD"/>
+                                    <constraint firstItem="v7e-VU-Tv3" firstAttribute="top" secondItem="fY7-M8-M1u" secondAttribute="top" id="vXf-Qa-sj8"/>
+                                    <constraint firstItem="fbv-Fc-dxB" firstAttribute="top" secondItem="v7e-VU-Tv3" secondAttribute="bottom" constant="11" id="wIY-hJ-ifA"/>
+                                    <constraint firstItem="gAS-p2-nKa" firstAttribute="leading" secondItem="fY7-M8-M1u" secondAttribute="leading" constant="27" id="zwd-rE-Hzd"/>
+                                </constraints>
+                            </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R2O-Vd-pc6">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
@@ -318,23 +388,30 @@ To make an safe, error free  environment.  To login you have to  be regi
                         <constraints>
                             <constraint firstItem="Vp1-a3-Vut" firstAttribute="leading" secondItem="eai-FZ-Vey" secondAttribute="leading" id="4im-FT-mP6"/>
                             <constraint firstItem="zzw-Wt-nRV" firstAttribute="centerX" secondItem="6hg-YW-iii" secondAttribute="centerX" id="824-qU-ppC"/>
+                            <constraint firstItem="fY7-M8-M1u" firstAttribute="centerX" secondItem="6hg-YW-iii" secondAttribute="centerX" id="DYM-R5-oIZ"/>
                             <constraint firstItem="R2O-Vd-pc6" firstAttribute="leading" secondItem="eai-FZ-Vey" secondAttribute="leading" id="EDy-y2-03s"/>
                             <constraint firstItem="R2O-Vd-pc6" firstAttribute="top" secondItem="Vp1-a3-Vut" secondAttribute="bottom" id="ESY-ww-ydJ"/>
                             <constraint firstItem="Vp1-a3-Vut" firstAttribute="top" secondItem="6hg-YW-iii" secondAttribute="top" id="I1n-Ng-HRm"/>
-                            <constraint firstItem="eai-FZ-Vey" firstAttribute="bottom" secondItem="zzw-Wt-nRV" secondAttribute="bottom" constant="100" id="Mmk-TT-WXV"/>
+                            <constraint firstItem="eai-FZ-Vey" firstAttribute="bottom" secondItem="zzw-Wt-nRV" secondAttribute="bottom" constant="150" id="Mmk-TT-WXV"/>
                             <constraint firstItem="Vp1-a3-Vut" firstAttribute="trailing" secondItem="eai-FZ-Vey" secondAttribute="trailing" id="P3k-Oi-d8z"/>
                             <constraint firstItem="R2O-Vd-pc6" firstAttribute="trailing" secondItem="eai-FZ-Vey" secondAttribute="trailing" id="pjg-c8-SHX"/>
+                            <constraint firstItem="eai-FZ-Vey" firstAttribute="bottom" secondItem="fY7-M8-M1u" secondAttribute="bottom" constant="150" id="qPN-Hf-036"/>
                             <constraint firstItem="R2O-Vd-pc6" firstAttribute="bottom" secondItem="eai-FZ-Vey" secondAttribute="bottom" id="xo4-3A-vjm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eai-FZ-Vey"/>
                     </view>
                     <connections>
+                        <outlet property="commentTextFaultInfoView" destination="gAS-p2-nKa" id="BeB-Fm-QzC"/>
+                        <outlet property="faultImageFaultInfoView" destination="fbv-Fc-dxB" id="WIk-QH-3md"/>
+                        <outlet property="faultInfoView" destination="fY7-M8-M1u" id="1Un-7J-Bnu"/>
                         <outlet property="faultListTableView" destination="htq-6O-4VP" id="tRw-9Q-XT1"/>
                         <outlet property="faultsView" destination="zzw-Wt-nRV" id="WRr-lw-JcQ"/>
                         <outlet property="faultsViewConstraint" destination="Mmk-TT-WXV" id="mOv-F1-KXG"/>
                         <outlet property="faultsViewNavBar" destination="o0K-kr-1dX" id="whA-Bg-63A"/>
                         <outlet property="listOrMapButton" destination="Qc5-ft-P5c" id="a9k-ZC-aRN"/>
                         <outlet property="mapView" destination="Vp1-a3-Vut" id="4TF-fI-1v4"/>
+                        <outlet property="navBarFaultInfoView" destination="v7e-VU-Tv3" id="jJD-r9-MjX"/>
+                        <outlet property="titleNavBarFaultInfoView" destination="TOh-JH-5He" id="ydS-oB-h14"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rdg-3l-KYI" userLabel="First Responder" sceneMemberID="firstResponder"/>
