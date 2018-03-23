@@ -10,6 +10,8 @@ import UIKit
 import MapKit
 import Firebase
 import SVProgressHUD
+import Alamofire
+import AlamofireImage
 
 class MapViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -19,6 +21,8 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     var faultViewIsHidden = true
     var faultInfoViewIsHidden = true
     var faultsArray: [Fault] = []
+    var infoImage: UIImage?
+    var selectedIndexPath: IndexPath?
     
     ///////////////////////////////////////////
     
@@ -48,7 +52,6 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        SVProgressHUD.setDefaultStyle(.dark)
         setLayoutFaultsView()
         setLayoutListTableView()
         getValueFromFirebase()
@@ -75,11 +78,13 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
 
     @IBAction func backButtonNavBarFaultInfoView(_ sender: UIBarButtonItem) {
+        faultImageFaultInfoView.image = nil
         showOrHideInfoView()
     }
     
     @IBAction func deleteButtonNavBarFaultInfoView(_ sender: UIBarButtonItem) {
-        
+        deleteInfoAndPicFromFirebase(indexPath: selectedIndexPath!)
+        showOrHideInfoView()
     }
     
     @IBAction func getDrivingInstructionsButtonFaultInfoView(_ sender: UIButton) {
@@ -109,7 +114,22 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        faultImageFaultInfoView.image = faultsArray[indexPath.row].imageURL
+        selectedIndexPath = indexPath
+        SVProgressHUD.show(withStatus: "Waiting for connection")
+        Alamofire.request(faultsArray[indexPath.row].imageURL).downloadProgress { progress in
+            SVProgressHUD.showProgress(Float(progress.fractionCompleted), status: "Downloading Image")
+            } .responseImage { response in
+//            debugPrint(response)
+//
+//            print(response.request)
+//            print(response.response)
+//            debugPrint(response.result)
+            
+            if let image = response.result.value {
+                self.faultImageFaultInfoView.image = image
+                SVProgressHUD.showSuccess(withStatus: "Great Sucesses!")
+            }
+        }
         titleNavBarFaultInfoView.title = Fault.getRidOfTimeInDateAsString(faultsArray[indexPath.row].date)
         commentTextFaultInfoView.text = faultsArray[indexPath.row].comment
         showOrHideInfoView()
@@ -123,22 +143,8 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     {
         if editingStyle == .delete
         {
-            //Remove pic and post from firebase
-            SVProgressHUD.show()
-            let ref = Database.database().reference().child("Fault")
-            let key = "\(faultsArray[indexPath.row].key)"
-            let imageUrl = faultsArray[indexPath.row].imageURL
-            let storageRef = Storage.storage().reference(forURL: imageUrl)
-            storageRef.delete { error in
-                if let error = error {
-                    print(error)
-                } else {
-                    ref.child(key).removeValue()
-                    self.getValueFromFirebase()
-                    self.faultListTableView.reloadData()
-                    SVProgressHUD.dismiss()
-                }
-            }
+            deleteInfoAndPicFromFirebase(indexPath: indexPath)
+            
         }
     }
     
@@ -196,14 +202,31 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     // MARK: - Firebase
 
     func getValueFromFirebase() {
-        SVProgressHUD.show()
         faultsArray.removeAll()
         let ref = Database.database().reference().child("Fault")
         ref.observe(.childAdded) { (snapshot) in
             let listFault = Fault(snapshot: snapshot)
             self.faultsArray.append(listFault)
             self.faultListTableView.reloadData()
-            SVProgressHUD.dismiss()
+        }
+    }
+    
+    func deleteInfoAndPicFromFirebase(indexPath: IndexPath) {
+        SVProgressHUD.show()
+        let ref = Database.database().reference().child("Fault")
+        let key = "\(faultsArray[indexPath.row].key)"
+        let imageUrl = faultsArray[indexPath.row].imageURL
+        let storageRef = Storage.storage().reference(forURL: imageUrl)
+        storageRef.delete { error in
+            if let error = error {
+                print(error)
+                SVProgressHUD.showError(withStatus: "Something went wrong..")
+            } else {
+                ref.child(key).removeValue()
+                self.getValueFromFirebase()
+                self.faultListTableView.reloadData()
+                SVProgressHUD.dismiss()
+            }
         }
     }
     

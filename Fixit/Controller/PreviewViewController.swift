@@ -84,7 +84,6 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
     @IBAction func commentFieldDoneButtonPressed(_ sender: UIButton) {
         firebaseUpload()
         showOrHideCommentField()
-        SVProgressHUD.setDefaultStyle(.dark)
         SVProgressHUD.show()
     }
     
@@ -110,6 +109,7 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
         imageRef.putData(data, metadata: nil, completion: { (metadata,error ) in
             guard let metadata = metadata else{
                 print(error!)
+                SVProgressHUD.showError(withStatus: "Something went wrong..")
                 return
             }
             let firebaseImageURL = metadata.downloadURL()!.absoluteString
@@ -118,6 +118,7 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
                 (error, reference) in
                 if error != nil {
                     print(error!)
+                    SVProgressHUD.showError(withStatus: "Something went wrong..")
                 } else {
                     SVProgressHUD.dismiss()
                     self.setLayoutFaultAlert()

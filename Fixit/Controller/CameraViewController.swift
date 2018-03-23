@@ -87,7 +87,6 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
     }
     
     @IBAction func loginAlertButtonPressed(_ sender: UIButton) {
-        SVProgressHUD.setDefaultStyle(.dark)
         SVProgressHUD.show()
         // Login to firebase
         loginButton.isEnabled = false
@@ -277,6 +276,7 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
             captureSession.addOutput(photoOutput!)
         } catch {
             print(error)
+            SVProgressHUD.showError(withStatus: "Something went wrong..")
         }
     }
     
