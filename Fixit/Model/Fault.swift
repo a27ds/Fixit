@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import CoreLocation
 import Firebase
+import MapKit
 
 class Fault {
     var date: Date
@@ -59,6 +60,12 @@ class Fault {
         let dateString = formatter.date(from: date)
         return dateString!
     }
+    
+//    static func addPin(date: Date, lat: Double, long: Double) -> MKAnnotation {
+//        let date = convertDateToString(date)
+//        let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+//        return AnnotationPin(title: date, coordinate: coordinate)
+//    }
     
     func toAnyObject() -> Any {
         return ["date": Fault.convertDateToString(date),

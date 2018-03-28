@@ -11,6 +11,8 @@
 		F344C61D205AA9F200F480C0 /* Fault.swift in Sources */ = {isa = PBXBuildFile; fileRef = F344C61C205AA9F200F480C0 /* Fault.swift */; };
 		F35281A32062763600FD051E /* CustomFaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35281A12062763600FD051E /* CustomFaultCell.swift */; };
 		F35281A42062763600FD051E /* FaultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F35281A22062763600FD051E /* FaultCell.xib */; };
+		F39A74E8206A815C0013C436 /* FaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39A74E7206A815C0013C436 /* FaultView.swift */; };
+		F39A74EA206A82FB0013C436 /* ClusterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39A74E9206A82FB0013C436 /* ClusterView.swift */; };
 		F3A8A6B12051414E00C4DF11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A8A6B02051414E00C4DF11 /* AppDelegate.swift */; };
 		F3A8A6B32051414E00C4DF11 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A8A6B22051414E00C4DF11 /* CameraViewController.swift */; };
 		F3A8A6B62051414E00C4DF11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3A8A6B42051414E00C4DF11 /* Main.storyboard */; };
@@ -19,6 +21,7 @@
 		F3A8A6C820527DD300C4DF11 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3A8A6C720527DD300C4DF11 /* Default-568h@2x.png */; };
 		F3A8A6CA20527EE300C4DF11 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A8A6C920527EE300C4DF11 /* PreviewViewController.swift */; };
 		F3AA9978205AB68300E0587F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3AA9977205AB68300E0587F /* GoogleService-Info.plist */; };
+		F3D7CFE72066D142001585D2 /* AnnotationPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7CFE62066D142001585D2 /* AnnotationPin.swift */; };
 		F3DF98B8205BD9FD00F914F5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF98B7205BD9FD00F914F5 /* MapViewController.swift */; };
 		F3E335EB20594C7600074BB0 /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E335EA20594C7600074BB0 /* ExtensionUIView.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +33,8 @@
 		F344C61C205AA9F200F480C0 /* Fault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fault.swift; sourceTree = "<group>"; };
 		F35281A12062763600FD051E /* CustomFaultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFaultCell.swift; sourceTree = "<group>"; };
 		F35281A22062763600FD051E /* FaultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FaultCell.xib; sourceTree = "<group>"; };
+		F39A74E7206A815C0013C436 /* FaultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaultView.swift; sourceTree = "<group>"; };
+		F39A74E9206A82FB0013C436 /* ClusterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterView.swift; sourceTree = "<group>"; };
 		F3A8A6AD2051414E00C4DF11 /* Fixit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fixit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A8A6B02051414E00C4DF11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3A8A6B22051414E00C4DF11 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +46,7 @@
 		F3A8A6C720527DD300C4DF11 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F3A8A6C920527EE300C4DF11 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		F3AA9977205AB68300E0587F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F3D7CFE62066D142001585D2 /* AnnotationPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationPin.swift; sourceTree = "<group>"; };
 		F3DF98B7205BD9FD00F914F5 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		F3E335EA20594C7600074BB0 /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,6 +125,9 @@
 			isa = PBXGroup;
 			children = (
 				F344C61C205AA9F200F480C0 /* Fault.swift */,
+				F3D7CFE62066D142001585D2 /* AnnotationPin.swift */,
+				F39A74E7206A815C0013C436 /* FaultView.swift */,
+				F39A74E9206A82FB0013C436 /* ClusterView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -298,10 +307,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3D7CFE72066D142001585D2 /* AnnotationPin.swift in Sources */,
 				F35281A32062763600FD051E /* CustomFaultCell.swift in Sources */,
 				F3A8A6B32051414E00C4DF11 /* CameraViewController.swift in Sources */,
+				F39A74EA206A82FB0013C436 /* ClusterView.swift in Sources */,
 				F3A8A6B12051414E00C4DF11 /* AppDelegate.swift in Sources */,
 				F3E335EB20594C7600074BB0 /* ExtensionUIView.swift in Sources */,
+				F39A74E8206A815C0013C436 /* FaultView.swift in Sources */,
 				F344C61D205AA9F200F480C0 /* Fault.swift in Sources */,
 				F3A8A6CA20527EE300C4DF11 /* PreviewViewController.swift in Sources */,
 				F3DF98B8205BD9FD00F914F5 /* MapViewController.swift in Sources */,
