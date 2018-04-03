@@ -84,7 +84,7 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
     @IBAction func commentFieldDoneButtonPressed(_ sender: UIButton) {
         firebaseUpload()
         showOrHideCommentField()
-        SVProgressHUD.show()
+        SVProgressHUD.show(withStatus: "Uploading to the server...")
     }
     
     
@@ -120,9 +120,12 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
                     print(error!)
                     SVProgressHUD.showError(withStatus: "Something went wrong..")
                 } else {
-                    SVProgressHUD.dismiss()
-                    self.setLayoutFaultAlert()
-                    self.showOrHideFaultAlert()
+                    SVProgressHUD.setMaximumDismissTimeInterval(2)
+                    SVProgressHUD.showSuccess(withStatus: "Thank you for reporting this fault!")
+                    SVProgressHUD.setMaximumDismissTimeInterval(1)
+                    // TODO: - Bug fixa så att camera viewn kommer tillbaka
+//                    self.setLayoutFaultAlert()
+//                    self.showOrHideFaultAlert()
                 }
             }
         })
@@ -167,6 +170,7 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
         textView.layer.cornerRadius = 7
         textView.text = commentText
         textView.textColor = UIColor.lightGray
+        textView.keyboardAppearance = .dark
         charsLeft.text = "0/200"
         cancelButton.addBorder(side: .Top, color: UIColor.lightGray.cgColor, thickness: 0.5)
         doneButton.addBorder(side: .Left, color: UIColor.lightGray.cgColor, thickness: 0.5)

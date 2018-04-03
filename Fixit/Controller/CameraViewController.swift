@@ -12,7 +12,7 @@ import CoreLocation
 import Firebase
 import SVProgressHUD
 
-class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCapturePhotoCaptureDelegate {
+class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCapturePhotoCaptureDelegate, UITextFieldDelegate {
     
     // MARK: - Variabel Decalartions
     
@@ -87,30 +87,7 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
     }
     
     @IBAction func loginAlertButtonPressed(_ sender: UIButton) {
-        SVProgressHUD.show()
-        // Login to firebase
-        loginButton.isEnabled = false
-        cancelButton.isEnabled = false
-        Auth.auth().signIn(withEmail: usernameTextField.text!, password: passwordTextField.text!) { (user, error) in
-            
-            if error != nil {
-                let animation = CABasicAnimation(keyPath: "position")
-                animation.duration = 0.07
-                animation.repeatCount = 4
-                animation.autoreverses = true
-                animation.fromValue = NSValue(cgPoint: CGPoint(x: self.loginAlert.center.x - 10, y: self.loginAlert.center.y))
-                animation.toValue = NSValue(cgPoint: CGPoint(x: self.loginAlert.center.x + 10, y: self.loginAlert.center.y))
-                self.loginAlert.layer.add(animation, forKey: "position")
-                SVProgressHUD.dismiss()
-            } else {
-                self.performSegue(withIdentifier: "showLogin_Segue", sender: self)
-                self.showOrHideLoginAlert()
-                SVProgressHUD.dismiss()
-                
-            }
-        }
-        loginButton.isEnabled = true
-        cancelButton.isEnabled = true
+        loginToFirebase()
     }
     
     @IBAction func cancelAlertButtonPressed(_ sender: UIButton) {
@@ -166,6 +143,8 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
     // MARK: - Login alertbox
     
     func setLayoutLoginAlert() {
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
         loginAlertConstraint.constant = -408
         loginAlert.alpha = 0.85
         loginAlert.layer.cornerRadius = 15
@@ -175,12 +154,14 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
         usernameTextField.layer.borderColor = UIColor.lightGray.cgColor
         usernameTextField.layer.borderWidth = 0.5
         usernameTextField.layer.cornerRadius = 7
+        usernameTextField.keyboardAppearance = .dark
         passwordTextField.backgroundColor = UIColor.black
         passwordTextField.textColor = UIColor.white
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
         passwordTextField.layer.borderColor = UIColor.lightGray.cgColor
         passwordTextField.layer.borderWidth = 0.5
         passwordTextField.layer.cornerRadius = 7
+        passwordTextField.keyboardAppearance = .dark
         cancelButton.addBorder(side: .Top, color: UIColor.lightGray.cgColor, thickness: 0.5)
         loginButton.addBorder(side: .Top, color: UIColor.lightGray.cgColor, thickness: 0.5)
         loginButton.addBorder(side: .Left, color: UIColor.lightGray.cgColor, thickness: 0.5)
@@ -203,6 +184,49 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
             button.isHidden = false
         }
         loginAlertIsHidden = !loginAlertIsHidden
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == usernameTextField {
+            passwordTextField.becomeFirstResponder()
+        } else if textField == passwordTextField {
+            loginToFirebase()
+            passwordTextField.resignFirstResponder()
+        }
+        return true
+    }
+    
+    ///////////////////////////////////////////
+    
+    
+    // MARK: - Firebase
+    
+    func loginToFirebase() {
+        SVProgressHUD.show(withStatus: "Trying to login...")
+        // Login to firebase
+        loginButton.isEnabled = false
+        cancelButton.isEnabled = false
+        Auth.auth().signIn(withEmail: usernameTextField.text!, password: passwordTextField.text!) { (user, error) in
+            
+            if error != nil {
+                let animation = CABasicAnimation(keyPath: "position")
+                animation.duration = 0.07
+                animation.repeatCount = 4
+                animation.autoreverses = true
+                animation.fromValue = NSValue(cgPoint: CGPoint(x: self.loginAlert.center.x - 10, y: self.loginAlert.center.y))
+                animation.toValue = NSValue(cgPoint: CGPoint(x: self.loginAlert.center.x + 10, y: self.loginAlert.center.y))
+                self.loginAlert.layer.add(animation, forKey: "position")
+                self.usernameTextField.becomeFirstResponder()
+                SVProgressHUD.dismiss()
+            } else {
+                self.performSegue(withIdentifier: "showLogin_Segue", sender: self)
+                self.showOrHideLoginAlert()
+                SVProgressHUD.showSuccess(withStatus: "Great Success!")
+                
+            }
+        }
+        loginButton.isEnabled = true
+        cancelButton.isEnabled = true
     }
     
     ///////////////////////////////////////////

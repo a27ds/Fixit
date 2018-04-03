@@ -25,6 +25,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     var pinArray: [MKAnnotation] = []
     var wentFromList: Bool = false
     var whichAnnotaionPinIsPressed: AnnotationPin?
+    var whichFaultIsSelected : Fault?
     
     let initLocation = CLLocation(latitude: 59.3293235, longitude: 18.068580800000063)
     let regionRadius: CLLocationDistance = 10000
@@ -89,13 +90,8 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     @IBAction func deleteButtonNavBarFaultInfoView(_ sender: UIBarButtonItem) {
-        if wentFromList {
-            wentFromList = false
-            deleteInfoAndPicFromFirebase(indexPathRow: (selectedIndexPath?.row)!)
-        } else {
-            // TODO: - Bug cant get right indexpath number            
-            deleteInfoAndPicFromFirebase(indexPathRow: (selectedIndexPath?.row)!)
-        }
+        deleteInfoAndPicFromFirebase(fault: whichFaultIsSelected!)
+        whichFaultIsSelected = nil
         showOrHideInfoView()
     }
     
@@ -184,6 +180,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         }
         titleNavBarFaultInfoView.title = Fault.getRidOfTimeInDateAsString(fault.fault.date)
         commentTextFaultInfoView.text = fault.fault.comment
+        whichFaultIsSelected = fault.fault
         showOrHideInfoView()
     }
     
@@ -223,6 +220,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         }
         titleNavBarFaultInfoView.title = Fault.getRidOfTimeInDateAsString(faultsArray[indexPath.row].date)
         commentTextFaultInfoView.text = faultsArray[indexPath.row].comment
+        whichFaultIsSelected = faultsArray[indexPath.row]
         showOrHideInfoView()
     }
     
@@ -234,7 +232,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     {
         if editingStyle == .delete
         {
-            deleteInfoAndPicFromFirebase(indexPathRow: indexPath.row)
+            deleteInfoAndPicFromFirebase(fault: faultsArray[indexPath.row])
         }
     }
     
@@ -327,11 +325,15 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         }
     }
     
-    func deleteInfoAndPicFromFirebase(indexPathRow: Int) {
+    
+    
+    
+    
+    func deleteInfoAndPicFromFirebase(fault: Fault) {
         SVProgressHUD.show()
         let ref = Database.database().reference().child("Fault")
-        let key = "\(faultsArray[indexPathRow].key)"
-        let imageUrl = faultsArray[indexPathRow].imageURL
+        let key = "\(fault.key)"
+        let imageUrl = fault.imageURL
         let storageRef = Storage.storage().reference(forURL: imageUrl)
         storageRef.delete { error in
             if let error = error {
@@ -339,7 +341,11 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
                 SVProgressHUD.showError(withStatus: "Something went wrong..")
             } else {
                 ref.child(key).removeValue()
-                self.faultsArray.remove(at: indexPathRow)
+                if let i = self.faultsArray.index(where:  {(fault) -> Bool in
+                        fault.key == key
+                }) {
+                    self.faultsArray.remove(at: i)
+                }
                 self.getValueFromFirebase()
                 self.faultListTableView.reloadData()
                 SVProgressHUD.dismiss()
