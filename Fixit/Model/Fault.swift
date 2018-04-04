@@ -19,14 +19,16 @@ class Fault {
     var imageURL: String
     var comment: String
     var key: String
+    var horizontalAccuracy: Double
     
-    init(date: Date, lat: Double, long: Double, imageURL: String, comment: String, key: String) {
+    init(date: Date, lat: Double, long: Double, imageURL: String, comment: String, key: String, horizontalAccuracy: Double) {
         self.lat = lat
         self.long = long
         self.imageURL = imageURL
         self.comment = comment
         self.key = key
         self.date = date
+        self.horizontalAccuracy = horizontalAccuracy
     }
     
     init(snapshot: DataSnapshot) {
@@ -37,6 +39,7 @@ class Fault {
         comment = snapshotValue["comment"] as! String
         key = snapshotValue["key"] as! String
         date = Fault.convertStringToDate(snapshotValue["date"] as! String)
+        horizontalAccuracy = snapshotValue["horizontalAccuracy"] as! Double
     }
     
     static func convertDateToString(_ date: Date) -> String {
@@ -61,18 +64,13 @@ class Fault {
         return dateString!
     }
     
-//    static func addPin(date: Date, lat: Double, long: Double) -> MKAnnotation {
-//        let date = convertDateToString(date)
-//        let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-//        return AnnotationPin(title: date, coordinate: coordinate)
-//    }
-    
     func toAnyObject() -> Any {
         return ["date": Fault.convertDateToString(date),
                 "lat": lat,
                 "long": long,
                 "imageURL": imageURL,
                 "comment": comment,
-                "key": key]
+                "key": key,
+                "horizontalAccuracy": horizontalAccuracy]
     }
 }

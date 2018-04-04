@@ -206,11 +206,6 @@ To make an safe, error free  environment.  To login you have to  be regi
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eLI-C0-mZQ" secondAttribute="bottom" id="z8c-oe-eX8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="8Ie-b7-5cW"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="button" destination="bdu-ms-7eA" id="Kdi-p6-0X4"/>
@@ -366,9 +361,16 @@ To make an safe, error free  environment.  To login you have to  be regi
                                             <action selector="getDrivingInstructionsButtonFaultInfoView:" destination="sMB-16-h72" eventType="touchUpInside" id="4r5-fm-H6D"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accuracy: 100000m" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uvC-55-0nL">
+                                        <rect key="frame" x="8" y="476" width="97" height="12"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="uvC-55-0nL" secondAttribute="bottom" constant="19" id="6nZ-qX-xd6"/>
                                     <constraint firstItem="v7e-VU-Tv3" firstAttribute="leading" secondItem="fY7-M8-M1u" secondAttribute="leading" id="8Qp-Ze-TC4"/>
                                     <constraint firstAttribute="width" constant="295" id="ECb-Gf-mm5"/>
                                     <constraint firstAttribute="trailing" secondItem="v7e-VU-Tv3" secondAttribute="trailing" id="LDi-fM-S21"/>
@@ -382,6 +384,7 @@ To make an safe, error free  environment.  To login you have to  be regi
                                     <constraint firstItem="fbv-Fc-dxB" firstAttribute="centerX" secondItem="gAS-p2-nKa" secondAttribute="centerX" id="jt7-lu-hif"/>
                                     <constraint firstItem="v7e-VU-Tv3" firstAttribute="top" secondItem="fY7-M8-M1u" secondAttribute="top" id="mrW-gp-JZc"/>
                                     <constraint firstItem="gAS-p2-nKa" firstAttribute="top" secondItem="fbv-Fc-dxB" secondAttribute="bottom" constant="8" symbolic="YES" id="qj4-i6-Z9Q"/>
+                                    <constraint firstItem="uvC-55-0nL" firstAttribute="leading" secondItem="fY7-M8-M1u" secondAttribute="leading" constant="8" id="t23-mi-4x5"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -403,6 +406,7 @@ To make an safe, error free  environment.  To login you have to  be regi
                     </view>
                     <connections>
                         <outlet property="commentTextFaultInfoView" destination="gAS-p2-nKa" id="BeB-Fm-QzC"/>
+                        <outlet property="faultAccuracyInfoView" destination="uvC-55-0nL" id="zVd-cR-La1"/>
                         <outlet property="faultImageFaultInfoView" destination="fbv-Fc-dxB" id="WIk-QH-3md"/>
                         <outlet property="faultInfoView" destination="fY7-M8-M1u" id="1Un-7J-Bnu"/>
                         <outlet property="faultListTableView" destination="htq-6O-4VP" id="tRw-9Q-XT1"/>
@@ -492,56 +496,6 @@ To make an safe, error free  environment.  To login you have to  be regi
                                     <constraint firstAttribute="bottom" secondItem="xPQ-sY-IHu" secondAttribute="bottom" id="tKh-5P-b3b"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AJI-Ap-dQu" userLabel="Fault Reported Alert">
-                                <rect key="frame" x="67" y="171" width="240" height="155"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fault Reported" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gox-dJ-PUH">
-                                        <rect key="frame" x="8" y="16" width="224" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="nwf-Kw-sKV"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M5R-1A-aZV">
-                                        <rect key="frame" x="8" y="37" width="224" height="67"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="67" id="TBh-2E-Wdp"/>
-                                        </constraints>
-                                        <string key="text">Thank you for finding this fault.  The location, picture and comment  has been uploaded to our servers and soon this fault will be fixed.</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pxx-O2-RzL">
-                                        <rect key="frame" x="0.0" y="111" width="240" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="240" id="AiE-H7-wR4"/>
-                                            <constraint firstAttribute="height" constant="44" id="KbY-Ve-Vxo"/>
-                                        </constraints>
-                                        <state key="normal" title="Ok"/>
-                                        <connections>
-                                            <action selector="okButtonFaultAlertPressed:" destination="OqB-Rx-H7v" eventType="touchUpInside" id="X8S-8A-3vU"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Gox-dJ-PUH" secondAttribute="trailing" constant="8" id="2u3-fE-Y8v"/>
-                                    <constraint firstAttribute="width" constant="240" id="Kly-cF-sLR"/>
-                                    <constraint firstItem="Pxx-O2-RzL" firstAttribute="leading" secondItem="AJI-Ap-dQu" secondAttribute="leading" id="V2D-DR-UXr"/>
-                                    <constraint firstItem="M5R-1A-aZV" firstAttribute="leading" secondItem="AJI-Ap-dQu" secondAttribute="leading" constant="8" id="dbS-yJ-dQr"/>
-                                    <constraint firstAttribute="trailing" secondItem="M5R-1A-aZV" secondAttribute="trailing" constant="8" id="dpA-LD-XVN"/>
-                                    <constraint firstAttribute="bottom" secondItem="Pxx-O2-RzL" secondAttribute="bottom" id="ifD-id-E2c"/>
-                                    <constraint firstItem="M5R-1A-aZV" firstAttribute="top" secondItem="Gox-dJ-PUH" secondAttribute="bottom" id="oCp-As-2yK"/>
-                                    <constraint firstItem="Gox-dJ-PUH" firstAttribute="top" secondItem="AJI-Ap-dQu" secondAttribute="top" constant="16" id="son-8Z-Jl4"/>
-                                    <constraint firstAttribute="height" constant="155" id="tFj-xP-dv0"/>
-                                    <constraint firstAttribute="trailing" secondItem="Pxx-O2-RzL" secondAttribute="trailing" id="vdZ-be-gkN"/>
-                                    <constraint firstItem="Gox-dJ-PUH" firstAttribute="leading" secondItem="AJI-Ap-dQu" secondAttribute="leading" constant="8" id="w5u-g1-9Ks"/>
-                                </constraints>
-                            </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q37-JH-U2n">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
@@ -565,10 +519,8 @@ To make an safe, error free  environment.  To login you have to  be regi
                         <constraints>
                             <constraint firstItem="ceD-HP-EJ0" firstAttribute="trailing" secondItem="d8y-72-RV3" secondAttribute="trailing" id="1bA-28-Rvl"/>
                             <constraint firstItem="Q37-JH-U2n" firstAttribute="trailing" secondItem="d8y-72-RV3" secondAttribute="trailing" id="GbM-OH-cbr"/>
-                            <constraint firstItem="AJI-Ap-dQu" firstAttribute="centerX" secondItem="y9O-pR-69E" secondAttribute="centerX" id="Mhe-Na-g1C"/>
                             <constraint firstAttribute="bottom" secondItem="ceD-HP-EJ0" secondAttribute="bottom" id="MyM-6w-ohv"/>
                             <constraint firstItem="lug-bW-yOX" firstAttribute="centerX" secondItem="y9O-pR-69E" secondAttribute="centerX" id="RXV-e9-3q8"/>
-                            <constraint firstItem="Q37-JH-U2n" firstAttribute="top" secondItem="AJI-Ap-dQu" secondAttribute="bottom" constant="297" id="YRN-mC-Bt3"/>
                             <constraint firstItem="ceD-HP-EJ0" firstAttribute="top" secondItem="y9O-pR-69E" secondAttribute="top" id="l5O-zN-lJd"/>
                             <constraint firstItem="Q37-JH-U2n" firstAttribute="leading" secondItem="d8y-72-RV3" secondAttribute="leading" id="miv-yO-psj"/>
                             <constraint firstItem="Q37-JH-U2n" firstAttribute="top" secondItem="lug-bW-yOX" secondAttribute="bottom" constant="277" id="pWc-Sk-KtF"/>
@@ -583,9 +535,6 @@ To make an safe, error free  environment.  To login you have to  be regi
                         <outlet property="commentField" destination="lug-bW-yOX" id="n46-qY-Rd1"/>
                         <outlet property="commentFieldConstraint" destination="pWc-Sk-KtF" id="Nuc-gG-dqe"/>
                         <outlet property="doneButton" destination="K7f-sN-Uq6" id="EJm-M2-1Zj"/>
-                        <outlet property="faultReportedAlert" destination="AJI-Ap-dQu" id="fuo-k5-cLi"/>
-                        <outlet property="faultReportedAlertConstraint" destination="YRN-mC-Bt3" id="p8z-Me-htl"/>
-                        <outlet property="okButtonFaultAlert" destination="Pxx-O2-RzL" id="Fc9-Al-gNX"/>
                         <outlet property="showPhoto" destination="ceD-HP-EJ0" id="1W9-TP-FHC"/>
                         <outlet property="textView" destination="O5I-Fx-KOO" id="cIz-2W-2zO"/>
                         <outlet property="toolbar" destination="Q37-JH-U2n" id="Zmg-sp-YKn"/>

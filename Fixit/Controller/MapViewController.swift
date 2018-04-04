@@ -50,6 +50,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     @IBOutlet weak var titleNavBarFaultInfoView: UINavigationItem!
     @IBOutlet weak var commentTextFaultInfoView: UITextView!
     @IBOutlet weak var faultImageFaultInfoView: UIImageView!
+    @IBOutlet weak var faultAccuracyInfoView: UILabel!
     
     ///////////////////////////////////////////
     
@@ -132,39 +133,6 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
-//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//        if annotation is MKUserLocation {
-//            return nil
-//        } else if let cluster = annotation as? MKClusterAnnotation {
-//            var view = mapView.dequeueReusableAnnotationView(withIdentifier: "cluster")
-//            cluster.memberAnnotations[pinArray]
-//
-//            return view
-//        } else {
-//            var view = mapView.dequeueReusableAnnotationView(withIdentifier: "fault")
-//
-//            return view
-//        }
-//
-////        guard let annotation = annotation as? AnnotationPin else { return nil }
-////        let identifier = "marker"
-////        var view: MKMarkerAnnotationView
-////        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView {
-////            dequeuedView.annotation = annotation
-////            view = dequeuedView
-////        } else {
-////            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-////            view.canShowCallout = true
-////            view.glyphText = "Fault"
-////            view.markerTintColor = UIColor.black
-////            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-////            view.rightCalloutAccessoryView?.tintColor = UIColor.black
-////            view.displayPriority = .defaultHigh
-////            view.clusteringIdentifier
-////        }
-//        return view
-//    }
-    
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         whichAnnotaionPinIsPressed = view.annotation as? AnnotationPin
         let fault = view.annotation as! AnnotationPin
@@ -180,6 +148,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         }
         titleNavBarFaultInfoView.title = Fault.getRidOfTimeInDateAsString(fault.fault.date)
         commentTextFaultInfoView.text = fault.fault.comment
+        faultAccuracyInfoView.text = "Accuracy: \(fault.fault.horizontalAccuracy) m"
         whichFaultIsSelected = fault.fault
         showOrHideInfoView()
     }
@@ -220,6 +189,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         }
         titleNavBarFaultInfoView.title = Fault.getRidOfTimeInDateAsString(faultsArray[indexPath.row].date)
         commentTextFaultInfoView.text = faultsArray[indexPath.row].comment
+        faultAccuracyInfoView.text = "Accuracy: \(faultsArray[indexPath.row].horizontalAccuracy) m"
         whichFaultIsSelected = faultsArray[indexPath.row]
         showOrHideInfoView()
     }

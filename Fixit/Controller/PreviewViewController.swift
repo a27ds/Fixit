@@ -20,7 +20,6 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
     var date: Date!
     var showLocationDisablePopUpBool: Bool!
     var commentFieldIsHidden = true
-    var faultAlertIsHidden = true
     let commentText = "Write a comment about the fault."
 
     ///////////////////////////////////////////
@@ -35,9 +34,6 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var charsLeft: UILabel!
     @IBOutlet weak var commentField: UIView!
     @IBOutlet weak var commentFieldConstraint: NSLayoutConstraint!
-    @IBOutlet weak var faultReportedAlert: UIView!
-    @IBOutlet weak var faultReportedAlertConstraint: NSLayoutConstraint!
-    @IBOutlet weak var okButtonFaultAlert: UIButton!
     @IBOutlet weak var toolbar: UIToolbar!
     @IBOutlet weak var toolbarConstraint: NSLayoutConstraint!
     
@@ -52,9 +48,7 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
         showPhoto.image = self.image
         textView.delegate = self
         commentFieldConstraint.constant = -408
-        faultReportedAlertConstraint.constant = -408
-        print(gpsInfo.coordinate)
-        print(date)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -87,13 +81,8 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
         SVProgressHUD.show(withStatus: "Uploading to the server...")
     }
     
-    
-    
-    @IBAction func okButtonFaultAlertPressed(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-    }
-    
     ///////////////////////////////////////////
+    
     
     // MARK: - Firebase
 
@@ -113,7 +102,7 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
                 return
             }
             let firebaseImageURL = metadata.downloadURL()!.absoluteString
-            let newFault = Fault(date: self.date, lat: self.gpsInfo.coordinate.latitude, long: self.gpsInfo.coordinate.longitude, imageURL: firebaseImageURL, comment: self.textView.text, key: ref.key)
+            let newFault = Fault(date: self.date, lat: self.gpsInfo.coordinate.latitude, long: self.gpsInfo.coordinate.longitude, imageURL: firebaseImageURL, comment: self.textView.text, key: ref.key, horizontalAccuracy: self.gpsInfo.horizontalAccuracy)
             ref.setValue(newFault.toAnyObject()) {
                 (error, reference) in
                 if error != nil {
@@ -123,38 +112,10 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
                     SVProgressHUD.setMaximumDismissTimeInterval(2)
                     SVProgressHUD.showSuccess(withStatus: "Thank you for reporting this fault!")
                     SVProgressHUD.setMaximumDismissTimeInterval(1)
-                    // TODO: - Bug fixa så att camera viewn kommer tillbaka
-//                    self.setLayoutFaultAlert()
-//                    self.showOrHideFaultAlert()
+                    self.dismiss(animated: true, completion: nil)
                 }
             }
         })
-    }
-    
-    ///////////////////////////////////////////
-    
-    
-    // MARK: - FaultAlert
-
-    func showOrHideFaultAlert() {
-        if faultAlertIsHidden {
-            faultReportedAlert.isHidden = false
-            faultReportedAlertConstraint.constant = 297
-            UIView.animate(withDuration: 0.5, animations: {self.view.layoutIfNeeded()})
-        } else {
-            view.endEditing(true)
-            faultReportedAlertConstraint.constant = -408
-            UIView.animate(withDuration: 0.3, animations: {self.view.layoutIfNeeded()})
-        }
-        faultAlertIsHidden = !faultAlertIsHidden
-    }
-    
-    func setLayoutFaultAlert() {
-        faultReportedAlert.alpha = 0.8
-        faultReportedAlert.layer.cornerRadius = 15
-        faultReportedAlert.backgroundColor = UIColor.black
-        faultReportedAlert.tintColor = UIColor.white
-        okButtonFaultAlert.addBorder(side: .Top, color: UIColor.lightGray.cgColor, thickness: 0.5)
     }
     
     ///////////////////////////////////////////
