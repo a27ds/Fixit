@@ -26,9 +26,8 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     var wentFromList: Bool = false
     var whichAnnotaionPinIsPressed: AnnotationPin?
     var whichFaultIsSelected : Fault?
-    
-    let initLocation = CLLocation(latitude: 59.3293235, longitude: 18.068580800000063)
-    let regionRadius: CLLocationDistance = 10000
+//    let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+//    let tapView = UIView()
     
     ///////////////////////////////////////////
     
@@ -41,10 +40,11 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     @IBOutlet weak var faultsView: UIView!
     @IBOutlet weak var faultsViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var faultsViewNavBar: UINavigationBar!
-    @IBOutlet weak var backButtonfaultsViewNavBar: UIBarButtonItem!
+    @IBOutlet weak var mapSegmentedController: UISegmentedControl!
+    
     
     // FaultsInfoViewOutlets
-
+    
     @IBOutlet weak var faultInfoView: UIView!
     @IBOutlet weak var navBarFaultInfoView: UINavigationBar!
     @IBOutlet weak var titleNavBarFaultInfoView: UINavigationItem!
@@ -70,6 +70,17 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     
     
     // MARK: - IBActions
+    
+    @IBAction func mapSegmentedControl(_ sender: UISegmentedControl) {
+        switch (sender.selectedSegmentIndex) {
+        case 0:
+            mapView.mapType = .mutedStandard
+            mapSegmentedController.tintColor = UIColor.black
+        default:
+            mapView.mapType = .hybrid
+            mapSegmentedController.tintColor = UIColor.white
+        }
+    }
     
     @IBAction func logutButtonPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
@@ -116,21 +127,45 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     // MARK: - Map
     
     func setMap() {
+        let initLocation = CLLocation(latitude: 59.3293235, longitude: 18.068580800000063)
+        let regionRadius: CLLocationDistance = 100000
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(initLocation.coordinate, regionRadius, regionRadius)
+        
+        mapView.setRegion(coordinateRegion, animated: true)
         mapView.register(FaultView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         mapView.register(ClusterView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
-        mapView.showsUserLocation = true
         mapView.tintColor = UIColor.black
-        mapView.mapType = .hybrid
+        mapView.mapType = .mutedStandard
         mapView.showsPointsOfInterest = false
         mapView.delegate = self
-        mapView.showsScale = true
+        mapSegmentedController.tintColor = UIColor.black
         
-        centerMapOnLocation(location: initLocation)
-    }
-    
-    func centerMapOnLocation(location: CLLocation) {
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius, regionRadius)
-        mapView.setRegion(coordinateRegion, animated: true)
+        let compassButton = MKCompassButton(mapView: mapView)
+        compassButton.frame.origin = CGPoint(x: 20, y: 52)
+        compassButton.compassVisibility = .adaptive
+        mapView.addSubview(compassButton)
+        mapView.showsCompass = false
+        
+        mapView.showsUserLocation = true
+        let button = MKUserTrackingButton(mapView: mapView)
+        button.layer.backgroundColor = UIColor(white: 1, alpha: 0.7).cgColor
+        button.layer.borderColor = UIColor.lightGray.cgColor
+        button.tintColor = UIColor.black
+        button.layer.borderWidth = 0.5
+        button.layer.cornerRadius = 5
+        button.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(button)
+        
+        let scale = MKScaleView(mapView: mapView)
+        scale.legendAlignment = .leading
+        scale.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(scale)
+        
+        NSLayoutConstraint.activate([button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -90),
+                                     button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+                                     scale.trailingAnchor.constraint(equalTo: button.leadingAnchor, constant: -50),
+                                     scale.centerYAnchor.constraint(equalTo: button.centerYAnchor)
+                                    ])
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
@@ -231,8 +266,10 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     
     func showOrHideInfoView() {
         if faultInfoViewIsHidden {
+//            setTap()
             faultInfoView.isHidden = false
         } else {
+            
             faultInfoView.isHidden = true
         }
         faultInfoViewIsHidden = !faultInfoViewIsHidden
@@ -242,6 +279,24 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     
     
     // MARK: - Setup Layout
+    
+    
+    // TODO: - Fixa touch så att den stänger när man clickar utanför inforutan
+//    func setTap() {
+//        print("settap")
+//        tapView.alpha = 0
+//        tapView.addGestureRecognizer(tap)
+//
+//
+//        tapView.isUserInteractionEnabled = true
+//        mapView.addSubview(tapView)
+//    }
+//
+//    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+//        print("hej")
+//        showOrHideInfoView()
+//        tapView.removeFromSuperview()
+//    }
     
     func setListTableView() {
         faultListTableView.dataSource = self
@@ -326,19 +381,21 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     ///////////////////////////////////////////
     
     
-    // MARK: - Helpers //BUG!!!!
-
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if !faultViewIsHidden && !faultInfoViewIsHidden {
-            showOrHideInfoView()
-            showOrHideList()
-        } else if !faultViewIsHidden {
-            showOrHideList()
-        } else if !faultInfoViewIsHidden {
-            showOrHideInfoView()
-        }
-    }
-    ///////////////////////////////////////////
+    // MARK: - Helpers
     
+
+//
+//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        if !faultViewIsHidden && !faultInfoViewIsHidden {
+//            showOrHideInfoView()
+//            showOrHideList()
+//        } else if !faultViewIsHidden {
+//            showOrHideList()
+//        } else if !faultInfoViewIsHidden {
+//            showOrHideInfoView()
+//        }
+//    }
+//    ///////////////////////////////////////////
+//
     
 }

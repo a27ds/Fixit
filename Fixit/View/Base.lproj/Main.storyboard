@@ -295,6 +295,9 @@ To make an safe, error free  environment.  To login you have to  be regi
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R2O-Vd-pc6">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="8yJ-Nc-Vwr"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem title="Logout" id="RWJ-H1-71i">
                                         <connections>
@@ -311,6 +314,17 @@ To make an safe, error free  environment.  To login you have to  be regi
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </toolbar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qBt-nV-VkZ">
+                                <rect key="frame" x="116.5" y="30" width="141" height="29"/>
+                                <segments>
+                                    <segment title="Standard"/>
+                                    <segment title="Hybrid"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="mapSegmentedControl:" destination="sMB-16-h72" eventType="valueChanged" id="fd6-EU-9Ui"/>
+                                </connections>
+                            </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fY7-M8-M1u" userLabel="FaultsInfoView">
                                 <rect key="frame" x="40" y="10" width="295" height="507"/>
                                 <subviews>
@@ -397,6 +411,8 @@ To make an safe, error free  environment.  To login you have to  be regi
                             <constraint firstItem="Vp1-a3-Vut" firstAttribute="top" secondItem="6hg-YW-iii" secondAttribute="top" id="I1n-Ng-HRm"/>
                             <constraint firstItem="eai-FZ-Vey" firstAttribute="bottom" secondItem="zzw-Wt-nRV" secondAttribute="bottom" constant="150" id="Mmk-TT-WXV"/>
                             <constraint firstItem="Vp1-a3-Vut" firstAttribute="trailing" secondItem="eai-FZ-Vey" secondAttribute="trailing" id="P3k-Oi-d8z"/>
+                            <constraint firstItem="qBt-nV-VkZ" firstAttribute="centerX" secondItem="6hg-YW-iii" secondAttribute="centerX" id="PDA-r7-YX6"/>
+                            <constraint firstItem="qBt-nV-VkZ" firstAttribute="top" secondItem="eai-FZ-Vey" secondAttribute="top" constant="10" id="ew5-Gg-NJc"/>
                             <constraint firstItem="fY7-M8-M1u" firstAttribute="centerX" secondItem="6hg-YW-iii" secondAttribute="centerX" id="hrj-f1-c2l"/>
                             <constraint firstItem="R2O-Vd-pc6" firstAttribute="trailing" secondItem="eai-FZ-Vey" secondAttribute="trailing" id="pjg-c8-SHX"/>
                             <constraint firstItem="R2O-Vd-pc6" firstAttribute="bottom" secondItem="eai-FZ-Vey" secondAttribute="bottom" id="xo4-3A-vjm"/>
@@ -414,6 +430,7 @@ To make an safe, error free  environment.  To login you have to  be regi
                         <outlet property="faultsViewConstraint" destination="Mmk-TT-WXV" id="mOv-F1-KXG"/>
                         <outlet property="faultsViewNavBar" destination="o0K-kr-1dX" id="whA-Bg-63A"/>
                         <outlet property="listOrMapButton" destination="Qc5-ft-P5c" id="a9k-ZC-aRN"/>
+                        <outlet property="mapSegmentedController" destination="qBt-nV-VkZ" id="IkI-gI-D6I"/>
                         <outlet property="mapView" destination="Vp1-a3-Vut" id="4TF-fI-1v4"/>
                         <outlet property="navBarFaultInfoView" destination="v7e-VU-Tv3" id="jJD-r9-MjX"/>
                         <outlet property="titleNavBarFaultInfoView" destination="TOh-JH-5He" id="ydS-oB-h14"/>
