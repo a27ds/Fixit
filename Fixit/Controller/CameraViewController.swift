@@ -11,6 +11,7 @@ import AVFoundation
 import CoreLocation
 import Firebase
 import SVProgressHUD
+import Alamofire
 
 class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCapturePhotoCaptureDelegate, UITextFieldDelegate {
     
@@ -80,6 +81,7 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
     }
     
     @IBAction func cameraButtonPressed(_ sender: UIButton) {
+        checkIfInternetAlert()
         getLocation()
         date = Date()
         let settings = AVCapturePhotoSettings()
@@ -218,6 +220,7 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
                 self.loginAlert.layer.add(animation, forKey: "position")
                 self.usernameTextField.becomeFirstResponder()
                 SVProgressHUD.dismiss()
+                self.checkIfInternetAlert()
             } else {
                 self.performSegue(withIdentifier: "showLogin_Segue", sender: self)
                 self.showOrHideLoginAlert()
@@ -335,9 +338,29 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
             previewVC.date = self.date
             previewVC.showLocationDisablePopUpBool = self.showLocationDisablePopUpBool
         }
-//        else if segue.identifier == "showMap_Segue" {
-//            
-//        }
+    }
+    
+    ///////////////////////////////////////////
+    
+    // MARK: - Checks
+    
+    func checkIfInternetAlert() {
+        if isConnectedToInternet() {
+            print("You have the Internetz!")
+        } else {
+            print("Pity the fool!")
+            SVProgressHUD.setMaximumDismissTimeInterval(7)
+            SVProgressHUD.showError(withStatus: "You don't have access to internet. You need a internet connection to use Fixit.")
+            SVProgressHUD.setMaximumDismissTimeInterval(1)
+        }
+    }
+    
+    ///////////////////////////////////////////
+    
+    // MARK: - Helpers
+    
+    func isConnectedToInternet() -> Bool {
+        return NetworkReachabilityManager()!.isReachable
     }
     
     ///////////////////////////////////////////

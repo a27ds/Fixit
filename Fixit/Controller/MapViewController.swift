@@ -350,10 +350,6 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         }
     }
     
-    
-    
-    
-    
     func deleteInfoAndPicFromFirebase(fault: Fault) {
         SVProgressHUD.show()
         let ref = Database.database().reference().child("Fault")
