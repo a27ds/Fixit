@@ -108,7 +108,6 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
     func userDefaultCheck() {
         let defaults = UserDefaults.standard
         if defaults.object(forKey: "isFirstTimeUse") == nil {
-            print("körs")
             defaults.set(1, forKey: "isFirstTimeUse")
             defaults.synchronize()
             showOrHideInfoAlert()

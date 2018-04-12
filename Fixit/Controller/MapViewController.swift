@@ -26,8 +26,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     var wentFromList: Bool = false
     var whichAnnotaionPinIsPressed: AnnotationPin?
     var whichFaultIsSelected : Fault?
-//    let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-//    let tapView = UIView()
+    var tap : UITapGestureRecognizer!
     
     ///////////////////////////////////////////
     
@@ -41,6 +40,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     @IBOutlet weak var faultsViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var faultsViewNavBar: UINavigationBar!
     @IBOutlet weak var mapSegmentedController: UISegmentedControl!
+    
     
     
     // FaultsInfoViewOutlets
@@ -64,8 +64,9 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         setMap()
         setListTableView()
         getValueFromFirebase()
+        tap = UITapGestureRecognizer(target: self, action: #selector (tapped))
     }
-
+    
     ///////////////////////////////////////////
     
     
@@ -87,6 +88,10 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     @IBAction func listButtonPressed(_ sender: UIBarButtonItem) {
+        changeNameOnMapOrListButton()
+    }
+    
+    func changeNameOnMapOrListButton() {
         if faultViewIsHidden {
             listOrMapButton.title = "Map"
             showOrHideList()
@@ -244,20 +249,43 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     ///////////////////////////////////////////
     
     
+    // MARK: - TapOnMap
+    
+    func setTapOnMap() {
+        mapView.addGestureRecognizer(tap)
+    }
+    
+    func removeTapOnMap() {
+        mapView.removeGestureRecognizer(tap)
+    }
+    
+    @objc func tapped(sender: UITapGestureRecognizer) {
+        if wentFromList {
+            showOrHideList()
+        } else {
+            showOrHideInfoView()
+        }
+    }
+    
+    ///////////////////////////////////////////
+    
+    
     // MARK: - Buttons
     
     func showOrHideList() {
         if faultViewIsHidden {
+            setTapOnMap()
             faultInfoView.isHidden = true
-            faultInfoViewIsHidden = true
             faultsViewConstraint.constant = 150
             UIView.animate(withDuration: 0.5, animations: {self.view.layoutIfNeeded()})
         } else if faultViewIsHidden && !faultInfoViewIsHidden {
-            faultListTableView.isHidden = false
+            setTapOnMap()
             faultInfoView.isHidden = true
             faultsViewConstraint.constant = 150
+            faultViewIsHidden = false
             UIView.animate(withDuration: 0.5, animations: {self.view.layoutIfNeeded()})
         } else {
+            removeTapOnMap()
             faultsViewConstraint.constant = -627
             UIView.animate(withDuration: 0.3, animations: {self.view.layoutIfNeeded()})
         }
@@ -266,10 +294,10 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     
     func showOrHideInfoView() {
         if faultInfoViewIsHidden {
-//            setTap()
+            setTapOnMap()
             faultInfoView.isHidden = false
         } else {
-            
+            removeTapOnMap()
             faultInfoView.isHidden = true
         }
         faultInfoViewIsHidden = !faultInfoViewIsHidden
@@ -281,22 +309,10 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     // MARK: - Setup Layout
     
     
-    // TODO: - Fixa touch så att den stänger när man clickar utanför inforutan
-//    func setTap() {
-//        print("settap")
-//        tapView.alpha = 0
-//        tapView.addGestureRecognizer(tap)
-//
-//
-//        tapView.isUserInteractionEnabled = true
-//        mapView.addSubview(tapView)
-//    }
-//
-//    @objc func handleTap(_ sender: UITapGestureRecognizer) {
-//        print("hej")
-//        showOrHideInfoView()
-//        tapView.removeFromSuperview()
-//    }
+    
+    
+
+    
     
     func setListTableView() {
         faultListTableView.dataSource = self

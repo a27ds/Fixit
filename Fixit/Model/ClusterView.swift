@@ -31,8 +31,6 @@ class ClusterView: MKAnnotationView {
                     UIColor.black.setFill()
                     UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 40, height: 40)).fill()
                     
-                    
-                    
                     // Fill inner circle with white color
                     UIColor.white.setFill()
                     UIBezierPath(ovalIn: CGRect(x: 8, y: 8, width: 24, height: 24)).fill()
