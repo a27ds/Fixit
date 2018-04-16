@@ -15,7 +15,7 @@ class FaultView: MKMarkerAnnotationView {
             if (newValue as? AnnotationPin) != nil {
                 clusteringIdentifier = "fault"
                 markerTintColor = UIColor.black
-                glyphText = "Fault"
+                glyphText = NSLocalizedString("fault", comment: "")
                 displayPriority = .defaultHigh
                 canShowCallout = true
                 rightCalloutAccessoryView = UIButton(type: .detailDisclosure)

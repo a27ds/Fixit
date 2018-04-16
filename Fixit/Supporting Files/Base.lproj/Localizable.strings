@@ -1,0 +1,29 @@
+/* 
+  Localizable.strings
+  Fixit
+
+  Created by a27 on 2018-04-12.
+  Copyright © 2018 a27. All rights reserved.
+*/
+
+"username" = "Username";
+"password" = "Password";
+"SVLogin" = "Trying to login...";
+"SVLoginSuccess" = "Great Success!";
+"SVError" = "Something went wrong..";
+"SVErrorInternetAccess" = "You don't have access to internet. You need a internet connection to use Fixit.";
+"SVUploading" = "Uploading to the server...";
+"SVFirebaseSuccess" = "Thank you for reporting this fault!";
+"SVWaitingOnServer" = "Waiting for connection";
+"SVDownloadingImage" = "Downloading Image";
+"commentText" = "Write a comment about the fault.";
+"locationDisablePopUpTitle" = "Location Access Disable";
+"locationDisablePopUpMessage" = "In order to report this fault to the city administration, we need your location";
+"cancel" = "Cancel";
+"openSettings" = "Open Settings";
+"map" = "Map";
+"list" = "List";
+"fault" = "Fault";
+"accuracy" = "Accuracy: ";
+"noMoreFaults" = "There are no more faults to show!";
+"NoFaultsAvailable" = "No faults available";

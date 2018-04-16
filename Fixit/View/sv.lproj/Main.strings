@@ -1,0 +1,75 @@
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "0eY-yr-JVM"; */
+"0eY-yr-JVM.normalTitle" = "Logga in";
+
+/* Class = "UITextField"; placeholder = "Username"; ObjectID = "5wj-cP-Plp"; */
+"5wj-cP-Plp.placeholder" = "Användarnamn";
+
+/* Class = "UILabel"; text = "Made by: Andreas Eriksson MA17 E-mail: andy27ds@mac.com Andreas Eriksson © 2018"; ObjectID = "8Bj-SV-ysL"; */
+"8Bj-SV-ysL.text" = "Gjord av: Andreas Eriksson MA17 E-mail: andy27ds@mac.com Andreas Eriksson © 2018";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "Bw0-Qp-uCA"; */
+"Bw0-Qp-uCA.title" = "Tillbaka";
+
+/* Class = "UIBarButtonItem"; title = "Login"; ObjectID = "E8O-13-1DF"; */
+"E8O-13-1DF.title" = "Logga in";
+
+/* Class = "UINavigationItem"; title = "Faults"; ObjectID = "GhY-DT-GJB"; */
+"GhY-DT-GJB.title" = "Fel";
+
+/* Class = "UILabel"; text = "Login"; ObjectID = "Gpb-Dy-Pg7"; */
+"Gpb-Dy-Pg7.text" = "Logga in";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "K7f-sN-Uq6"; */
+"K7f-sN-Uq6.normalTitle" = "Klart";
+
+/* Class = "UILabel"; text = "An error report is made when something does not meet its intended function, is broken or requires emergency maintenance due to damage. For example, you may report a broken light, littering, unauthorized parking, slipperiness or damage. Error reports are sent to our contractors for action.  This app lets you take a photo of an fault in your city, and report it to the city ​​administration.\nTo make an safe, error free  environment.  To login you have to  be registered "; ObjectID = "MmC-1e-VuK"; */
+"MmC-1e-VuK.text" = "Felanmälan gör du när något inte uppfyller sin tilltänkta funktion, är trasigt eller kräver akut underhåll på grund av skador. Exempelvis kan du felanmäla en trasig lampa, nedskräpning, felparkering, halka eller skadegörelse. Felanmälningar skickas till våra entreprenörer för åtgärd.  Denna app låter dig ta ett foto på ett fel i din stad, och låter dig även rapportera det till din stadsförvaltning.\nFör att skapa en miljö i staden som är säker och fel fri.  För att logga in, måste du vara registrerad användare ";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "Ohf-KU-Sbf"; */
+"Ohf-KU-Sbf.placeholder" = "Lösenord";
+
+/* Class = "UIBarButtonItem"; title = "List"; ObjectID = "Qc5-ft-P5c"; */
+"Qc5-ft-P5c.title" = "Lista";
+
+/* Class = "UIBarButtonItem"; title = "Logout"; ObjectID = "RWJ-H1-71i"; */
+"RWJ-H1-71i.title" = "Logga ut";
+
+/* Class = "UINavigationItem"; title = "Date"; ObjectID = "TOh-JH-5He"; */
+"TOh-JH-5He.title" = "Datum";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "U2Q-vR-xpS"; */
+"U2Q-vR-xpS.normalTitle" = "Avbryt";
+
+/* Class = "UIBarButtonItem"; title = "Info"; ObjectID = "WT1-Zr-6dg"; */
+"WT1-Zr-6dg.title" = "Info";
+
+/* Class = "UILabel"; text = "200/200"; ObjectID = "WTb-1Q-9Qe"; */
+"WTb-1Q-9Qe.text" = "200/200";
+
+/* Class = "UIButton"; normalTitle = "Ok"; ObjectID = "e6u-x2-ZkC"; */
+"e6u-x2-ZkC.normalTitle" = "Okej";
+
+/* Class = "UILabel"; text = "Info"; ObjectID = "fxA-rj-XAR"; */
+"fxA-rj-XAR.text" = "Info";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "gAS-p2-nKa"; */
+"gAS-p2-nKa.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UIBarButtonItem"; title = "Use"; ObjectID = "ptN-V1-YRx"; */
+"ptN-V1-YRx.title" = "Använd";
+
+/* Class = "UISegmentedControl"; qBt-nV-VkZ.segmentTitles[0] = "Standard"; ObjectID = "qBt-nV-VkZ"; */
+"qBt-nV-VkZ.segmentTitles[0]" = "Standard";
+
+/* Class = "UISegmentedControl"; qBt-nV-VkZ.segmentTitles[1] = "Hybrid"; ObjectID = "qBt-nV-VkZ"; */
+"qBt-nV-VkZ.segmentTitles[1]" = "Hybrid";
+
+/* Class = "UILabel"; text = "Accuracy: 100000m"; ObjectID = "uvC-55-0nL"; */
+"uvC-55-0nL.text" = "Accuracy: 100000m";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "xPQ-sY-IHu"; */
+"xPQ-sY-IHu.normalTitle" = "Avbryt";
+
+/* Class = "UIBarButtonItem"; title = "Retake"; ObjectID = "ys1-dF-dIC"; */
+"ys1-dF-dIC.title" = "Ta om bild";

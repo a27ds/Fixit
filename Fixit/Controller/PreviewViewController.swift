@@ -20,7 +20,7 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
     var date: Date!
     var showLocationDisablePopUpBool: Bool!
     var commentFieldIsHidden = true
-    let commentText = "Write a comment about the fault."
+    let commentText = NSLocalizedString("commentText", comment: "")
 
     ///////////////////////////////////////////
     
@@ -78,7 +78,7 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
     @IBAction func commentFieldDoneButtonPressed(_ sender: UIButton) {
         firebaseUpload()
         showOrHideCommentField()
-        SVProgressHUD.show(withStatus: "Uploading to the server...")
+        SVProgressHUD.show(withStatus: NSLocalizedString("SVUploading", comment: ""))
     }
     
     ///////////////////////////////////////////
@@ -98,7 +98,7 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
         imageRef.putData(data, metadata: nil, completion: { (metadata,error ) in
             guard let metadata = metadata else{
                 print(error!)
-                SVProgressHUD.showError(withStatus: "Something went wrong..")
+                SVProgressHUD.showError(withStatus: NSLocalizedString("SVError", comment: ""))
                 return
             }
             let firebaseImageURL = metadata.downloadURL()!.absoluteString
@@ -107,10 +107,10 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
                 (error, reference) in
                 if error != nil {
                     print(error!)
-                    SVProgressHUD.showError(withStatus: "Something went wrong..")
+                    SVProgressHUD.showError(withStatus: NSLocalizedString("SVError", comment: ""))
                 } else {
                     SVProgressHUD.setMaximumDismissTimeInterval(2)
-                    SVProgressHUD.showSuccess(withStatus: "Thank you for reporting this fault!")
+                    SVProgressHUD.showSuccess(withStatus: NSLocalizedString("SVFirebaseSuccess", comment: ""))
                     SVProgressHUD.setMaximumDismissTimeInterval(1)
                     self.dismiss(animated: true, completion: nil)
                 }
@@ -179,12 +179,12 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
 
     func showLocationDisablePopUp() {
         if showLocationDisablePopUpBool {
-            let alert = UIAlertController(title: "Location Access Disable",
-                                          message: "In order to report this fault to the city administration, we need your location",
+            let alert = UIAlertController(title: NSLocalizedString("locationDisablePopUpTitle", comment: ""),
+                                          message: NSLocalizedString("locationDisablePopUpMessage", comment: ""),
                                           preferredStyle: .alert)
-            let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let cancel = UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel, handler: nil)
             alert.addAction(cancel)
-            let openSetting = UIAlertAction(title: "Open Settings", style: .default) { (action) in
+            let openSetting = UIAlertAction(title: NSLocalizedString("openSettings", comment: ""), style: .default) { (action) in
                 if let url = URL(string: UIApplicationOpenSettingsURLString) {
                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 }

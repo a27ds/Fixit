@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  Fixit
+
+  Created by a27 on 2018-04-12.
+  Copyright © 2018 a27. All rights reserved.
+*/
+
+"username" = "Användarnamn";
+"password" = "Lösenord";
+"SVLogin" = "Försöker att logga in...";
+"SVLoginSuccess" = "Inloggningen lyckades!";
+"SVError" = "Något vart fel...";
+"SVErrorInternetAccess" = "Du har inte tillgång till internet, Du behöver en internet anslutning för att använda Fixit";
+"SVUploading" = "Laddar upp till servern...";
+"SVFirebaseSuccess" = "Tack för att du rapporterade detta fel!";
+"SVWaitingOnServer" = "Väntar på anslutning";
+"SVDownloadingImage" = "Laddar ner bild";
+"commentText" = "Skriv en kommentar om felet.";
+"locationDisablePopUpTitle" = "Location Access är av";
+"locationDisablePopUpMessage" = "För att du skall kunna rapportera detta fel till Stadsdelsnämnden, så behöver vi din plats";
+"cancel" = "Avbryt";
+"openSettings" = "Öppna inställningarna";
+"map" = "Karta";
+"list" = "Lista";
+"fault" = "Fel";
+"accuracy" = "Noggrannhet: ";
+"noMoreFaults" = "Finns inga mer fel att visa!";
+"NoFaultsAvailable" = "Inga fel tillgängliga";
+

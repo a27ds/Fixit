@@ -151,14 +151,14 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
         loginAlert.layer.cornerRadius = 15
         usernameTextField.backgroundColor = UIColor.black
         usernameTextField.textColor = UIColor.white
-        usernameTextField.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+        usernameTextField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("username", comment: ""), attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
         usernameTextField.layer.borderColor = UIColor.lightGray.cgColor
         usernameTextField.layer.borderWidth = 0.5
         usernameTextField.layer.cornerRadius = 7
         usernameTextField.keyboardAppearance = .dark
         passwordTextField.backgroundColor = UIColor.black
         passwordTextField.textColor = UIColor.white
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("password", comment: ""), attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
         passwordTextField.layer.borderColor = UIColor.lightGray.cgColor
         passwordTextField.layer.borderWidth = 0.5
         passwordTextField.layer.cornerRadius = 7
@@ -203,7 +203,7 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
     // MARK: - Firebase
     
     func loginToFirebase() {
-        SVProgressHUD.show(withStatus: "Trying to login...")
+        SVProgressHUD.show(withStatus: NSLocalizedString("SVLogin", comment: "") )
         // Login to firebase
         loginButton.isEnabled = false
         cancelButton.isEnabled = false
@@ -223,7 +223,7 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
             } else {
                 self.performSegue(withIdentifier: "showLogin_Segue", sender: self)
                 self.showOrHideLoginAlert()
-                SVProgressHUD.showSuccess(withStatus: "Great Success!")
+                SVProgressHUD.showSuccess(withStatus: NSLocalizedString("SVLoginSuccess", comment: ""))
                 
             }
         }
@@ -302,7 +302,7 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
             captureSession.addOutput(photoOutput!)
         } catch {
             print(error)
-            SVProgressHUD.showError(withStatus: "Something went wrong..")
+            SVProgressHUD.showError(withStatus: NSLocalizedString("SVError", comment: ""))
         }
     }
     
@@ -349,7 +349,7 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
         } else {
             print("Pity the fool!")
             SVProgressHUD.setMaximumDismissTimeInterval(7)
-            SVProgressHUD.showError(withStatus: "You don't have access to internet. You need a internet connection to use Fixit.")
+            SVProgressHUD.showError(withStatus: NSLocalizedString("SVErrorInternetAccess", comment: ""))
             SVProgressHUD.setMaximumDismissTimeInterval(1)
         }
     }

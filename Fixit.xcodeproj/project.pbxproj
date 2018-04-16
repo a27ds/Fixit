@@ -11,6 +11,8 @@
 		F344C61D205AA9F200F480C0 /* Fault.swift in Sources */ = {isa = PBXBuildFile; fileRef = F344C61C205AA9F200F480C0 /* Fault.swift */; };
 		F35281A32062763600FD051E /* CustomFaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35281A12062763600FD051E /* CustomFaultCell.swift */; };
 		F35281A42062763600FD051E /* FaultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F35281A22062763600FD051E /* FaultCell.xib */; };
+		F3659D63207F7BCC0030BFB5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F3659D65207F7BCC0030BFB5 /* Localizable.strings */; };
+		F3659D69207F7E350030BFB5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F3659D6B207F7E350030BFB5 /* InfoPlist.strings */; };
 		F39A74E8206A815C0013C436 /* FaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39A74E7206A815C0013C436 /* FaultView.swift */; };
 		F39A74EA206A82FB0013C436 /* ClusterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39A74E9206A82FB0013C436 /* ClusterView.swift */; };
 		F3A8A6B12051414E00C4DF11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A8A6B02051414E00C4DF11 /* AppDelegate.swift */; };
@@ -18,7 +20,6 @@
 		F3A8A6B62051414E00C4DF11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3A8A6B42051414E00C4DF11 /* Main.storyboard */; };
 		F3A8A6B82051414E00C4DF11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3A8A6B72051414E00C4DF11 /* Assets.xcassets */; };
 		F3A8A6BB2051414E00C4DF11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3A8A6B92051414E00C4DF11 /* LaunchScreen.storyboard */; };
-		F3A8A6C820527DD300C4DF11 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3A8A6C720527DD300C4DF11 /* Default-568h@2x.png */; };
 		F3A8A6CA20527EE300C4DF11 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A8A6C920527EE300C4DF11 /* PreviewViewController.swift */; };
 		F3AA9978205AB68300E0587F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3AA9977205AB68300E0587F /* GoogleService-Info.plist */; };
 		F3D7CFE72066D142001585D2 /* AnnotationPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7CFE62066D142001585D2 /* AnnotationPin.swift */; };
@@ -33,6 +34,11 @@
 		F344C61C205AA9F200F480C0 /* Fault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fault.swift; sourceTree = "<group>"; };
 		F35281A12062763600FD051E /* CustomFaultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFaultCell.swift; sourceTree = "<group>"; };
 		F35281A22062763600FD051E /* FaultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FaultCell.xib; sourceTree = "<group>"; };
+		F3659D5F207F7A7C0030BFB5 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Main.strings; sourceTree = "<group>"; };
+		F3659D60207F7A7C0030BFB5 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		F3659D64207F7BCC0030BFB5 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F3659D66207F7BD20030BFB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F3659D6A207F7E350030BFB5 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F39A74E7206A815C0013C436 /* FaultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaultView.swift; sourceTree = "<group>"; };
 		F39A74E9206A82FB0013C436 /* ClusterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterView.swift; sourceTree = "<group>"; };
 		F3A8A6AD2051414E00C4DF11 /* Fixit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fixit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,7 +49,6 @@
 		F3A8A6BA2051414E00C4DF11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3A8A6BC2051414E00C4DF11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3A8A6C22051424D00C4DF11 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		F3A8A6C720527DD300C4DF11 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F3A8A6C920527EE300C4DF11 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		F3AA9977205AB68300E0587F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F3D7CFE62066D142001585D2 /* AnnotationPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationPin.swift; sourceTree = "<group>"; };
@@ -92,7 +97,6 @@
 		F3A8A6A42051414E00C4DF11 = {
 			isa = PBXGroup;
 			children = (
-				F3A8A6C720527DD300C4DF11 /* Default-568h@2x.png */,
 				F3A8A6C22051424D00C4DF11 /* README.md */,
 				F3A8A6AF2051414E00C4DF11 /* Fixit */,
 				F3A8A6B72051414E00C4DF11 /* Assets.xcassets */,
@@ -158,7 +162,9 @@
 			isa = PBXGroup;
 			children = (
 				F3A8A6BC2051414E00C4DF11 /* Info.plist */,
+				F3659D6B207F7E350030BFB5 /* InfoPlist.strings */,
 				F3AA9977205AB68300E0587F /* GoogleService-Info.plist */,
+				F3659D65207F7BCC0030BFB5 /* Localizable.strings */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -175,7 +181,6 @@
 				F3A8A6AA2051414E00C4DF11 /* Frameworks */,
 				F3A8A6AB2051414E00C4DF11 /* Resources */,
 				CA7F6B9649FA2A270D049232 /* [CP] Embed Pods Frameworks */,
-				50CA91F58956C85D1738066A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -193,7 +198,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = a27;
 				TargetAttributes = {
 					F3A8A6AC2051414E00C4DF11 = {
@@ -226,8 +231,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3A8A6BB2051414E00C4DF11 /* LaunchScreen.storyboard in Resources */,
-				F3A8A6C820527DD300C4DF11 /* Default-568h@2x.png in Resources */,
+				F3659D69207F7E350030BFB5 /* InfoPlist.strings in Resources */,
 				F3AA9978205AB68300E0587F /* GoogleService-Info.plist in Resources */,
+				F3659D63207F7BCC0030BFB5 /* Localizable.strings in Resources */,
 				F3A8A6B82051414E00C4DF11 /* Assets.xcassets in Resources */,
 				F3A8A6B62051414E00C4DF11 /* Main.storyboard in Resources */,
 				F35281A42062763600FD051E /* FaultCell.xib in Resources */,
@@ -237,21 +243,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		50CA91F58956C85D1738066A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fixit/Pods-Fixit-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		C04F13F639A651300DCA840D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -323,10 +314,28 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		F3659D65207F7BCC0030BFB5 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F3659D64207F7BCC0030BFB5 /* sv */,
+				F3659D66207F7BD20030BFB5 /* Base */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		F3659D6B207F7E350030BFB5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F3659D6A207F7E350030BFB5 /* sv */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		F3A8A6B42051414E00C4DF11 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F3A8A6B52051414E00C4DF11 /* Base */,
+				F3659D5F207F7A7C0030BFB5 /* sv */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -335,6 +344,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F3A8A6BA2051414E00C4DF11 /* Base */,
+				F3659D60207F7A7C0030BFB5 /* sv */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -346,6 +356,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -356,6 +367,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -363,6 +375,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -403,6 +416,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -413,6 +427,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -420,6 +435,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

@@ -44,6 +44,7 @@ class Fault {
     
     static func convertDateToString(_ date: Date) -> String {
         let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US")
         formatter.dateStyle = .medium
         formatter.timeStyle = .medium
         let dateString = formatter.string(from: date)
@@ -58,6 +59,7 @@ class Fault {
     
     static func convertStringToDate(_ date: String) -> Date {
         let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US")
         formatter.dateStyle = .medium
         formatter.timeStyle = .medium
         let dateString = formatter.date(from: date)

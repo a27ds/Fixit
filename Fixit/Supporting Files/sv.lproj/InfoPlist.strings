@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  Fixit
+
+  Created by a27 on 2018-04-12.
+  Copyright © 2018 a27. All rights reserved.
+*/
+
+"NSLocationWhenInUseUsageDescription" = "För att denna App skall funka, så måste du ge appen tillgång till gpsen";
+"NSCameraUsageDescription" = "För att denna App skall funka, så måste du ge appen tillgång till kameran";

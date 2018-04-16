@@ -15,15 +15,16 @@ import AlamofireImage
 
 class MapViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate {
     
-    
     // MARK: - Variabel Decalartions
-    var faultViewIsHidden = true
-    var faultInfoViewIsHidden = true
+    
     var faultsArray: [Fault] = []
     var infoImage: UIImage?
     var selectedIndexPath: IndexPath?
     var pinArray: [MKAnnotation] = []
     var wentFromList: Bool = false
+    var wentFromMap = false
+    var faultViewIsHidden = true
+    var faultInfoViewIsHidden = true
     var whichAnnotaionPinIsPressed: AnnotationPin?
     var whichFaultIsSelected : Fault?
     var tap : UITapGestureRecognizer!
@@ -41,8 +42,6 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     @IBOutlet weak var faultsViewNavBar: UINavigationBar!
     @IBOutlet weak var mapSegmentedController: UISegmentedControl!
     
-    
-    
     // FaultsInfoViewOutlets
     
     @IBOutlet weak var faultInfoView: UIView!
@@ -53,7 +52,6 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     @IBOutlet weak var faultAccuracyInfoView: UILabel!
     
     ///////////////////////////////////////////
-    
     
     // MARK: - Views
 
@@ -88,28 +86,23 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     @IBAction func listButtonPressed(_ sender: UIBarButtonItem) {
-        changeNameOnMapOrListButton()
-    }
-    
-    func changeNameOnMapOrListButton() {
         if faultViewIsHidden {
-            listOrMapButton.title = "Map"
-            showOrHideList()
+            listOrMapButton.title = NSLocalizedString("map", comment: "")
+            showList()
         } else {
-            listOrMapButton.title = "List"
-            showOrHideList()
+            listOrMapButton.title = NSLocalizedString("list", comment: "")
+            hideList()
         }
     }
     
     @IBAction func backButtonNavBarFaultInfoView(_ sender: UIBarButtonItem) {
-        faultImageFaultInfoView.image = nil
-        showOrHideInfoView()
+        hideInfoView()
     }
     
     @IBAction func deleteButtonNavBarFaultInfoView(_ sender: UIBarButtonItem) {
         deleteInfoAndPicFromFirebase(fault: whichFaultIsSelected!)
         whichFaultIsSelected = nil
-        showOrHideInfoView()
+        hideInfoView()
     }
     
     @IBAction func getDrivingInstructionsButtonFaultInfoView(_ sender: UIButton) {
@@ -174,23 +167,25 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        wentFromMap = true
         whichAnnotaionPinIsPressed = view.annotation as? AnnotationPin
         let fault = view.annotation as! AnnotationPin
         mapView.deselectAnnotation(fault, animated: true)
-        SVProgressHUD.show(withStatus: "Waiting for connection")
+        SVProgressHUD.show(withStatus: NSLocalizedString("SVWaitingOnServer", comment: ""))
         Alamofire.request(fault.fault.imageURL).downloadProgress { progress in
-            SVProgressHUD.showProgress(Float(progress.fractionCompleted), status: "Downloading Image")
+            SVProgressHUD.showProgress(Float(progress.fractionCompleted), status: NSLocalizedString("SVDownloadingImage", comment: ""))
             } .responseImage { response in
                 if let image = response.result.value {
                     self.faultImageFaultInfoView.image = image
-                    SVProgressHUD.showSuccess(withStatus: "Great Sucesses!")
+                    SVProgressHUD.showSuccess(withStatus: NSLocalizedString("SVLoginSuccess", comment: ""))
                 }
         }
         titleNavBarFaultInfoView.title = Fault.getRidOfTimeInDateAsString(fault.fault.date)
         commentTextFaultInfoView.text = fault.fault.comment
-        faultAccuracyInfoView.text = "Accuracy: \(fault.fault.horizontalAccuracy) m"
+        faultAccuracyInfoView.text = NSString(format: "%@%.0f%@", NSLocalizedString("accuracy", comment: ""), fault.fault.horizontalAccuracy, " m") as String
+        
         whichFaultIsSelected = fault.fault
-        showOrHideInfoView()
+        showFaultInfoView()
     }
     
     ///////////////////////////////////////////
@@ -199,7 +194,21 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     // MARK: - TableView
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        var numOfSections: Int = 0
+        if !faultsArray.isEmpty {
+            tableView.separatorStyle = .singleLine
+            numOfSections            = 1
+            tableView.backgroundView = nil
+        } else {
+            let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+            noDataLabel.text          = NSLocalizedString("NoFaultsAvailable", comment: "")
+            noDataLabel.textColor     = UIColor.white
+            noDataLabel.textAlignment = .center
+            tableView.backgroundView  = noDataLabel
+            tableView.separatorStyle  = .none
+            tableView.isScrollEnabled = false
+        }
+        return numOfSections
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -218,20 +227,21 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         wentFromList = true
         selectedIndexPath = indexPath
-        SVProgressHUD.show(withStatus: "Waiting for connection")
+        SVProgressHUD.show(withStatus: NSLocalizedString("SVWaitingOnServer", comment: ""))
         Alamofire.request(faultsArray[indexPath.row].imageURL).downloadProgress { progress in
-            SVProgressHUD.showProgress(Float(progress.fractionCompleted), status: "Downloading Image")
+            SVProgressHUD.showProgress(Float(progress.fractionCompleted), status: NSLocalizedString("SVDownloadingImage", comment: ""))
             } .responseImage { response in
-            if let image = response.result.value {
-                self.faultImageFaultInfoView.image = image
-                SVProgressHUD.showSuccess(withStatus: "Great Success!")
-            }
+                if let image = response.result.value {
+                    self.faultImageFaultInfoView.image = image
+                    SVProgressHUD.showSuccess(withStatus: NSLocalizedString("SVLoginSuccess", comment: ""))
+                }
         }
         titleNavBarFaultInfoView.title = Fault.getRidOfTimeInDateAsString(faultsArray[indexPath.row].date)
         commentTextFaultInfoView.text = faultsArray[indexPath.row].comment
-        faultAccuracyInfoView.text = "Accuracy: \(faultsArray[indexPath.row].horizontalAccuracy) m"
+        
+        faultAccuracyInfoView.text = NSString(format: "%@%.0f%@", NSLocalizedString("accuracy", comment: ""), faultsArray[indexPath.row].horizontalAccuracy , " m") as String
         whichFaultIsSelected = faultsArray[indexPath.row]
-        showOrHideInfoView()
+        showFaultInfoView()
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -260,59 +270,89 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     @objc func tapped(sender: UITapGestureRecognizer) {
-        if wentFromList {
-            showOrHideList()
+        if !faultViewIsHidden {
+            hideList()
         } else {
-            showOrHideInfoView()
+            hideInfoView()
         }
+        removeTapOnMap()
     }
     
     ///////////////////////////////////////////
     
     
-    // MARK: - Buttons
+    // MARK: - Show or hide info or list
     
-    func showOrHideList() {
+    func showList() {
         if faultViewIsHidden {
-            setTapOnMap()
-            faultInfoView.isHidden = true
+            faultsView.isHidden = false
             faultsViewConstraint.constant = 150
-            UIView.animate(withDuration: 0.5, animations: {self.view.layoutIfNeeded()})
-        } else if faultViewIsHidden && !faultInfoViewIsHidden {
-            setTapOnMap()
-            faultInfoView.isHidden = true
-            faultsViewConstraint.constant = 150
-            faultViewIsHidden = false
-            UIView.animate(withDuration: 0.5, animations: {self.view.layoutIfNeeded()})
-        } else {
-            removeTapOnMap()
-            faultsViewConstraint.constant = -627
-            UIView.animate(withDuration: 0.3, animations: {self.view.layoutIfNeeded()})
+            UIView.animate(withDuration: 0.5, animations: {
+                self.view.layoutIfNeeded()
+            }, completion: { _ in
+                self.faultViewIsHidden = false
+                self.setTapOnMap()
+            })
         }
-        faultViewIsHidden = !faultViewIsHidden
     }
     
-    func showOrHideInfoView() {
-        if faultInfoViewIsHidden {
-            setTapOnMap()
-            faultInfoView.isHidden = false
-        } else {
-            removeTapOnMap()
-            faultInfoView.isHidden = true
+    func hideList() {
+        if !faultViewIsHidden && faultInfoViewIsHidden{
+            faultsViewConstraint.constant = -627
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+            }, completion: { _ in
+                self.faultsView.isHidden = true
+                self.faultViewIsHidden = true
+            })
+        } else if !faultViewIsHidden && !faultInfoViewIsHidden {
+            UIView.animate(withDuration: 0.4, animations: {
+                self.faultInfoView.alpha = 0
+            }, completion: {_ in
+                self.faultInfoView.isHidden = true
+                self.faultInfoView.alpha = 1
+                self.faultInfoViewIsHidden = true
+                self.faultsViewConstraint.constant = -627
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.view.layoutIfNeeded()
+                }, completion: { _ in
+                    self.faultsView.isHidden = true
+                    self.faultViewIsHidden = true
+                })
+            })
         }
-        faultInfoViewIsHidden = !faultInfoViewIsHidden
+    }
+    
+    func showFaultInfoView() {
+        faultInfoViewIsHidden = false
+        if wentFromMap && !faultInfoViewIsHidden {
+            faultInfoView.isHidden = false
+            faultInfoViewIsHidden = false
+            listOrMapButton.isEnabled = false
+            setTapOnMap()
+        } else if wentFromList {
+            faultInfoView.isHidden = false
+            faultInfoViewIsHidden = false
+        }
+    }
+    
+    func hideInfoView() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.faultInfoView.alpha = 0
+        }, completion: {_ in
+            self.faultInfoView.isHidden = true
+            self.faultInfoView.alpha = 1
+            self.faultInfoViewIsHidden = true
+            self.wentFromMap = false
+            self.listOrMapButton.isEnabled = true
+            self.faultImageFaultInfoView.image = nil
+        })
     }
     
     ///////////////////////////////////////////
     
     
     // MARK: - Setup Layout
-    
-    
-    
-    
-
-    
     
     func setListTableView() {
         faultListTableView.dataSource = self
@@ -321,6 +361,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         faultListTableView.backgroundColor = UIColor.black
         faultListTableView.alpha = 0.90
         faultListTableView.tableFooterView = UIView()
+        faultListTableView.isScrollEnabled = true
     }
     
     func setLayoutFaultsView() {
@@ -360,7 +401,9 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         ref.observe(.childAdded) { (snapshot) in
             let listFault = Fault(snapshot: snapshot)
             self.faultsArray.append(listFault)
+            
             self.faultListTableView.reloadData()
+            
             self.addPin()
             self.mapView.showAnnotations(self.pinArray, animated: true)
         }
@@ -375,7 +418,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         storageRef.delete { error in
             if let error = error {
                 print(error)
-                SVProgressHUD.showError(withStatus: "Something went wrong..")
+                SVProgressHUD.showError(withStatus: NSLocalizedString("SVError", comment: ""))
             } else {
                 ref.child(key).removeValue()
                 if let i = self.faultsArray.index(where:  {(fault) -> Bool in
@@ -385,29 +428,11 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
                 }
                 self.getValueFromFirebase()
                 self.faultListTableView.reloadData()
-                SVProgressHUD.dismiss()
+                self.addPin()
+                SVProgressHUD.dismiss(withDelay: 1.5)
             }
         }
     }
     
     ///////////////////////////////////////////
-    
-    
-    // MARK: - Helpers
-    
-
-//
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        if !faultViewIsHidden && !faultInfoViewIsHidden {
-//            showOrHideInfoView()
-//            showOrHideList()
-//        } else if !faultViewIsHidden {
-//            showOrHideList()
-//        } else if !faultInfoViewIsHidden {
-//            showOrHideInfoView()
-//        }
-//    }
-//    ///////////////////////////////////////////
-//
-    
 }
