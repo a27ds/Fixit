@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DQ1-o5-f4C" userLabel="loginAlert">
-                                <rect key="frame" x="67" y="171" width="240" height="175"/>
+                                <rect key="frame" x="67.5" y="171" width="240" height="175"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gpb-Dy-Pg7">
                                         <rect key="frame" x="8" y="8" width="224" height="21"/>
@@ -100,7 +100,7 @@
                                 </constraints>
                             </view>
                             <view alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ie-b7-5cW">
-                                <rect key="frame" x="67" y="62" width="240" height="406"/>
+                                <rect key="frame" x="67.5" y="62" width="240" height="406"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxA-rj-XAR">
                                         <rect key="frame" x="8" y="8" width="224" height="21"/>
@@ -199,8 +199,6 @@ To make an safe, error free  environment.  To login you have to  be regi
                             <constraint firstItem="bdu-ms-7eA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TJp-xl-5qM"/>
                             <constraint firstItem="8Ie-b7-5cW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WKI-Lo-4SI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DQ1-o5-f4C" secondAttribute="bottom" constant="321" id="X3i-A6-XEa"/>
-                            <constraint firstItem="bdu-ms-7eA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="147" id="bSR-L2-oSE"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bdu-ms-7eA" secondAttribute="trailing" constant="148" id="dxh-9W-l6R"/>
                             <constraint firstItem="eLI-C0-mZQ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="f0h-YT-ezb"/>
                             <constraint firstItem="eLI-C0-mZQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lSL-tu-XYN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eLI-C0-mZQ" secondAttribute="bottom" id="z8c-oe-eX8"/>
@@ -251,7 +249,7 @@ To make an safe, error free  environment.  To login you have to  be regi
                                         </items>
                                     </navigationBar>
                                     <tableView clipsSubviews="YES" alpha="0.84999999999999998" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="htq-6O-4VP">
-                                        <rect key="frame" x="0.0" y="44" width="295" height="463"/>
+                                        <rect key="frame" x="0.0" y="44" width="295" height="448"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="FaultCell" id="I3z-l0-vav" customClass="CustomFaultCell" customModule="Fixit" customModuleProvider="target">
@@ -264,7 +262,7 @@ To make an safe, error free  environment.  To login you have to  be regi
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46f-GU-59t">
                                                             <rect key="frame" x="148" y="22" width="0.0" height="0.0"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -280,14 +278,14 @@ To make an safe, error free  environment.  To login you have to  be regi
                                         </prototypes>
                                     </tableView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="htq-6O-4VP" secondAttribute="trailing" id="0gy-rE-Jno"/>
                                     <constraint firstItem="htq-6O-4VP" firstAttribute="top" secondItem="o0K-kr-1dX" secondAttribute="bottom" id="0yJ-G3-jL2"/>
                                     <constraint firstItem="htq-6O-4VP" firstAttribute="leading" secondItem="zzw-Wt-nRV" secondAttribute="leading" id="5Xg-BH-NXD"/>
                                     <constraint firstAttribute="width" constant="295" id="CWZ-6n-1s1"/>
                                     <constraint firstAttribute="height" constant="507" id="YbC-nk-QjC"/>
-                                    <constraint firstAttribute="bottom" secondItem="htq-6O-4VP" secondAttribute="bottom" id="ddb-Km-AyE"/>
+                                    <constraint firstAttribute="bottom" secondItem="htq-6O-4VP" secondAttribute="bottom" constant="15" id="h7B-fn-Kap"/>
                                     <constraint firstItem="o0K-kr-1dX" firstAttribute="top" secondItem="zzw-Wt-nRV" secondAttribute="top" id="iIp-0Y-Fvp"/>
                                     <constraint firstAttribute="trailing" secondItem="o0K-kr-1dX" secondAttribute="trailing" id="igK-YC-XZi"/>
                                     <constraint firstItem="o0K-kr-1dX" firstAttribute="leading" secondItem="zzw-Wt-nRV" secondAttribute="leading" id="jrb-W5-5HT"/>
@@ -315,7 +313,7 @@ To make an safe, error free  environment.  To login you have to  be regi
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </toolbar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qBt-nV-VkZ">
-                                <rect key="frame" x="116.5" y="30" width="141" height="29"/>
+                                <rect key="frame" x="117" y="30" width="141" height="29"/>
                                 <segments>
                                     <segment title="Standard"/>
                                     <segment title="Hybrid"/>
@@ -419,6 +417,11 @@ To make an safe, error free  environment.  To login you have to  be regi
                             <constraint firstItem="eai-FZ-Vey" firstAttribute="bottom" secondItem="fY7-M8-M1u" secondAttribute="bottom" constant="150" id="z3w-yn-qQ3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eai-FZ-Vey"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="fY7-M8-M1u"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="commentTextFaultInfoView" destination="gAS-p2-nKa" id="BeB-Fm-QzC"/>
@@ -452,7 +455,7 @@ To make an safe, error free  environment.  To login you have to  be regi
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lug-bW-yOX" userLabel="commentField">
-                                <rect key="frame" x="67" y="171" width="240" height="175"/>
+                                <rect key="frame" x="67.5" y="171" width="240" height="175"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="O5I-Fx-KOO">
                                         <rect key="frame" x="8" y="8" width="224" height="100"/>

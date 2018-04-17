@@ -199,6 +199,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
             tableView.separatorStyle = .singleLine
             numOfSections            = 1
             tableView.backgroundView = nil
+            tableView.isScrollEnabled = true
         } else {
             let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
             noDataLabel.text          = NSLocalizedString("NoFaultsAvailable", comment: "")
@@ -212,6 +213,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(faultsArray.count)
         return faultsArray.count
     }
     
@@ -221,6 +223,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         cell.date.textColor = UIColor.white
         cell.date.highlightedTextColor = UIColor.black
         cell.backgroundColor = UIColor.black
+        
         return cell
     }
     
@@ -361,15 +364,17 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         faultListTableView.backgroundColor = UIColor.black
         faultListTableView.alpha = 0.90
         faultListTableView.tableFooterView = UIView()
-        faultListTableView.isScrollEnabled = true
+        faultListTableView.alwaysBounceVertical = true
+        
+        
     }
     
     func setLayoutFaultsView() {
         faultsViewConstraint.constant = -627
         faultsViewNavBar.addBorder(side: .Bottom, color: UIColor.lightGray.cgColor, thickness: 0.4)
-        faultListTableView.round(corners: [.bottomLeft, .bottomRight], radius: 15)
         faultsViewNavBar.round(corners: [.topLeft, .topRight], radius: 15)
         faultsView.layer.cornerRadius = 15
+        faultsView.backgroundColor = UIColor.black
     }
     
     func setLayoutFaultsInfoView() {
