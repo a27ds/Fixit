@@ -384,6 +384,7 @@ To make an safe, error free  environment.  To login you have to  be regi
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="uvC-55-0nL" secondAttribute="bottom" constant="19" id="6nZ-qX-xd6"/>
                                     <constraint firstItem="v7e-VU-Tv3" firstAttribute="leading" secondItem="fY7-M8-M1u" secondAttribute="leading" id="8Qp-Ze-TC4"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uvC-55-0nL" secondAttribute="trailing" constant="20" symbolic="YES" id="C0P-d0-cjC"/>
                                     <constraint firstAttribute="width" constant="295" id="ECb-Gf-mm5"/>
                                     <constraint firstAttribute="trailing" secondItem="v7e-VU-Tv3" secondAttribute="trailing" id="LDi-fM-S21"/>
                                     <constraint firstItem="gAS-p2-nKa" firstAttribute="leading" secondItem="fY7-M8-M1u" secondAttribute="leading" constant="27" id="UPn-Nr-jrg"/>
@@ -417,11 +418,6 @@ To make an safe, error free  environment.  To login you have to  be regi
                             <constraint firstItem="eai-FZ-Vey" firstAttribute="bottom" secondItem="fY7-M8-M1u" secondAttribute="bottom" constant="150" id="z3w-yn-qQ3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eai-FZ-Vey"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="fY7-M8-M1u"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="commentTextFaultInfoView" destination="gAS-p2-nKa" id="BeB-Fm-QzC"/>
@@ -466,7 +462,7 @@ To make an safe, error free  environment.  To login you have to  be regi
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200/200" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTb-1Q-9Qe">
-                                        <rect key="frame" x="103" y="113" width="34" height="10"/>
+                                        <rect key="frame" x="105" y="113" width="30.5" height="10"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="10" id="qLC-ab-aTN"/>
                                         </constraints>
@@ -503,13 +499,12 @@ To make an safe, error free  environment.  To login you have to  be regi
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="WTb-1Q-9Qe" firstAttribute="top" secondItem="O5I-Fx-KOO" secondAttribute="bottom" constant="5" id="CRq-HB-pCV"/>
+                                    <constraint firstItem="WTb-1Q-9Qe" firstAttribute="centerX" secondItem="lug-bW-yOX" secondAttribute="centerX" id="IaM-9B-zLI"/>
                                     <constraint firstAttribute="bottom" secondItem="K7f-sN-Uq6" secondAttribute="bottom" id="Q7g-mc-bKx"/>
                                     <constraint firstItem="xPQ-sY-IHu" firstAttribute="leading" secondItem="lug-bW-yOX" secondAttribute="leading" id="Sij-fw-JP7"/>
                                     <constraint firstItem="O5I-Fx-KOO" firstAttribute="leading" secondItem="lug-bW-yOX" secondAttribute="leading" constant="8" id="ZBl-f3-aoZ"/>
-                                    <constraint firstItem="WTb-1Q-9Qe" firstAttribute="leading" secondItem="lug-bW-yOX" secondAttribute="leading" constant="103" id="Zhr-6I-TEH"/>
                                     <constraint firstAttribute="height" constant="175" id="ecY-kl-ek9"/>
                                     <constraint firstAttribute="width" constant="240" id="fEY-3O-mGM"/>
-                                    <constraint firstAttribute="trailing" secondItem="WTb-1Q-9Qe" secondAttribute="trailing" constant="103" id="fRv-HM-FfV"/>
                                     <constraint firstItem="O5I-Fx-KOO" firstAttribute="top" secondItem="lug-bW-yOX" secondAttribute="top" constant="8" id="j4H-33-TlQ"/>
                                     <constraint firstAttribute="trailing" secondItem="O5I-Fx-KOO" secondAttribute="trailing" constant="8" id="l39-19-3Ys"/>
                                     <constraint firstAttribute="trailing" secondItem="K7f-sN-Uq6" secondAttribute="trailing" id="qEn-LR-Vdw"/>
@@ -558,7 +553,6 @@ To make an safe, error free  environment.  To login you have to  be regi
                         <outlet property="showPhoto" destination="ceD-HP-EJ0" id="1W9-TP-FHC"/>
                         <outlet property="textView" destination="O5I-Fx-KOO" id="cIz-2W-2zO"/>
                         <outlet property="toolbar" destination="Q37-JH-U2n" id="Zmg-sp-YKn"/>
-                        <outlet property="toolbarConstraint" destination="miv-yO-psj" id="KTZ-3G-NZH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZP4-Ew-4dc" userLabel="First Responder" sceneMemberID="firstResponder"/>

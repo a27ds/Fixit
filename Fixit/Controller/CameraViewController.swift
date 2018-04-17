@@ -24,6 +24,7 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
     var photoOutput: AVCapturePhotoOutput?
     var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
     var image: UIImage?
+    let locationManager = CLLocationManager()
     var gpsInfo: CLLocation?
     var date: Date?
     var showLocationDisablePopUpBool: Bool?
@@ -100,8 +101,8 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
         showOrHideInfoAlert()
     }
     
-    
     ///////////////////////////////////////////
+    
     
     // MARK: - Info Alert
     
@@ -204,11 +205,9 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
     
     func loginToFirebase() {
         SVProgressHUD.show(withStatus: NSLocalizedString("SVLogin", comment: "") )
-        // Login to firebase
         loginButton.isEnabled = false
         cancelButton.isEnabled = false
         Auth.auth().signIn(withEmail: usernameTextField.text!, password: passwordTextField.text!) { (user, error) in
-            
             if error != nil {
                 let animation = CABasicAnimation(keyPath: "position")
                 animation.duration = 0.07
@@ -224,7 +223,6 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
                 self.performSegue(withIdentifier: "showLogin_Segue", sender: self)
                 self.showOrHideLoginAlert()
                 SVProgressHUD.showSuccess(withStatus: NSLocalizedString("SVLoginSuccess", comment: ""))
-                
             }
         }
         loginButton.isEnabled = true
@@ -235,8 +233,6 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
     
     
     // MARK: - GPS
-    
-    let locationManager = CLLocationManager()
     
     func getLocation() {
         locationManager.requestWhenInUseAuthorization()
@@ -327,6 +323,7 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
     
     ///////////////////////////////////////////
     
+    
     // MARK: - Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -340,6 +337,7 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
     }
     
     ///////////////////////////////////////////
+    
     
     // MARK: - Checks
     
@@ -355,6 +353,7 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate, AVCaptu
     }
     
     ///////////////////////////////////////////
+    
     
     // MARK: - Helpers
     

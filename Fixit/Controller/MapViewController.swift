@@ -33,7 +33,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     
     
     // MARK: - IBOutlets
-
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var listOrMapButton: UIBarButtonItem!
     @IBOutlet weak var faultListTableView: UITableView!
@@ -54,7 +54,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     ///////////////////////////////////////////
     
     // MARK: - Views
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayoutFaultsView()
@@ -138,11 +138,11 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         mapView.delegate = self
         mapSegmentedController.tintColor = UIColor.black
         
+        mapView.showsCompass = false
         let compassButton = MKCompassButton(mapView: mapView)
         compassButton.frame.origin = CGPoint(x: 20, y: 52)
         compassButton.compassVisibility = .adaptive
         mapView.addSubview(compassButton)
-        mapView.showsCompass = false
         
         mapView.showsUserLocation = true
         let button = MKUserTrackingButton(mapView: mapView)
@@ -163,7 +163,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
                                      button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
                                      scale.trailingAnchor.constraint(equalTo: button.leadingAnchor, constant: -50),
                                      scale.centerYAnchor.constraint(equalTo: button.centerYAnchor)
-                                    ])
+            ])
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
@@ -199,7 +199,12 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
             tableView.separatorStyle = .singleLine
             numOfSections            = 1
             tableView.backgroundView = nil
-            tableView.isScrollEnabled = true
+            tableView.rowHeight = 44
+            if faultsArray.count >= 10 {
+                tableView.isScrollEnabled = true
+            } else {
+                tableView.isScrollEnabled = false
+            }
         } else {
             let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
             noDataLabel.text          = NSLocalizedString("NoFaultsAvailable", comment: "")
@@ -211,9 +216,8 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         }
         return numOfSections
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(faultsArray.count)
         return faultsArray.count
     }
     
@@ -223,7 +227,6 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         cell.date.textColor = UIColor.white
         cell.date.highlightedTextColor = UIColor.black
         cell.backgroundColor = UIColor.black
-        
         return cell
     }
     
@@ -241,7 +244,6 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         }
         titleNavBarFaultInfoView.title = Fault.getRidOfTimeInDateAsString(faultsArray[indexPath.row].date)
         commentTextFaultInfoView.text = faultsArray[indexPath.row].comment
-        
         faultAccuracyInfoView.text = NSString(format: "%@%.0f%@", NSLocalizedString("accuracy", comment: ""), faultsArray[indexPath.row].horizontalAccuracy , " m") as String
         whichFaultIsSelected = faultsArray[indexPath.row]
         showFaultInfoView()
@@ -364,9 +366,6 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         faultListTableView.backgroundColor = UIColor.black
         faultListTableView.alpha = 0.90
         faultListTableView.tableFooterView = UIView()
-        faultListTableView.alwaysBounceVertical = true
-        
-        
     }
     
     func setLayoutFaultsView() {
@@ -399,16 +398,14 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         }
         mapView.addAnnotations(pinArray)
     }
-
+    
     func getValueFromFirebase() {
         faultsArray.removeAll()
         let ref = Database.database().reference().child("Fault")
         ref.observe(.childAdded) { (snapshot) in
             let listFault = Fault(snapshot: snapshot)
             self.faultsArray.append(listFault)
-            
             self.faultListTableView.reloadData()
-            
             self.addPin()
             self.mapView.showAnnotations(self.pinArray, animated: true)
         }
@@ -427,7 +424,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
             } else {
                 ref.child(key).removeValue()
                 if let i = self.faultsArray.index(where:  {(fault) -> Bool in
-                        fault.key == key
+                    fault.key == key
                 }) {
                     self.faultsArray.remove(at: i)
                 }

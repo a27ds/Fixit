@@ -35,7 +35,6 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var commentField: UIView!
     @IBOutlet weak var commentFieldConstraint: NSLayoutConstraint!
     @IBOutlet weak var toolbar: UIToolbar!
-    @IBOutlet weak var toolbarConstraint: NSLayoutConstraint!
     
     ///////////////////////////////////////////
     
@@ -48,7 +47,6 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
         showPhoto.image = self.image
         textView.delegate = self
         commentFieldConstraint.constant = -408
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -88,8 +86,6 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
 
     func firebaseUpload() {
         let ref = Database.database().reference().child("Fault").childByAutoId()
-        
-        // Upload Fault and Picture to Firebase Storage
         let storage = Storage.storage()
         var data = Data()
         data = UIImageJPEGRepresentation(image, 0.4)!
