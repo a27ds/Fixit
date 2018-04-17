@@ -85,16 +85,6 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func listButtonPressed(_ sender: UIBarButtonItem) {
-        if faultViewIsHidden {
-            listOrMapButton.title = NSLocalizedString("map", comment: "")
-            showList()
-        } else {
-            listOrMapButton.title = NSLocalizedString("list", comment: "")
-            hideList()
-        }
-    }
-    
     @IBAction func backButtonNavBarFaultInfoView(_ sender: UIBarButtonItem) {
         hideInfoView()
     }
@@ -116,6 +106,20 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
             let location = whichAnnotaionPinIsPressed
             let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
             location?.mapItem().openInMaps(launchOptions: launchOptions)
+        }
+    }
+    
+    @IBAction func listButtonPressed(_ sender: UIBarButtonItem) {
+        changeTitleOnMapOrListButton()
+    }
+    
+    func changeTitleOnMapOrListButton() {
+        if faultViewIsHidden {
+            listOrMapButton.title = NSLocalizedString("map", comment: "")
+            showList()
+        } else {
+            listOrMapButton.title = NSLocalizedString("list", comment: "")
+            hideList()
         }
     }
     
@@ -277,6 +281,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     @objc func tapped(sender: UITapGestureRecognizer) {
         if !faultViewIsHidden {
             hideList()
+            changeTitleOnMapOrListButton()
         } else {
             hideInfoView()
         }
