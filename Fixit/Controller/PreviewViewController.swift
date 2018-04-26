@@ -168,6 +168,12 @@ class PreviewViewController: UIViewController, UITextViewDelegate {
         commentFieldIsHidden = !commentFieldIsHidden
     }
     
+    // tar bort tangentbordet när man klickar någonstans utanför det
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
+    
     ///////////////////////////////////////////
     
     
